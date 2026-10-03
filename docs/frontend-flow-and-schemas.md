@@ -1,509 +1,466 @@
 # Naira Forward — Frontend Flow, State Model, and Schemas
 
-- Status: Product/engineering design draft
-- Version: 0.1
+- Status: Audited product/engineering design draft; implementation pending
+- Version: 0.3
 - Last updated: 2026-10-03
-- Source: [`Naira Forward_ Build Spec.md`](./Naira%20Forward_%20Build%20Spec.md)
+- Financial source: [Build spec](./Naira%20Forward_%20Build%20Spec.md)
+- Decisions and acceptance cases: [Specification audit](./spec-audit.md)
+- Pegged orders, fees, sources and integrations: [Reviewed addendum](./spec-addendum.md)
+- Addendum decisions and test cases: [Addendum audit](./addendum-audit.md)
 
-## 1. Purpose
+## 1. Purpose and product language
 
-This document turns the build spec into an implementable frontend journey for the first demo and testnet release. It covers:
+Define the testnet frontend journey, ownership boundaries, state transitions, and
+API shapes. These are implementation requirements, not a final ABI or proof that
+contracts, SDK integrations, or funding routes work. The build spec governs money
+movement, rounding, priority, and oracle timing.
 
-- sign-in, account recovery, and wallet creation with Privy;
-- funding a wallet and locking USDC as protocol margin;
-- finding the other side of a hedge through an anonymous order book;
-- order placement, matching, position monitoring, top-ups, liquidation, expiry, and receipts;
-- frontend routes, state machines, data ownership, TypeScript domain schemas, and contract-event mappings;
-- error, loading, empty, and recovery states that must be designed alongside the happy path.
+The product provides collateral-limited exposure to the official USD/NGN rate.
+It does not deliver currency or guarantee a conversion rate. Protection can end
+early through liquidation, collateral exhaustion, or oracle failure. Show the
+inverse payoff and both favorable and unfavorable examples before signing.
 
-This is a UX and integration contract, not the final smart-contract ABI or visual design.
-
-## 2. Product interpretation
-
-### 2.1 Core promise
-
-Naira Forward lets a user lock protection against a future move in the official USD/NGN reference rate. The contract is cash-settled in USDC; neither side buys or delivers physical USD or NGN.
-
-### 2.2 The two sides
-
-| Product language | Contract side | Typical user | Wants protection from |
-| --- | --- | --- | --- |
-| **Protect against a higher dollar** | USD buyer / long USD | Importer | Naira weakening; USD/NGN rises |
-| **Protect against a lower dollar** | USD seller / short USD | Dollar earner | Naira strengthening; USD/NGN falls |
-
-Use plain-language labels first and market terms second. Never ask a new user to choose “long” or “short” without the explanation above.
-
-### 2.3 “Find a partner” means market matching
-
-V1 does not expose named counterparties or a people directory. A user finds the opposite side through the order book:
-
-1. the app shows executable opposing orders and indicative depth;
-2. the user accepts an available strike or posts their own strike;
-3. `OrderBook` matches compatible orders by price-time priority;
-4. the resulting position shows the counterparty as an abbreviated wallet address only where technically necessary.
-
-This keeps the frontend consistent with the financial instrument in the build spec. A later “invite a known counterparty” flow can be added as a separate RFQ feature without changing the default market.
-
-### 2.4 Two different deposits
-
-The word **deposit** must not describe two different balances in the same interface.
-
-| Action | User-facing label | Destination | Spendable? | Privy’s role |
-| --- | --- | --- | --- | --- |
-| Add USDC to the user wallet | **Add funds** | User’s embedded or connected wallet | Yes | Displays wallet, opens supported funding route, or signs wallet actions |
-| Commit USDC to a trade | **Lock margin** | Protocol `Vault` | No, until released | Prompts approval/signature and sends the contract transaction |
-
-The wallet screen must show **Wallet balance** and **Locked as margin** as separate values. If the final `Vault` design also maintains a withdrawable protocol balance, show **Available in protocol** as a third value; do not invent that balance in the frontend before the contract supports it.
-
-## 3. Recommended V1 product decisions
-
-These are proposed defaults. They should be revisited after user interviews and contract design are complete.
-
-| Decision | V1 choice | Reason |
+| User intent | Contract side | Favorable reference move |
 | --- | --- | --- |
-| Primary sign-in | Email OTP and Google | Familiar to non-crypto users |
-| Secondary sign-in | Existing EVM wallet | Supports crypto-native judges and users |
-| Wallet creation | Create an embedded EVM wallet for users without a wallet | Every authenticated user can transact without a second onboarding flow |
-| Active chain | Monad testnet only | Matches the hackathon scope and reduces wrong-network risk |
-| Settlement token | Test USDC configured per environment | Matches the spec; address must never be hard-coded in UI components |
-| Gas | Sponsored when supported and budgeted; otherwise show MON requirement before confirmation | Prevents a hidden failure at transaction time |
-| Counterparties | Anonymous price-time matching | Matches `OrderBook`; avoids profile and trust-screen scope |
-| First order mode | Guided ticket with market availability; advanced order book is secondary | Better for first-time hedgers |
-| Amount entry | USD notional, in configured lot increments | Matches payoff formula and contract config |
-| Rates | NGN per USD | Matches the spec; always label units |
-| Demo oracle | Clearly persistent “Simulated rate” badge | Required by the build spec; must not be dismissible |
-| Fiat/crypto onramp | Feature-flagged, never assumed | Privy funding routes and destination networks vary; do not promise direct NGN-to-USDC-on-Monad until verified |
+| I need dollars later | `USD_BUYER` | NGN/USD rises |
+| I earn dollars | `USD_SELLER` | NGN/USD falls |
 
-## 4. Information architecture
+Use plain language first. Reference USD notional and its fixed NGN leg are not the
+same as a guaranteed amount of future wallet cash. The exact payoff assumes USDC
+at USD parity. Surface basis risk, depeg/freeze risk, shortfall, top-up exposure,
+and the absence of an early exit. A counterparty is an address on a public chain;
+matching is pseudonymous, not private or proof of distinct human identity.
 
-### 4.1 Public routes
+## 2. V1 decisions and balances
 
-| Route | Screen | Primary action |
+| Decision | Chosen behavior |
+| --- | --- |
+| Scope | Monad testnet; clearly labelled simulated-rate demo deployment |
+| Sign-in | Email OTP/Google or existing EVM wallet through Privy |
+| Wallet | Reuse a usable linked wallet; create an embedded wallet only when needed |
+| Market | Shared listed maturity series, whole lots, price-time limit matching |
+| Entry | Initial margin plus adverse-entry reserve and separately consented fee escrow |
+| Collateral | Per-position isolation; gains and top-ups remain locked until close |
+| Orders | Fixed or reference-pegged; `REST`/`IOC`; fixed orders invalidate on new rounds, pegged orders can persist |
+| Exit | Maturity, liquidation, default, or oracle-failure closeout; no early netting |
+| Gas | Platform sponsorship intended; explicit opt-in to self-funded MON if unavailable |
+| Protocol fee | Taker 5 BPS of filled notional reference placeholder; actual testnet rate 0, maker 0 |
+| Funding | Receive/faucet baseline; onramp/bridge only after route verification |
+| Token allowance | Exact reviewed amount to configured Vault; approval and action separate |
+| Keeper rewards | Zero in testnet V1; keeper gas funded outside user collateral |
+
+Show four distinct balances, never a single ambiguous “deposit”:
+
+| Label | Meaning | Available to spend? |
 | --- | --- | --- |
-| `/` | Landing and product explanation | `Start hedging` |
-| `/learn` | How the hedge, payoff, official rate, and margin work | `Try the demo` |
-| `/terms` | Testnet, regulatory, basis-risk, oracle, and gap-risk disclosures | — |
+| Wallet USDC | ERC-20 balance at active wallet | Yes, subject to gas/network |
+| Reserved for orders | Collateral/entry reserve plus separately itemized unearned fee escrow | No; cancel/expire to release |
+| Locked in positions | Current equity, including retained variation and top-ups | No |
+| Claimable USDC | Released reserve/equity in Vault | Withdraw to wallet first |
 
-### 4.2 Authenticated app routes
+Approving USDC moves no funds but grants spend permission. “Add funds” puts tokens
+in the wallet; “Place order” pulls escrow into Vault; “Add margin” pulls into a
+specific position; “Withdraw” moves claimable tokens back to the owner. V1 does
+not spend claimable balances directly on new orders. Show MON separately.
+Protocol fee is earned only at fill, debited from fee escrow; sponsorship is a
+separate platform cost. Neither reduces locked equity. Show actual fee zero on
+testnet, any indicative reference fee labelled separately, and no waived-fee escrow.
 
-| Route | Screen | Primary action |
+## 3. Routes and public discovery
+
+| Route | Screen | Access / primary action |
 | --- | --- | --- |
-| `/app` | Dashboard | `Create a hedge` |
-| `/app/market` | Market availability and order book | `Build hedge` |
-| `/app/orders/new` | Guided order ticket | `Review order` |
-| `/app/orders/:orderId` | Open/partial/filled/cancelled order | `Cancel remaining` |
-| `/app/positions/:positionId` | Live position | `Add margin` |
-| `/app/wallet` | Balances, add funds, activity | `Add funds` |
-| `/app/activity` | Transactions, settlements, and receipts | View detail |
-| `/app/receipts/:receiptId` | Human-readable outcome | `View on explorer` |
-| `/app/settings` | Identity, wallets, security, disclosures | Manage account |
+| `/` | Product, demo mode, risks | Public / explore |
+| `/learn` | Payoff examples and collateral limits | Public / simulate outcomes |
+| `/terms` | Versioned disclosures | Public |
+| `/market` | Direction, listed maturity, depth | Public / build draft |
+| `/app` | Dashboard and urgent calls | Authenticated / resume |
+| `/app/orders/new` | Restore, fund, review draft | Authenticated / place order |
+| `/app/orders/:orderId` | Fills and residual order | Authenticated / cancel remainder |
+| `/app/positions` | All open and closed positions | Authenticated / inspect |
+| `/app/positions/:positionId` | Margins, rounds, timeline | Authenticated / add margin |
+| `/app/wallet` | Four balances and funding | Authenticated / fund or withdraw |
+| `/app/activity` | Transactions, releases, withdrawals | Authenticated / inspect |
+| `/app/receipts/:receiptId` | Outcome and onchain evidence | Authenticated / inspect |
+| `/app/settings` | Linked wallets, identity, disclosures | Authenticated / manage |
+| `/operator/demo` | Simulated-feed controller and keeper health | Demo operator; role checks onchain, never a user signing key |
 
-On mobile, the persistent navigation should be `Home`, `Market`, `Positions`, and `Wallet`. Urgent margin calls override the normal header with a persistent alert.
+Mobile navigation: Home, Market, Positions, Wallet. Preserve a persistent urgent
+margin-call alert without hiding navigation. Public RPC/indexed data exposes no
+Privy identities. Receipt sharing is explicit and redacted; it never shares auth
+tokens or implies onchain addresses/amounts can be made private.
 
-## 5. End-to-end happy path
+## 4. Journey
 
 ```mermaid
 flowchart TD
-    A[Landing] --> B[Sign in with Privy]
-    B --> C{Has usable EVM wallet?}
-    C -- No --> D[Create embedded wallet]
-    C -- Yes --> E[Select active wallet]
-    D --> F[Accept testnet and risk disclosures]
-    E --> F
-    F --> G[Dashboard]
-    G --> H{Enough wallet USDC?}
-    H -- No --> I[Add funds]
-    I --> J[Funds detected and confirmed]
-    H -- Yes --> K[Choose hedge direction]
-    J --> K
-    K --> L[Enter notional and tenor]
-    L --> M[Choose available strike or set limit]
-    M --> N[Review payoff, margin, basis risk, gap risk]
-    N --> O[Approve USDC if needed]
-    O --> P[Place order and lock margin]
-    P --> Q{Matched?}
-    Q -- No --> R[Open order: wait, edit by cancel/repost, or cancel]
-    Q -- Yes --> S[Live position]
-    R --> Q
-    S --> T{Position event}
-    T -- Rate update --> S
-    T -- Margin call --> U[Top up before countdown ends]
-    U --> S
-    T -- Liquidation --> V[Liquidation receipt]
-    T -- Expiry --> W[Settlement receipt]
-    T -- Opposite trade --> X[Early-close receipt]
+    A[Explore direction and listed maturity] --> B[Draft and indicative outcomes]
+    B --> C[Sign in, select wallet, accept disclosures]
+    C --> D[Refresh quote and review total reserve]
+    D --> E{USDC and gas sufficient?}
+    E -- No --> F[Fund wallet or withdraw existing claim]
+    F --> D
+    E -- Yes --> G[Approve Vault if needed]
+    G --> H[Revalidate wallet, round, limit and deadline]
+    H --> I[Submit constrained order]
+    I --> J[Show every fill and any residual order]
+    J --> K[Monitor each resulting position]
+    J --> L[Cancel or expire residual reserve]
+    K --> M{Position outcome}
+    M -- Margin call --> N[Approve and top up before deadline]
+    N --> K
+    M -- Maturity --> O[Wait for designated finalized fixing]
+    M -- Liquidation or default --> P[Outcome receipt]
+    M -- Oracle failure --> P
+    O --> P
+    L --> Q[Claimable USDC]
+    P --> Q
+    Q --> R[Withdraw and verify wallet receipt]
 ```
 
-## 6. Detailed user flows
+Do not require funding before showing what the user would trade. Draft inputs
+survive login and funding. Every return re-quotes; it never auto-submits.
 
-### 6.1 App boot and route guard
+## 5. Detailed flows
 
-1. Render a neutral app shell while Privy initializes.
-2. Wait for both authentication state and wallets to report ready.
-3. If the route is public, render it regardless of authentication.
-4. If the route is protected and the user is signed out, preserve the intended destination and open the sign-in flow.
-5. If authenticated but no wallet is ready, show “Setting up your wallet” rather than an empty dashboard.
-6. If authenticated and the active wallet is on the wrong network, show a blocking network repair card before allowing a write action.
-7. Resume the intended destination after authentication and wallet readiness.
+### 5.1 Authentication, recovery, and wallet switching
 
-Do not flash the signed-out view before Privy initialization completes.
+Public pages render without waiting on Privy. Protected pages wait for auth, then
+wallet readiness, with distinct loading, signed-out, no-wallet, and wallet-error
+states. Restore only same-origin allowlisted destination paths; reject external
+return URLs. SDK account recovery belongs to Privy; confirm linked ownership on
+the server before returning private user data.
 
-### 6.2 Sign-up, sign-in, and returning login
+Use Privy DID for app identity and chain/address for balances. A linked wallet on
+the wrong chain should be switched, not replaced with a new embedded wallet.
+External-wallet disconnect does not trigger silent embedded-wallet creation.
+Allow explicit wallet selection and show its abbreviated address near signatures.
 
-#### New user
+Changing wallet, chain, deployment, or logout invalidates quotes/allowances and
+in-flight preparation. Scope caches/drafts by deployment, chain, and wallet;
+cancel stale requests and ignore old responses. Already broadcast transactions
+continue to be monitored under their original account. Never attach their outcome
+to the newly selected wallet or resubmit them automatically.
 
-1. User selects `Start hedging`.
-2. Privy modal offers email, Google, and wallet login.
-3. After successful authentication, Privy creates an embedded EVM wallet only if the user does not already have one.
-4. The app selects the usable Monad wallet as the active wallet.
-5. The app creates/updates its off-chain `UserProfile`, keyed by Privy DID—not by email or wallet address.
-6. The user accepts:
-   - testnet-only notice;
-   - simulated-rate notice when demo mode is active;
-   - official-rate basis-risk notice;
-   - margin and liquidation notice.
-7. The app routes to the dashboard and highlights the next incomplete task: add funds or create a hedge.
+Versioned disclosures gate new exposure. Updated terms must not block viewing,
+cancellation, valid top-ups, or withdrawal. Keep browser logs and analytics free
+of tokens, raw wallet identities, and personal data.
 
-#### Returning user
+### 5.2 Funding and withdrawal
 
-1. Wait for Privy readiness.
-2. Restore the session and active wallet.
-3. Reconcile indexed protocol balances and positions against the wallet address.
-4. Route directly to the dashboard unless the user arrived through a deep link.
-5. If a margin call is active, open the position with the urgent alert visible.
+Show exact configured chain/token/address, wallet balance, required reserve, and
+gas budget for both approval and action. Offer receive/test faucet by default.
+Enable Privy funding, bridges, or sponsorship only after verifying the installed
+SDK, asset/network route, return behavior, and supported wallet type. Never promise
+direct NGN-to-USDC-on-Monad from a conceptual funding API.
 
-#### Account recovery and wallet changes
+Show sponsorship eligibility, quote expiry and budget state before approval and
+again before each action. If it fails, offer retry or explicit self-funded gas;
+never silently spend MON. A minimum new-order size must not prevent top-ups or
+withdrawals. Sponsor policy restrictions do not change onchain user rights.
 
-- Privy owns authentication recovery for embedded wallets.
-- A user may link more login methods from settings.
-- Changing the active wallet must trigger a complete refetch of balances, orders, positions, allowances, and activity.
-- Never merge protocol records across two wallet addresses merely because they share a Privy user.
-- Wallet export, if enabled later, belongs in Security and requires a strong warning; it is not part of the demo path.
+Funding has waiting, detected, confirming, confirmed, reorged, and failed states.
+Use ERC-20 contract address, not symbol, to identify funds. A sender's hash or an
+indexer notification is insufficient; verify canonical balance and confirmation
+policy. Fee estimates and balances are refreshed after funding before review.
 
-### 6.3 Wallet funding — “Add funds”
+For claimable USDC: show amount, owner wallet, network, and gas; submit
+`withdrawClaimable(amount)`; confirm receipt and both ledger and wallet balances.
+If withdrawal reverts (including frozen token/account), claim remains available
+for retry; show the actual reason. Release and withdrawal are separate events.
 
-#### Entry points
+### 5.3 Discovery and order review
 
-- dashboard setup card;
-- wallet screen;
-- insufficient-funds state on the order review;
-- insufficient-funds state on margin top-up.
+Choose direction, whole-lot notional, and an exact listed maturity. Show UTC fixing
+and the user's local time, remaining duration, and calendar/source. Tenor labels
+are convenience labels, not `now + days` expiry calculations.
 
-#### Flow
+Depth is keyed by deployment, config version, market, series, side, and round.
+Exclude expired/invalidated/unfunded orders. Buyer limit is maximum strike; seller
+limit is minimum. Explain maker-price execution, partial fills, and residual expiry.
+Fresh depth is indicative, not a guaranteed match. No-liquidity users may post a
+resting order with an explicit short validity window.
 
-1. Show the required amount, current wallet USDC, and shortfall.
-2. Offer only methods enabled and verified for the current environment:
-   - **Receive USDC:** copy address/QR and show exact network and token;
-   - **Privy funding route:** open Privy’s deposit/funding UI only if the target asset and chain route is supported;
-   - **Testnet faucet:** demo/testnet only;
-   - **Bridge:** link to an approved route only after it is selected and tested.
-3. Keep the funding task in a `waiting_for_funds` state after an address is shown or an external provider is opened.
-4. Watch indexed transfers and refresh the onchain ERC-20 balance.
-5. Require the configured confirmation policy before declaring success.
-6. Return to the interrupted order or top-up flow with the entered values preserved.
+Outcome-first inputs capture “I receive/need USD X around date D,” map to side and
+the nearest eligible listed maturity, and require confirmation of any date/lot
+rounding. An ideal fully paid seller hedge of N USD income converts to N*K NGN
+at the same reference rate; this is not guaranteed after fees, basis risk, default
+or early closure. Use “target protection” language and disclose the conditional result.
 
-#### Important integration constraint
+Offer reference-pegged offset as the guided order type; advanced mode also exposes
+fixed strike and REST/IOC. An available, fresh indicative-forward guide may suggest
+an offset; otherwise require user selection, never invent one. Show signed offset,
+current effective strike, owner-protective tick rounding, band, timestamp expiry
+and optional last executable round. The offset stays constant until cancel/repost.
+Future unfilled peg prices move with the reference; existing positions do not.
 
-Privy’s current deposit UI supports configurable fiat and crypto funding, but direct destination support depends on the provider, asset, and chain. Monad must be treated as a verified configuration requirement, not an assumption. For the hackathon fallback, use faucet USDC or a tested bridge/receive flow.
+Exclude inactive pegged size from executable depth but show it to its owner with
+the reason. Round changes reprice pegged orders without requiring a new signature
+within their original consented bounds. Show “no counterparty yet” with status and
+expiry; do not suggest a peg guarantees a fill. Resting-cross backlog requires
+bounded matching before new placement, with a visible `MATCH_REQUIRED` state.
 
-### 6.4 Discover market / find the opposite side
+If bounded matching work is exhausted, any unprocessed incoming remainder is
+cancelled with reason `match_limit_reached`, including for REST. Display this
+separately from a user cancellation; it requires a fresh order to try again.
 
-The market screen answers “Can I get this hedge?” before asking the user to fill a dense ticket.
+Review must show:
 
-1. User chooses one of two intent cards:
-   - `I need dollars later` → protect against a higher dollar → USD buyer;
-   - `I earn in dollars` → protect against a lower dollar → USD seller.
-2. User chooses tenor: 7, 14, or 30 days, subject to `MarketConfig`.
-3. Show:
-   - latest official/simulated rate and publication time;
-   - best available opposite strike;
-   - available notional at that strike;
-   - additional depth by strike;
-   - estimated initial margin;
-   - “No available match” empty state with `Set your rate` action.
-4. Selecting liquidity pre-fills the order ticket as a crossing limit order.
-5. The review screen explains whether the order is expected to fill immediately, partially, or remain open.
+- Reference notional, fixed NGN leg, limit strike, exact maturity and order deadline.
+- Current finalized rate, entry adjustment, initial margin, total reserve, and
+  expected allocation/release; total reserve can exceed the initial-margin percent.
+- Signed entry-mark/forward-point transfer, refundable collateral, maximum fee
+  escrow, actual expected fill fee, and sponsored vs user-paid gas as distinct lines.
+  Never subtract the entry mark twice when showing cumulative PnL.
+- Maintenance, grace period, locked gains, and no withdrawal of live collateral.
+- Payoff examples in both directions, theoretical versus collateral-limited payout,
+  and loss of initial collateral/top-ups/retained gains if conditions deteriorate.
+- `REST`/`IOC`, minimum immediate fill, potentially multiple positions, and no
+  early-close capability. A new rate invalidates fixed orders; pegged remainder
+  persists subject to bounds/expiry. Version retirement invalidates both.
+- Testnet/simulated badge, oracle/fallback risk, basis risk, USDC parity assumption,
+  gas, approved spender, actual testnet protocol fee waived, and zero keeper reward.
 
-Do not label an indicative result “guaranteed.” Re-check the order book immediately before submission and tolerate onchain state changes.
+### 5.4 Approval and order submission
 
-### 6.5 Build and submit an order
+1. Read balances, allowance, round, config, series, and book at an identified block.
+2. Validate disclosure acceptance, wallet/chain/deployment, and fresh oracle state.
+3. Approve only the reviewed maximum pull to Vault if needed; support safe
+   zero-reset allowance handling if the configured token requires it.
+4. Wait for required approval confirmation; read actual allowance again.
+5. Rebuild preview. If amount, round, wallet, deadline, or terms changed, return to
+   review. A prior approval is not consent to a changed trade.
+6. Validate target, selector, chain, zero native value, and decoded calldata against
+   the reviewed command. Simulate, then ask the selected wallet to sign.
+7. Contract enforces version/placement round, series, pricing intent, deadline, max pull, whole lots,
+   minimum fill, and owner-scoped client order ID. A quote block alone enforces none
+   of these constraints. Backend checks do not replace contract checks.
+8. Track canonical receipt and all fill events. A filled order may yield multiple
+   positions: show an execution summary, not an arbitrary first position.
 
-#### Ticket fields
+The initial signed command reviews fixed limit/bound round or pegged offset/lifetime,
+fee-policy version and escrow cap. A persistent peg authorizes future eligible
+matches without another wallet debit; it does not authorize a new offset or fee rate.
+If a pegged order later becomes taker, its earned fee comes from the reserved cap.
 
-| Field | Source | Validation |
-| --- | --- | --- |
-| Hedge direction | User intent | Required |
-| Notional USD | User input | Positive; multiple of lot size; within market min/max |
-| Tenor / expiry | `MarketConfig` | One of enabled tenors; not expired |
-| Strike NGN/USD | Book selection or user limit | Positive; market tick size; sensible deviation warning |
-| Required initial margin USDC | Derived from contract config | Read-only |
-| Maintenance margin USDC | Derived from contract config | Read-only |
-| Estimated available match | Indexed order book | Indicative, refreshed before send |
-| Maximum loss | Contract/risk rules | Plain-language disclosure |
+Contract-level unique `(owner, clientOrderId)` prevents duplicate placement even if
+a wallet broadcasts two different transactions after timeout. A retry uses the
+same intent ID and first checks onchain state. Cancel/repost uses a new ID only
+after reconciling the old intent. Never treat unknown outcome as confirmed failure.
 
-#### Review hierarchy
+### 5.5 Open orders, cancellation, and replacement
 
-1. **You are protecting:** one-sentence intent summary.
-2. **You lock today:** exact USDC initial margin.
-3. **Your rate:** strike and official-rate source.
-4. **What happens when the rate moves:** two worked outcomes, one favorable and one unfavorable.
-5. **What can happen to your deposit:** variation settlement, maintenance threshold, grace period, liquidation.
-6. **Not covered:** P2P/parallel-market basis risk and loss beyond posted margin.
-7. **Execution expectation:** immediate, partial, or resting.
+Show original, filled, cancelled, expired, invalidated, and remaining lots separately.
+Every fill references both orders and one position. Residual reserve is independent
+of position collateral. Pending cancellation is a UI operation, not an onchain
+order status. A fill can win the race; re-read the remainder and cancel only that.
 
-#### Transaction sequence
+At order deadline or round invalidation, stop showing the remainder as executable.
+Show `Release reserved funds` until an onchain expire/invalidate transaction credits
+the claim. Do not call them claimable before this succeeds. Cancel-confirm-refresh-
+repost recomputes lots, round, and reserve and loses original queue priority.
 
-1. Refresh allowance, wallet USDC, market status, and best opposite order.
-2. If allowance is below the required margin, request an exact or policy-approved USDC allowance for `Vault`.
-3. Wait for the approval receipt.
-4. Submit `placeOrder(...)` through the active Privy wallet.
-5. Show explicit transaction stages: `Confirm in wallet` → `Submitted` → `Confirmed` → `Indexed`.
-6. Read the confirmed receipt/events to identify the created order and any resulting positions.
-7. Route to:
-   - position when fully matched;
-   - order detail when unmatched;
-   - combined result when partially matched.
+For pegged orders, an ordinary new round alone does not invalidate. Display active,
+temporarily inactive, matching-pending or expired state separately from onchain fill
+status. Return collateral and unused fee escrow on cancel/expire/invalidate; earned
+fees on existing fills remain charged. A `self_trade_prevented` cancellation names
+the affected newer order and never implies a third-party fill happened.
 
-Never infer success from a transaction hash alone.
+### 5.6 Positions, margin calls, and keeper delay
 
-### 6.6 Open and partially filled orders
+Show both owners' current equity, initial/maintenance lines, paid PnL, theoretical
+value, shortfall (if any), and last processed round. Numerical labels accompany
+colors. Mark data pending/stale when newer finalized rounds are unprocessed; an
+indexer-derived breach is a warning, not a fabricated onchain call event.
 
-The order detail screen shows original notional, filled notional, remaining notional, strike, expiry, locked margin, queue time, and resulting positions.
+Each side has its own call deadline. Display onchain time plus the last refresh,
+and reconcile against canonical state before enabling a top-up. Keeper lag is a
+separate alert; a newly discovered call can already be past its deadline.
 
-Allowed V1 actions:
+Top-up defaults to restoring initial margin and allows a valid custom amount.
+Show that a partial top-up may leave the call active and a later rate can require
+more. Only the owner adds margin to their own side in V1. Approval is followed by
+fresh sync/preview and an amount-bounded transaction. A pending top-up does not
+guarantee rescue; terminal-event ordering in the build spec decides eligibility.
 
-- cancel remaining notional;
-- add wallet funds (does not change the order by itself);
-- inspect each matched position;
-- replace the order through `Cancel and create new`, implemented as two visible transactions unless the contract supports an atomic replace.
+If `SYNC_REQUIRED`, submit/offer bounded permissionless catch-up, then refresh.
+If catch-up closes the position, stop the top-up flow. Never pull funds into a
+terminal position. New exposure may be paused while these defensive actions remain
+available. Keep the most urgent call visible across screens and after login.
 
-Cancellation must state how much margin is expected to unlock. The UI waits for contract confirmation before showing the balance as available.
+### 5.7 Terminal outcomes and receipts
 
-### 6.7 Live position
+| Outcome | Meaning and required receipt |
+| --- | --- |
+| `liquidated` | Uncured call deadline; last eligible mark; each owner's own equity released |
+| `defaulted` | Collateral exhausted by delta; contractual amount, paid amount, shortfall, and close trigger |
+| `matured` | Designated finalized fixing applied; final value, releases, and fixing evidence |
+| `oracle_closed` | Feed failed by deadline; fallback round and current equity; no reversal of prior PnL |
 
-The position screen follows the build spec and makes risk legible:
+At maturity show `Awaiting final fixing` until the designated observation finalizes
+or fails. Time alone does not imply release. The simulated badge stays visible.
+V1 offers no “close now” or offsetting action. If a user separately opens the other
+side, both positions remain live, separately margined, and liquidatable.
 
-- user side and plain-language intent;
-- notional, strike, current rate, expiry, and next update expectation;
-- running settled gain/loss and latest settlement delta;
-- **your margin** bar with maintenance threshold;
-- **counterparty margin** bar;
-- wallet USDC and protocol-available USDC;
-- event timeline: match, rate settlements, top-ups, margin calls, liquidation/expiry;
-- persistent simulated-rate badge in demo mode;
-- `Add margin` primary action when risk is elevated.
+Receipt identities include chain, deployment, transaction hash, and event index.
+Show cumulative paid PnL separately from released equity, protocol fees and gas costs. A release
+receipt links to withdrawal; only its later confirmed receipt says funds reached
+the wallet. Example: “29.411764 USDC moved from seller collateral to buyer collateral;
+both balances remain locked while the position is open.”
 
-Margin bars must use numerical labels in addition to color. A safe/at-risk/liquidatable state cannot rely on red and green alone.
+## 6. State and action contracts
 
-### 6.8 Margin call and top-up
+### 6.1 Independent states
 
-1. A `MarginCallOpened` event or derived maintenance breach changes the position status to `margin_call`.
-2. Show a persistent in-app alert and countdown based on the onchain deadline.
-3. The top-up sheet defaults to “restore initial margin” and also allows a custom amount.
-4. Show wallet balance and shortfall before confirmation.
-5. If the wallet is underfunded, route through Add funds and return to the same top-up sheet.
-6. If token allowance is insufficient, approve USDC.
-7. Submit `addMargin(positionId, amount)`.
-8. On confirmation, refresh the onchain position and clear the warning only when the contract state says the margin call is resolved.
-
-The countdown is informational; the chain timestamp and contract state are authoritative. If the deadline passes while the sheet is open, disable top-up if the contract no longer permits it and refresh the position.
-
-### 6.9 Liquidation, expiry, and early close
-
-#### Liquidation
-
-- Show `Position closed: margin was not restored before the deadline`.
-- Present final transferred amount, remaining returned amount, liquidation reward if relevant, transaction link, and one-sentence reason.
-- Never show this as a generic transaction failure.
-
-#### Expiry
-
-- After the final fixing and settlement, show strike, final official rate, cumulative settlements, released margin, and final wallet/protocol balances.
-- If the official rate is late or disputed, show `Awaiting final rate` or `Market under review`, not “expired and paid.”
-
-#### Early close
-
-- V1 closes economically by placing the opposite trade, as specified.
-- The UI must label the quote as an **offsetting order**, not imply a guaranteed instant close.
-- Until the offset fills and contract state confirms closure/netting, the original position remains at risk.
-
-### 6.10 Receipt
-
-Every terminal action gets a shareable, deterministic receipt:
-
-- outcome: filled, cancelled, topped up, liquidated, expired, early-close fill, or voided;
-- one-sentence explanation;
-- actor wallet, market, position/order ID, and timestamp;
-- relevant rate(s), notional, strike, and amounts moved;
-- transaction hash and explorer link;
-- `Simulated rate` label when applicable.
-
-Example: “The official USD/NGN rate rose above your ₦1,650 strike, so 8.42 USDC was moved from the seller’s margin to your protocol balance.”
-
-## 7. Screen contracts
-
-Each screen should be implemented against an explicit state contract.
-
-| Screen | Required data | Loading state | Empty/error state | Write action |
-| --- | --- | --- | --- | --- |
-| Landing | market summary, demo mode | skeleton only for live rate | rate unavailable banner | Privy login |
-| Dashboard | wallet, balances, orders, positions, alerts | private app shell | first-use checklist; indexer stale | none |
-| Market | config, latest rate, order-book levels | depth skeleton | no liquidity; market paused | none |
-| Order ticket | config, book quote, balances, allowance | preserve form | invalid lot; insufficient funds; stale quote | approve, place order |
-| Order detail | order, fills, linked positions | status skeleton | order not found/wrong wallet | cancel |
-| Position | position, margin, rates, events | last known data + refresh marker | oracle late/disputed; indexer stale | top up, offset |
-| Wallet | active wallet, token/native balances, protocol balances | balance skeleton | unsupported funding route | add funds |
-| Receipt | finalized event data | confirming/indexing stages | re-query by tx hash | none |
-
-## 8. Frontend state machines
-
-### 8.1 Authentication and wallet readiness
+Authentication (`booting`, `signed_out`, `authenticating`, `authenticated`, `error`),
+wallet readiness (`loading`, `none`, `ready`, `wrong_network`, `disconnected`,
+`error`), oracle state, and transaction state are separate dimensions. Public
+navigation and reads do not require wallet readiness.
 
 ```text
-booting
-  -> signed_out
-  -> authenticating
-  -> authenticated_wallet_loading
-  -> wallet_ready
-  -> wrong_network
-  -> wallet_error
+Order: open -> partially_filled -> filled
+       open/partially_filled -> cancelled | expired | invalidated
+       immediate fill/IOC can reach terminal state in the placement transaction
+
+Position: open <-> margin_call
+          open/margin_call -> awaiting_final_fixing
+          open/margin_call -> liquidated | defaulted | oracle_closed
+          awaiting_final_fixing -> matured | defaulted | oracle_closed
+
+Transaction: preparing -> awaiting_signature -> submitted -> included -> confirmed
+             signature rejection / simulation failure occurs before submission
+             submitted -> replaced | unresolved
+             included -> reverted | reorged
+             confirmed -> reorged if canonicality changes under chosen policy
+
+Indexing: pending -> synced | delayed; independent of transaction success
 ```
 
-Guards:
+Liquidatable is a derived eligibility flag until a terminal transaction executes.
+Calls can resolve before their deadline only under the build-spec recovery rule.
+A reorg rolls back derived events/receipts and triggers reconciliation, not blind
+resubmission. A replacement is followed by wallet+nonce and its new hash; verify
+the replacement represents the intended action. Support SDK-specific operation IDs
+when sponsored/account-abstraction flows do not immediately return a transaction hash.
 
-- `ready === false` always maps to `booting`.
-- Protected routes require `authenticated && activeWallet`.
-- Contract writes additionally require correct chain, sufficient native gas unless sponsored, and an unpaused market.
+### 6.2 Action gating
 
-### 8.2 Transaction lifecycle
+| Action | Minimum requirements |
+| --- | --- |
+| Public reads | Supported deployment; expose freshness/availability |
+| New order | Correct wallet/chain, terms, gas/sponsorship, pricing/fee consent, current placement round/version, fresh feed, no matching backlog |
+| Match existing orders | Permissionless caller, active pricing/version/lifetime, funded escrow, fresh finalized feed, deterministic bounded priority |
+| Cancel/expire/invalidate | Correct chain, owner or allowed permissionless operation, remaining reserve |
+| Top-up | Owner side, before maturity, live position, synchronization complete, no due terminal event, sufficient allowance/balance/gas |
+| Settle/liquidate | Permissionless, bounded, eligible finalized inputs and event order |
+| Withdraw | Owner claim, correct chain, gas, working configured token transfer |
 
-```text
-idle
-  -> preparing
-  -> awaiting_user_confirmation
-  -> submitted
-  -> confirmed
-  -> indexed
+Use separate permissions; a trading pause must not become a blanket “disable
+writes” check. Wrong network or unrecognized deployment blocks signatures until
+repaired. A candidate disputed rate is never used for payouts or health calculations.
 
-Any non-terminal state may become:
-  -> rejected
-  -> reverted
-  -> dropped_or_replaced
-  -> indexing_delayed
-```
+## 7. Domain schemas and wire validation
 
-`confirmed` is chain truth. `indexed` means the read model has caught up. The interface can show confirmed success while separately retrying indexing.
+All identifiers/amounts from contracts are strings on JSON boundaries. The following
+types document shape; runtime validators are required. Parse unsigned integers with
+`^(0|[1-9][0-9]*)$`, signed integers with `^(0|-?[1-9][0-9]*)$`, enforce ABI bounds,
+and reject fractional/exponent input, negative zero, overflow, and malformed addresses.
+User-facing decimal inputs are converted exactly to scaled integers before commands.
+An address must contain exactly 20 bytes; a hash/intent ID exactly 32 bytes. Validate
+checksums when applicable. Type assertions are not validation.
 
-### 8.3 Order lifecycle
-
-```text
-draft -> approving -> submitting -> open -> partially_filled -> filled
-                                     |            |
-                                     +----------> cancelling -> cancelled
-                                     |
-                                     +----------> expired
-```
-
-### 8.4 Position lifecycle
-
-```text
-open -> margin_call -> open
-  |          |
-  |          +-> liquidatable -> liquidated
-  +-> closing -> closed_early
-  +-> awaiting_final_fixing -> expired
-  +-> voided
-```
-
-The exact enum must follow the contracts. The frontend must not invent a terminal status from timestamps alone.
-
-## 9. Data ownership and synchronization
-
-| Data | System of record | Frontend access |
-| --- | --- | --- |
-| Authentication identity/session | Privy | React SDK; verified access token on backend |
-| Wallet address and wallet type | Privy + wallet provider | Privy wallet hooks |
-| Wallet USDC and MON balances | Monad | RPC/indexer |
-| Market config | `MarketConfig` | Contract read/indexer |
-| Orders and fills | `OrderBook` | Indexed events + contract verification |
-| Positions and margin | `PositionManager` / `Vault` | Indexed events + contract reads |
-| Official/simulated rate status | `RateOracle` | Indexed events + contract reads |
-| User preferences/disclosure versions | App database | Authenticated API |
-| Human-readable receipts | Derived from confirmed onchain events | App API/client formatter |
-
-The indexer is a query accelerator, not the financial source of truth. For write completion and urgent margin state, reconcile against the transaction receipt and contract reads.
-
-## 10. Domain schemas
-
-The following TypeScript types are the proposed frontend domain model. Integer token amounts are serialized as decimal strings at API boundaries to avoid JavaScript precision loss.
+USDC/notional and rates use six decimals; rates are NGN/USD. Signed PnL is in USDC
+raw units. Timestamps are nonnegative safe-integer UTC seconds; BPS and chain IDs
+are bounded safe integers. Never use floating-point math for money or rates.
 
 ```ts
+type UIntString = string;
+type IntString = string;
 type Address = `0x${string}`;
-type Hex = `0x${string}`;
+type Hash = `0x${string}`;
 type UnixSeconds = number;
-type DecimalString = string;
-
-type ChainRef = {
-  chainId: number;
-  caip2: `eip155:${number}`;
-  name: string;
-  explorerUrl: string;
-};
-
-type AppMode = 'demo' | 'testnet' | 'production';
 type HedgeSide = 'USD_BUYER' | 'USD_SELLER';
-type WalletKind = 'privy_embedded' | 'external';
+type AppMode = 'demo' | 'testnet';
 
+interface Scope {
+  chainId: number;
+  deploymentId: string;
+}
+interface Snapshot extends Scope {
+  blockNumber: UIntString;
+  blockHash: Hash;
+  observedAt: UnixSeconds;
+  canonical: boolean;
+}
+interface SeriesRef extends Scope {
+  marketId: UIntString;
+  configVersion: UIntString;
+  seriesId: UIntString;
+}
 interface UserProfile {
   id: string;
   privyDid: string;
-  displayName?: string;
-  onboardingState: 'new' | 'disclosures_pending' | 'complete';
   acceptedDisclosureVersion?: string;
-  acceptedDisclosureAt?: string;
-  createdAt: string;
-  updatedAt: string;
+  acceptedDisclosureAt?: UnixSeconds;
+  createdAt: UnixSeconds;
+  updatedAt: UnixSeconds;
 }
-
-interface WalletAccount {
+interface WalletAccount extends Scope {
   address: Address;
+  kind: 'privy_embedded' | 'external';
   privyWalletId?: string;
-  kind: WalletKind;
-  chainType: 'ethereum';
   isActive: boolean;
 }
-
+type Asset =
+  | {kind: 'native'; chainId: number; symbol: string; decimals: number}
+  | {kind: 'erc20'; chainId: number; address: Address; symbol: string; decimals: number};
 interface TokenAmount {
-  token: Address;
-  symbol: 'USDC' | 'MON' | string;
-  decimals: number;
-  raw: DecimalString;
-  formatted: string;
+  asset: Asset;
+  raw: UIntString;
+  // Formatting is derived in the UI, never trusted for arithmetic.
 }
-
 interface AccountBalances {
+  wallet: Address;
   walletUsdc: TokenAmount;
   walletNative: TokenAmount;
-  /** Present only if Vault implements a withdrawable free balance. */
-  protocolAvailableUsdc?: TokenAmount;
-  lockedMarginUsdc: TokenAmount;
-  asOfBlock: DecimalString;
+  reservedOrdersUsdcRaw: UIntString;
+  lockedPositionsUsdcRaw: UIntString;
+  claimableUsdcRaw: UIntString;
+  snapshot: Snapshot;
 }
-
-interface MarketConfigView {
-  marketId: string;
+interface MarketConfigView extends Scope {
+  marketId: UIntString;
+  configVersion: UIntString;
   baseSymbol: 'USD';
   quoteSymbol: 'NGN';
+  mode: AppMode;
   settlementToken: Address;
-  settlementTokenDecimals: number;
-  lotSizeUsd: DecimalString;
-  tickSizeNgnPerUsd: DecimalString;
-  allowedTenorDays: number[];
+  settlementTokenDecimals: 6;
+  notionalDecimals: 6;
+  rateDecimals: 6;
+  lotSizeUsdRaw: UIntString;
+  tickSizeRateRaw: UIntString;
+  minRateRaw: UIntString;
+  maxRateRaw: UIntString;
+  minStrikeRaw: UIntString;
+  maxStrikeRaw: UIntString;
+  maxNotionalUsdRaw: UIntString;
+  maxOpenOrdersPerWallet: number;
+  maxLiveOrdersPerSeries: number;
+  maxLiveOrdersPerMarket: number;
+  maxMatchesPerTx: number;
+  maxOrderScansPerTx: number;
+  maxRoundsPerSync: number;
   initialMarginBps: number;
   maintenanceMarginBps: number;
   gracePeriodSeconds: number;
-  isPaused: boolean;
-  mode: AppMode;
+  maxOrderLifetimeSeconds: number;
+  maxPeggedLifetimeRounds: UIntString;
+  maxSubmissionWindowSeconds: number;
+  oraclePolicyHash: Hash;
+  newExposurePaused: boolean;
+  feePolicy: FeePolicy;
+  sponsorshipPolicyId: string;
   contractAddresses: {
     marketConfig: Address;
     orderBook: Address;
@@ -512,463 +469,548 @@ interface MarketConfigView {
     rateOracle: Address;
   };
 }
-
-interface RateSnapshot {
-  marketId: string;
-  roundId: DecimalString;
-  rateNgnPerUsd: DecimalString;
+interface SeriesView extends SeriesRef {
+  label: string;
+  strikeBandBps: number;
+  fixingAt: UnixSeconds;
+  fixingObservationId: UIntString;
+  failureDeadline: UnixSeconds;
+  oraclePolicyHash: Hash;
+}
+interface OraclePolicyView extends Scope {
+  hash: Hash;
+  sourceMethodology: string;
+  calendarHash: Hash;
+  publicationTimezone: string;
+  maxPublicationDelaySeconds: number;
+  maxCarryForwardSeconds: number;
+  challengeSeconds: number;
+  resolutionTimeoutSeconds: number;
+  signer: Address;
+  resolver: Address;
+}
+interface FeePolicy {
+  policyVersion: UIntString;
+  referenceTakerFeeBps: number;
+  effectiveTakerFeeBps: number;
+  effectiveMakerFeeBps: 0;
+  testnetWaiver: boolean;
+}
+interface FeeLedgerView {
+  unearnedFeeEscrowUsdcRaw: UIntString;
+  earnedTreasuryFeesUsdcRaw: UIntString;
+  snapshot: Snapshot;
+}
+interface SponsorshipPolicyView extends Scope {
+  policyId: string;
+  status: 'unverified' | 'enabled' | 'budget_exhausted' | 'disabled';
+  provider: string;
+  allowedCalls: Array<{target: Address; selector: string; argumentPolicyId: string}>;
+  perAccountDailyBudgetNativeRaw: UIntString;
+  globalDailyBudgetNativeRaw: UIntString;
+  protectiveActionBudgetNativeRaw: UIntString;
+  minNewOrderNotionalUsdRaw: UIntString;
+  policyHash: Hash;
+}
+interface SponsorshipQuote {
+  status: 'eligible' | 'unavailable' | 'expired';
+  policyId: string;
+  wallet: Address;
+  intentHash: Hash;
+  validUntil: UnixSeconds;
+  diagnosticCode?: string;
+}
+type OrderPricing =
+  | {kind: 'fixed'; limitStrikeRaw: UIntString; boundRoundId: UIntString}
+  | {kind: 'pegged'; offsetBps: number; lastExecutableRoundId?: UIntString};
+type TriggerBoundary =
+  | {kind: 'all_safe'}
+  | {kind: 'all_breached'}
+  | {kind: 'boundary'; direction: 'below' | 'above';
+      lastSafeRateRaw: UIntString; firstBreachRateRaw: UIntString;
+      signedDistanceBps: IntString};
+type PreviewTrigger =
+  | {status: 'ready'; boundary: TriggerBoundary; currentlyBelowMaintenance: boolean;
+      wouldDefaultAtReference: boolean; referenceRateRaw: UIntString; snapshot: Snapshot}
+  | {status: 'active_call'; restoreInitialUsdcRaw: UIntString;
+      deadline: UnixSeconds; snapshot: Snapshot}
+  | {status: 'unavailable'; reason: 'needs_sync' | 'terminal' | 'awaiting_final_fixing'};
+interface SourceProvenance {
+  feedId: string;
+  purpose: 'settlement' | 'shadow';
+  publisher: string;
+  sourceUrl: string;
+  observedAt: UnixSeconds;
+  retrievedAt: UnixSeconds;
+  rawPayloadHash: Hash;
+  parserVersion: string;
+  validation: 'accepted' | 'quarantined';
+  validationReason?: string;
+}
+type GapReserveView = {status: 'not_available_in_v1'};
+interface RateSnapshot extends Scope {
+  marketId: UIntString;
+  configVersion: UIntString;
+  roundId: UIntString;
+  observationId: UIntString;
+  candidateId: Hash;
+  rateRaw: UIntString;
+  observedAt: UnixSeconds;
+  proposedAt: UnixSeconds;
+  challengeEndsAt: UnixSeconds;
+  failureDeadline: UnixSeconds;
+  finalizedAt?: UnixSeconds;
+  status: 'proposed' | 'disputed' | 'rejected' | 'finalized';
   sourceLabel: string;
   sourceRef: string;
-  observedAt: UnixSeconds;
-  postedAt: UnixSeconds;
-  disputeEndsAt?: UnixSeconds;
-  status: 'pending' | 'active' | 'disputed' | 'superseded' | 'voided';
+  sourceHash: Hash;
   isSimulated: boolean;
-  txHash: Hex;
-  blockNumber: DecimalString;
+  provenance: SourceProvenance;
+  snapshot: Snapshot;
 }
-
-interface OrderBookLevel {
+interface OrderBookLevel extends SeriesRef {
+  roundId: UIntString;
   side: HedgeSide;
-  strikeNgnPerUsd: DecimalString;
-  availableNotionalUsd: DecimalString;
+  strikeRaw: UIntString;
+  availableNotionalUsdRaw: UIntString;
   orderCount: number;
+  snapshot: Snapshot;
 }
-
-type OrderStatus =
-  | 'open'
-  | 'partially_filled'
-  | 'filled'
-  | 'cancelling'
-  | 'cancelled'
-  | 'expired';
-
-interface OrderView {
-  orderId: DecimalString;
-  marketId: string;
+type OrderStatus = 'open' | 'partially_filled' | 'filled' | 'cancelled' | 'expired' | 'invalidated';
+interface OrderView extends SeriesRef {
+  orderId: UIntString;
+  clientOrderId: Hash;
   owner: Address;
   side: HedgeSide;
-  strikeNgnPerUsd: DecimalString;
-  originalNotionalUsd: DecimalString;
-  filledNotionalUsd: DecimalString;
-  remainingNotionalUsd: DecimalString;
-  expiryAt: UnixSeconds;
-  marginLockedUsdc: DecimalString;
+  pricing: OrderPricing;
+  effectiveStrikeRaw?: UIntString;
+  effectiveRoundId: UIntString;
+  activity: 'active' | 'inactive_bounds' | 'suspended_feed' | 'matching_pending' | 'ineligible';
+  sequence: UIntString;
+  timeInForce: 'REST' | 'IOC';
+  originalLots: UIntString;
+  filledLots: UIntString;
+  cancelledLots: UIntString;
+  expiredLots: UIntString;
+  invalidatedLots: UIntString;
+  remainingLots: UIntString;
+  validUntil: UnixSeconds;
+  reservedUsdcRaw: UIntString;
+  collateralReserveUsdcRaw: UIntString;
+  feeEscrowUsdcRaw: UIntString;
+  cumulativeTakerNotionalUsdRaw: UIntString;
+  earnedFeeUsdcRaw: UIntString;
   status: OrderStatus;
-  createdTxHash: Hex;
-  createdAt: UnixSeconds;
-  updatedAt: UnixSeconds;
+  cancellationReason?: 'user' | 'ioc_remainder' | 'match_limit_reached' | 'self_trade_prevented';
+  executable: boolean;
+  reserveReleaseRequired: boolean;
+  snapshot: Snapshot;
 }
-
-interface FillView {
-  fillId: string;
-  orderId: DecimalString;
-  positionId: DecimalString;
+interface FillView extends SeriesRef {
+  makerOrderId: UIntString;
+  takerOrderId: UIntString;
+  positionId: UIntString;
   maker: Address;
   taker: Address;
-  notionalUsd: DecimalString;
-  strikeNgnPerUsd: DecimalString;
-  txHash: Hex;
-  blockNumber: DecimalString;
-  filledAt: UnixSeconds;
+  lots: UIntString;
+  strikeRaw: UIntString;
+  entryRoundId: UIntString;
+  entryBuyerValueUsdcRaw: IntString;
+  takerFeeUsdcRaw: UIntString;
+  feePolicyVersion: UIntString;
+  txHash: Hash;
+  logIndex: number;
+  snapshot: Snapshot;
 }
-
-type PositionStatus =
-  | 'open'
-  | 'margin_call'
-  | 'liquidatable'
-  | 'closing'
-  | 'closed_early'
-  | 'awaiting_final_fixing'
-  | 'expired'
-  | 'liquidated'
-  | 'voided';
-
+type PositionStatus = 'open' | 'margin_call' | 'awaiting_final_fixing'
+  | 'liquidated' | 'defaulted' | 'matured' | 'oracle_closed';
+type MarginCall =
+  | {status: 'none'}
+  | {status: 'active'; openedAt: UnixSeconds; deadline: UnixSeconds; roundId: UIntString};
 interface MarginState {
-  postedUsdc: DecimalString;
-  currentUsdc: DecimalString;
-  maintenanceRequiredUsdc: DecimalString;
-  initialRequiredUsdc: DecimalString;
-  healthBps: number;
-  callOpenedAt?: UnixSeconds;
-  callDeadline?: UnixSeconds;
+  initialDepositUsdcRaw: UIntString;
+  topUpsUsdcRaw: UIntString;
+  currentEquityUsdcRaw: UIntString;
+  maintenanceRequiredUsdcRaw: UIntString;
+  initialRequiredUsdcRaw: UIntString;
+  call: MarginCall;
 }
-
-interface PositionView {
-  positionId: DecimalString;
-  marketId: string;
-  longWallet: Address;
-  shortWallet: Address;
-  viewerSide: HedgeSide;
-  notionalUsd: DecimalString;
-  strikeNgnPerUsd: DecimalString;
+interface PositionView extends SeriesRef {
+  positionId: UIntString;
+  buyer: Address;
+  seller: Address;
+  notionalUsdRaw: UIntString;
+  strikeRaw: UIntString;
   openedAt: UnixSeconds;
-  expiryAt: UnixSeconds;
-  lastSettledRoundId?: DecimalString;
-  lastSettledRateNgnPerUsd?: DecimalString;
-  viewerCumulativePnlUsdc: DecimalString;
-  longMargin: MarginState;
-  shortMargin: MarginState;
+  fixingAt: UnixSeconds;
+  entryRoundId: UIntString;
+  lastSettledRoundId: UIntString;
+  lastBuyerValueUsdcRaw: IntString;
+  buyerPaidPnlUsdcRaw: IntString;
+  shortfallUsdcRaw: UIntString;
+  buyerMargin: MarginState;
+  sellerMargin: MarginState;
   status: PositionStatus;
+  needsSync: boolean;
+  liquidationEligible: boolean;
+  snapshot: Snapshot;
 }
-
-interface SettlementView {
-  settlementId: string;
-  positionId: DecimalString;
-  roundId: DecimalString;
-  previousValueUsdc: DecimalString;
-  currentValueUsdc: DecimalString;
-  deltaUsdc: DecimalString;
-  payer: Address;
-  receiver: Address;
-  txHash: Hex;
-  settledAt: UnixSeconds;
+interface SettlementView extends SeriesRef {
+  positionId: UIntString;
+  roundId: UIntString;
+  previousBuyerValueUsdcRaw: IntString;
+  buyerValueUsdcRaw: IntString;
+  contractualBuyerDeltaUsdcRaw: IntString;
+  paidBuyerDeltaUsdcRaw: IntString;
+  shortfallUsdcRaw: UIntString;
+  txHash: Hash;
+  logIndex: number;
+  snapshot: Snapshot;
 }
-
-type ActivityKind =
-  | 'wallet_funded'
-  | 'token_approved'
-  | 'order_placed'
-  | 'order_partially_filled'
-  | 'order_filled'
-  | 'order_cancelled'
-  | 'variation_settled'
-  | 'margin_call_opened'
-  | 'margin_added'
-  | 'position_liquidated'
-  | 'position_expired'
-  | 'position_closed_early'
-  | 'market_voided';
-
-interface ActivityItem {
-  id: string;
+type ActivityKind = 'wallet_funded' | 'token_approved' | 'order_placed' | 'order_filled'
+  | 'order_cancelled' | 'order_expired' | 'order_invalidated' | 'variation_settled'
+  | 'margin_call_opened' | 'margin_call_resolved' | 'margin_added' | 'position_liquidated'
+  | 'position_defaulted' | 'position_matured' | 'position_oracle_closed'
+  | 'claim_credited' | 'claim_withdrawn' | 'protocol_fee_earned' | 'treasury_fee_withdrawn';
+interface TransactionRecord extends Scope {
+  intentId: Hash;
   wallet: Address;
-  kind: ActivityKind;
-  status: 'pending' | 'confirmed' | 'failed';
-  orderId?: DecimalString;
-  positionId?: DecimalString;
-  amountUsdc?: DecimalString;
-  rateNgnPerUsd?: DecimalString;
-  txHash?: Hex;
-  occurredAt: UnixSeconds;
-  title: string;
-  description: string;
+  operationId?: string;
+  nonce?: UIntString;
+  hashHistory: Hash[];
+  stage: 'preparing' | 'awaiting_signature' | 'submitted' | 'included' | 'confirmed'
+    | 'rejected' | 'reverted' | 'replaced' | 'unresolved' | 'reorged';
+  indexing: 'pending' | 'synced' | 'delayed';
+  receiptBlockHash?: Hash;
+  diagnosticCode?: string;
+  gasPayment?: 'sponsored' | 'self_funded';
+  finalityObservedAt?: UnixSeconds;
 }
-
-interface ReceiptView {
+interface ReceiptView extends Scope {
   receiptId: string;
   kind: ActivityKind;
-  headline: string;
-  explanation: string;
   wallet: Address;
-  orderId?: DecimalString;
-  positionId?: DecimalString;
-  marketId: string;
-  notionalUsd?: DecimalString;
-  strikeNgnPerUsd?: DecimalString;
-  fixingRateNgnPerUsd?: DecimalString;
-  amountMovedUsdc?: DecimalString;
-  amountReleasedUsdc?: DecimalString;
+  orderId?: UIntString;
+  positionId?: UIntString;
+  closeTrigger?: 'margin_deadline' | 'variation' | 'fixing' | 'oracle_failure';
+  explanation: string;
+  fixingOrFallbackRoundId?: UIntString;
+  contractualBuyerDeltaUsdcRaw?: IntString;
+  paidBuyerDeltaUsdcRaw?: IntString;
+  shortfallUsdcRaw?: UIntString;
+  protocolFeeUsdcRaw?: UIntString;
+  releasedToClaimableUsdcRaw?: UIntString;
+  withdrawnToWalletUsdcRaw?: UIntString;
   isSimulatedRate: boolean;
-  txHash: Hex;
+  txHash: Hash;
+  logIndex: number;
   occurredAt: UnixSeconds;
+  snapshot: Snapshot;
 }
 ```
 
-## 11. Form and command schemas
+`originalLots = filledLots + cancelledLots + expiredLots + invalidatedLots +
+remainingLots`. “Executable” can turn false before reserve-release accounting is
+materialized. No position-specific viewer PnL is authoritative: derive the viewer's
+side from validated addresses and negate buyer values for seller display.
 
-These types are UI/API commands. The backend may prepare calldata, but the authenticated active wallet must authorize user-initiated writes.
+## 8. Commands and previews
 
 ```ts
-interface OrderDraft {
-  marketId: string;
+interface OrderDraft extends SeriesRef {
   side: HedgeSide;
-  notionalUsd: DecimalString;
-  tenorDays: number;
-  strikeNgnPerUsd: DecimalString;
+  lots: UIntString;
+  pricing: OrderPricing;
+  timeInForce: 'REST' | 'IOC';
+  validUntil: UnixSeconds;
+  minImmediateFillLots: UIntString;
 }
-
 interface OrderPreview extends OrderDraft {
-  expiryAt: UnixSeconds;
-  initialMarginUsdc: DecimalString;
-  maintenanceMarginUsdc: DecimalString;
-  walletUsdc: DecimalString;
-  allowanceUsdc: DecimalString;
-  expectedImmediateFillUsd: DecimalString;
-  expectedRestingUsd: DecimalString;
-  quoteBlockNumber: DecimalString;
-  warnings: Array<
-    | 'INSUFFICIENT_WALLET_USDC'
-    | 'APPROVAL_REQUIRED'
-    | 'NO_IMMEDIATE_MATCH'
-    | 'PARTIAL_FILL_EXPECTED'
-    | 'RATE_STALE'
-    | 'LARGE_STRIKE_DEVIATION'
-  >;
+  wallet: Address;
+  placementRoundId: UIntString;
+  effectiveStrikeRaw?: UIntString;
+  executableNow: boolean;
+  initialMarginUsdcRaw: UIntString;
+  maxAdverseEntryReserveUsdcRaw: UIntString;
+  totalReserveUsdcRaw: UIntString;
+  maxFeeEscrowUsdcRaw: UIntString;
+  expectedFillFeeUsdcRaw: UIntString;
+  feePolicy: FeePolicy;
+  sponsorship: SponsorshipQuote;
+  hypotheticalAtOwnLimit?: EntryScenario;
+  expectedFills: Array<EntryScenario & {makerOrderId: UIntString; lots: UIntString}>;
+  maintenanceMarginUsdcRaw: UIntString;
+  walletUsdcRaw: UIntString;
+  allowanceUsdcRaw: UIntString;
+  expectedImmediateFillLots: UIntString;
+  expectedRestingLots: UIntString;
+  estimatedGasNativeRaw: UIntString;
+  quoteExpiresAt: UnixSeconds;
+  snapshot: Snapshot;
+  warnings: Array<'INSUFFICIENT_USDC' | 'INSUFFICIENT_GAS' | 'APPROVAL_REQUIRED'
+    | 'NO_MATCH' | 'PARTIAL_FILL' | 'ORACLE_UNAVAILABLE' | 'ENTRY_ADJUSTMENT'
+    | 'INDEXER_STALE' | 'MULTIPLE_POSITIONS' | 'PEG_INACTIVE' | 'MATCH_REQUIRED'
+    | 'SPONSOR_UNAVAILABLE'>;
 }
-
+interface EntryScenario {
+  strikeRaw: UIntString;
+  notionalUsdRaw: UIntString;
+  entryBuyerMarkUsdcRaw: IntString;
+  buyerTrigger: PreviewTrigger;
+  sellerTrigger: PreviewTrigger;
+}
 interface PlaceOrderCommand extends OrderDraft {
-  expiryAt: UnixSeconds;
-  maxInitialMarginUsdc: DecimalString;
-  quoteBlockNumber: DecimalString;
+  clientOrderId: Hash;
+  expectedPlacementRoundId: UIntString;
+  feePolicyVersion: UIntString;
+  maxFeeEscrowUsdcRaw: UIntString;
+  maxTotalPullUsdcRaw: UIntString;
+  submitBy: UnixSeconds;
 }
-
-interface AddMarginCommand {
-  positionId: DecimalString;
-  amountUsdc: DecimalString;
+interface AddMarginCommand extends SeriesRef {
+  positionId: UIntString;
+  amountUsdcRaw: UIntString;
+  submitBy: UnixSeconds;
 }
-
-interface CancelOrderCommand {
-  orderId: DecimalString;
+interface CancelOrderCommand extends SeriesRef {
+  orderId: UIntString;
+}
+interface WithdrawClaimableCommand extends Scope {
+  amountUsdcRaw: UIntString;
 }
 ```
 
-Server endpoints that return prepared calldata must re-derive and validate market config. The frontend-supplied margin, status, or expected fill is never trusted as authorization.
+Contracts derive wallet ownership from the authenticated caller and compute margin,
+execution price, series fixing, current round, and recipients themselves. Reject
+zero amounts, exceeded bounds, expired commands, future/old round IDs, and wrong
+version/deployment. For IOC, `minImmediateFillLots == lots` supplies all-or-nothing
+behavior; zero permits no-fill cancellation. Minimum fill cannot exceed order lots.
+Bound `submitBy <= validUntil < fixingAt` and the configured lifetime/window.
 
-## 12. Contract events to frontend updates
+Fixed pricing's bound round must equal the expected placement round. A pegged
+placement also checks that expected round, but future matches derive prices under
+the persistent signed offset. Validate offset as a bounded signed integer BPS;
+apply the addendum's exact tick/band tests. `reservedUsdcRaw` and preview total
+include collateral plus fee escrow; never add those subfields to the total twice.
+Reject mismatched policy version or total/fee caps. Reference fees do not authorize
+collection when the effective fee is waived. A preview with multiple fill prices
+must return fill-specific marks/health; it cannot imply a single position trigger.
+An inactive pegged REST order may be stored within capacity if minimum immediate
+fill is zero; preview shows no executable fills and omits invalid strike scenarios.
+An inactive IOC cancels its unfilled amount atomically. Do not fabricate trigger
+values for a zero/out-of-domain effective strike.
 
-Final event names depend on the smart contracts; this is the required semantic mapping.
+Server-prepared calldata is untrusted until decoded and compared with the review.
+Verify caller wallet ownership for private API data, never trust client-calculated
+margin, PnL, balances, status, or expected fill as authorization.
 
-| Contract event meaning | Update |
+## 9. Events, indexing, and synchronization
+
+| Event meaning | Frontend effect |
 | --- | --- |
-| Order placed | Insert/open `OrderView`; increase locked margin |
-| Order matched/filled | Reduce remaining order; create `FillView` and `PositionView` |
-| Order cancelled | Mark cancelled; refresh available/locked balances |
-| Rate posted | Update `RateSnapshot`; show dispute window/state |
-| Variation settled | Append `SettlementView`; update both margin bars and cumulative PnL |
-| Margin call opened | Set status and deadline; raise urgent alert |
-| Margin added | Refresh margin and allowance/balances; resolve alert only if contract does |
-| Position liquidated | Set terminal state; create receipt |
-| Position expired | Set terminal state after final settlement; create receipt |
-| Market voided | Mark affected orders/positions; show returned margin receipt |
+| Order placed/fill | Update reserve and both orders; insert every position and entry transfer |
+| Cancel/expire/invalidate | Update residual lots; credit claim only from confirmed release |
+| Rate proposed/disputed/finalized | Update candidate and last finalized value separately |
+| Variation settled | Show contractual/paid delta and locked equity, never wallet credit |
+| Call opened/resolved | Update the relevant side and immutable active deadline |
+| Margin added | Increase contributed/current collateral; re-read call eligibility |
+| Liquidation/default/expiry/oracle close | Terminal receipt, shortfall if any, released claims |
+| Claim withdrawal | Reduce claim and verify owner wallet token receipt |
+| Fee earned/treasury withdrawal | Update separate escrow/fee ledgers and cost receipt, never collateral |
+| Pegged round repricing | Recompute all displayed limits/eligibility at one snapshot round |
 
-Indexer records should be uniquely constrained by `chainId + txHash + logIndex` so replays are idempotent and chain reorganizations can be handled.
+Uniqueness uses chain + deployment + transaction hash + log index; retain block
+number/hash and canonical status. Deduplication alone is not reorg handling.
+Indexer must roll back orphaned events and dependent balances/receipts, replay from
+a known canonical checkpoint, and support idempotent pagination and bounded catch-up.
+Read a consistent block snapshot; mixing a new allowance with old config is invalid.
 
-## 13. Privy integration blueprint
+Specify and verify the RPC/chain finality signal per deployment. “Included”
+is not “confirmed”; without the verified signal show pending/unknown, never assume
+800ms or a fixed count establishes finality. Show measured submission-to-finality
+separately from oracle challenge and indexing. A slow
+indexer does not turn a successful canonical transaction into failure. Fetch its
+receipt/contract directly, show indexing delay, and reconcile when the index catches up.
 
-### 13.1 SDK boundary
+## 10. Privy and backend integration boundary
 
-Use Privy for:
+Privy owns authentication, embedded-wallet recovery, wallet enumeration, and user
+signature prompts. Monad contracts own balances, matching, margin, rates, and final
+outcomes. Pin SDK versions and verify APIs before implementing: prior snippets
+were conceptual and did not establish supported transaction or sponsorship behavior.
 
-- email/social/wallet authentication;
-- embedded EVM wallet creation and recovery;
-- enumerating and selecting connected wallets;
-- prompting user-authorized EVM transactions;
-- optional funding UI where the desired Monad/USDC route has been verified;
-- access tokens for authenticated app API requests.
+Provider setup must explicitly configure login methods, embedded wallet creation
+policy, Monad testnet default/supported chain, and environment-specific public
+app/client IDs. Verify chain definitions against official network data. Wait for
+auth and wallet readiness independently. No secret/signer key uses a public env prefix.
 
-Use Monad contracts/RPC/indexing for:
+One transaction coordinator wraps approve, place, cancel, top-up, sync, and withdraw.
+Record the selected account, deployment, chain, intent, SDK operation ID, and hashes.
+Verify whether the installed Privy API accepts the intended account/sponsorship
+options and whether it returns a hash or an operation handle. Baseline V1 requires
+two visible approval/action transactions; permit/batching is deferred.
 
-- USDC and MON balances;
-- allowances;
-- orders, fills, positions, margin, oracle state, and receipts;
-- transaction confirmation and reverts.
+Backend verifies Privy signatures, issuer, app/audience, expiry, and supported token
+format using the pinned official SDK. Bind authenticated DID to linked wallets;
+do not trust a request's wallet string. Enforce resource authorization on every
+private endpoint. Cookie mode requires CSRF/origin protections; bearer mode must
+not log tokens. Use allowlisted CORS/origins, rate limits, input bounds, and escaped
+rendering for oracle source references and receipt text. Only allow safe HTTPS
+external links from configured explorer/source destinations.
 
-Privy is not the ledger for protocol margin or positions.
+No delegated/server-side user-wallet signing in V1. Keeper and oracle signer keys
+have separate narrow roles; they cannot impersonate users or withdraw claims.
 
-### 13.2 Provider configuration
+## 11. Error recovery and accessibility
 
-Conceptual configuration, to be pinned to the installed SDK version during implementation:
-
-```tsx
-<PrivyProvider
-  appId={env.NEXT_PUBLIC_PRIVY_APP_ID}
-  clientId={env.NEXT_PUBLIC_PRIVY_CLIENT_ID}
-  config={{
-    loginMethods: ['email', 'google', 'wallet'],
-    embeddedWallets: {
-      ethereum: {createOnLogin: 'users-without-wallets'}
-    },
-    defaultChain: monadTestnet,
-    supportedChains: [monadTestnet]
-  }}
->
-  {children}
-</PrivyProvider>
-```
-
-Rules:
-
-- Define Monad from the installed `viem/chains` version or with `defineChain` using official network data.
-- Configure `defaultChain` and `supportedChains`; do not rely on Privy defaults.
-- Use separate Privy app clients and environment variables for local, preview, and production environments.
-- Wait for `usePrivy().ready` and wallet readiness before consuming session or wallet state.
-- Select an active wallet explicitly when more than one wallet is present.
-
-### 13.3 Wallet writes
-
-Use Privy’s current React transaction interface to send encoded contract calls from the active address. The app should maintain one transaction coordinator so approval, order, cancellation, and margin writes share the same lifecycle and error handling.
-
-```ts
-const {sendTransaction} = useSendTransaction();
-
-const result = await sendTransaction(
-  {to: contractAddress, data: encodedCallData, value: 0n, chainId},
-  {address: activeWallet.address, sponsor: gasSponsorshipEnabled}
-);
-```
-
-If the final contract supports ERC-2612 permit, Permit2, batching, or account abstraction on the selected Monad environment, approval + action may be combined later. The baseline flow assumes a visible two-transaction ERC-20 approval and contract call.
-
-### 13.4 Backend authentication
-
-1. Frontend gets the current Privy access token.
-2. It sends the token as a bearer token, or uses the configured HTTP-only cookie mode.
-3. Backend verifies the token and uses the Privy DID (`sub`) as the app-user key.
-4. Backend authorizes wallet-scoped data by checking the wallet is linked/owned as expected and by validating addresses against the request.
-5. Contract writes remain wallet-authorized; possession of an app session alone is not permission to move funds.
-
-### 13.5 Delegated/server-side wallet actions
-
-Do not enable delegated signing for the V1 user flow by default. It expands the trust and policy surface and is unnecessary for explicit user actions such as orders and top-ups. Automation should occur in protocol contracts or a permissionless keeper where possible.
-
-If delegated actions are later required, define narrow Privy policies for allowed contracts, methods, chains, token amounts, and expiry; collect explicit user consent; and document revocation.
-
-## 14. Validation and safety rules
-
-- Never use JavaScript `number` for token raw amounts, notional units, rates, or IDs; use `bigint` internally and decimal strings over JSON.
-- Derive margin from contract config, then verify it again immediately before sending.
-- Display token symbol, network, and destination on every approval or transfer confirmation.
-- Default approvals to the required amount where practical; if using unlimited allowance, disclose it and provide revoke guidance.
-- Disable writes when the market is paused, oracle state is disputed/voided, the chain is wrong, or app configuration does not match deployed contract addresses.
-- Treat wallet rejection as a normal cancelled action, not a system error.
-- Surface contract revert reasons in user language while retaining a diagnostic code.
-- Persist unsent order drafts locally, but never persist access tokens or secrets in app state logs.
-- Redact emails and full wallet addresses from analytics.
-- Show rate source, timestamp, status, and demo label anywhere the current rate drives a financial number.
-- Recalculate countdowns from chain/server time periodically; do not trust the user’s device clock alone.
-
-## 15. Error and recovery catalogue
-
-| Condition | User message | Recovery |
+| Condition | Message intent | Recovery |
 | --- | --- | --- |
-| Privy not ready | “Loading your secure session…” | Wait; offer refresh only after timeout |
-| Login cancelled | No destructive toast | Stay on current page |
-| Wallet setup failed | “We couldn’t finish setting up your wallet.” | Retry; connect external wallet |
-| Wrong network | “Switch to Monad testnet to continue.” | Privy/wallet switch action |
-| Insufficient USDC | “You need X more USDC.” | Add funds |
-| Insufficient gas | “You need MON for network fees.” | Faucet/add MON, or retry with sponsorship |
-| Approval rejected | “Approval was cancelled. No funds moved.” | Retry |
-| Quote/book changed | “Available liquidity changed before submission.” | Refresh preview and reconfirm |
-| Transaction reverted | Plain-language contract reason | Correct inputs or retry |
-| Transaction confirmed, indexer late | “Confirmed onchain; updating your dashboard.” | Poll receipt/contract; explorer link |
-| Rate late | “Today’s official rate has not been posted.” | Keep position state; explain fallback |
-| Rate disputed | “This rate is under review; settlement is paused.” | Show dispute status |
-| Top-up deadline passed | “The top-up window has closed.” | Refresh position; show liquidation state |
-| Unsupported funding route | “Direct funding is unavailable for this network.” | Show address/faucet/approved bridge |
+| Wallet loading or disconnected | Identify session vs wallet issue | Retry/select/reconnect without duplicate creation |
+| Wrong network/deployment | Explain expected chain | Switch and discard quote |
+| Funding/approval incomplete | State which step remains | Track receipt; refresh allowance and review |
+| Round/version/book changed | Terms need refresh | Re-quote and request a new explicit confirmation |
+| Submission timed out | Outcome unknown | Look up intent/nonce/operation; never auto-repeat |
+| Replacement/reorg | Transaction changed or lost canonicality | Follow replacement and reconcile canonical effects |
+| Indexer delayed | Chain confirmed; app catching up | Direct receipt/contract reads |
+| Rate pending/disputed/stale | New exposure unavailable | Display last finalized mark and failure deadline |
+| Keeper behind | Health not fully processed | Bounded sync and urgent call warning |
+| Top-up deadline reached | Rescue no longer available | Sync terminal outcome; show own remaining equity |
+| Default | Payout limited by collateral | Show paid versus promised amount and shortfall |
+| Oracle close | Protection ended at fallback rate | Show fallback receipt, claim, withdrawal |
+| Token withdrawal rejected | Claim remains; transfer failed | Diagnose token/account state and retry safely |
 
-## 16. Analytics events
+Keyboard and screen-reader navigation must cover review, signing, errors, calls,
+and withdrawals. Announce meaningful status changes; do not read a ticking countdown
+every second. Preserve focus across dialogs, label errors next to inputs, show
+currency/network units, and never rely on color alone. Render amount/rate labels
+at sufficient precision without hiding small residual balances.
 
-Analytics should measure funnel friction without recording sensitive financial payloads.
+### 11.1 Health, indicative pricing, and payoff explorer
+
+Show contract-provided equity, initial/maintenance levels and `PreviewTrigger`.
+Distinguish all-safe within configured rate bounds, all-breached, a strict breach
+boundary, active call, and unavailable/stale data. Display direction and signed
+distance rounded toward zero in BPS. A trigger applies only at an eligible finalized
+round. Active calls need cure-to-initial amount/deadline; do not replace them with
+a fresh-call threshold or describe a call threshold as a liquidation price.
+
+The payoff explorer has two distinct views: hypothetical single-next-round equity
+for both sides, and a labelled multi-round path demonstration including grace and
+top-ups. A single endpoint slider cannot predict liquidation/default or a path-
+dependent final payout. Show gross contractual value, capped paid amount, protocol
+fee and user-paid gas separately; do not subtract entry V0 twice. Never imply a
+fee waived in the current deployment was charged in the simulated result.
+
+Show the optional parity-based forward guide as an estimate with source/as-of,
+tenor and convention. Hide missing/stale inputs; it is not book liquidity. A suggested
+offset needs explicit review and remains fixed for a live pegged order despite
+changes to interest inputs or time to maturity.
+
+### 11.2 Four screen wireframes
+
+These are information hierarchy, not final visual design. Values come from the
+scoped preview and chain snapshot, not hardcoded examples.
 
 ```text
-landing_cta_clicked
-login_started
-login_completed { method, isNewUser }
-wallet_ready { walletKind }
-disclosures_accepted { version }
-funding_started { method }
-funding_completed { method }
-hedge_intent_selected { side }
-market_liquidity_selected { tenorDays }
-order_previewed { side, tenorDays, hasImmediateFill }
-approval_started / approval_confirmed / approval_failed
-order_submitted / order_confirmed / order_indexed
-order_cancelled
-position_viewed { status }
-margin_call_viewed
-margin_topup_started / margin_topup_confirmed
-receipt_viewed { kind }
+TICKET                                    Testnet • Simulated rate
+[Receive USD / Need USD]  [Amount]  [Listed maturity + UTC/local time]
+[Pegged / Fixed] [Signed offset or limit] [Current effective strike]
+Reference round + freshness | Indicative forward (estimate, if available)
+Initial collateral / Entry mark (debit or credit) / Maximum fee escrow
+Actual protocol fee: waived on testnet | Gas: sponsored / opt-in self-pay
+Total wallet pull | Maintenance | Trigger direction and distance
+No counterparty yet / Expected fills + residual expiry and persistence
+Conditional payoff + risk summary | [Review] -> [Approve] -> [Place]
 ```
 
-Do not send email, full wallet address, raw balances, exact notional, or transaction calldata to product analytics.
+```text
+POSITION                                  Testnet • Last processed round
+Fixed execution strike | Notional | Maturity | Settlement/keeper freshness
+Your equity          [bar with maintenance and initial levels] + numbers
+Counterparty equity  [bar with maintenance and initial levels] + numbers
+Paid PnL / Contractual value / Fees / Trigger or active call
+Pending rate and challenge | Keeper delay | Finality/indexer status
+Timeline: entry, each round, contributions, calls | [Add margin if eligible]
+```
 
-## 17. Demo flow mapped to the build spec
+```text
+MARGIN CALL                               Persistent banner, numeric labels
+Your current equity / Maintenance / Amount needed to restore initial
+Deadline (chain time) | Refresh age | Pending transaction is not rescue
+[Amount] [USDC shortfall] [Sponsorship state / explicit self-pay fallback]
+[Fund if needed] -> [Approve if needed] -> [Refresh and add margin]
+Due terminal event or maturity: disable top-up and explain closeout/sync
+```
 
-| Shot | Frontend action | Required seeded state |
-| --- | --- | --- |
-| 1 | Ada and Bayo sign in, see funded embedded wallets, and submit opposite orders | Two demo identities, test USDC, test MON or sponsorship |
-| 2 | Orders match; position screen opens with two margin bars | Compatible strike, tenor, and lot |
-| 3 | Simulated rate update moves margin from Ada to Bayo | Demo oracle control outside normal user UI |
-| 4 | Margin call banner and countdown appear; Ada tops up | Rate causes maintenance breach, grace period long enough to narrate |
-| 5 | Second sharp move and elapsed grace lead to liquidation | Keeper/liquidation action available |
-| 6 | Receipt explains final amounts and reason | Indexed liquidation event and explorer link |
+```text
+RECEIPT                                  Testnet • Canonical confirmation
+Matured / Liquidated / Defaulted / Oracle closed | Plain-language reason
+Fixing or fallback round | Contractual vs paid PnL | Unpaid shortfall
+Earned protocol fee | Your equity released to claimable | Actual gas payer
+[Withdraw claim] -> separate receipt confirming wallet receipt
+[Explorer evidence] [Explicit redacted share] | No original-deposit promise
+```
 
-The `Simulated rate` label stays visible in every shot involving rates, PnL, or settlement.
+### 11.3 Demo operator and integrator boundaries
 
-## 18. Implementation slices
+The simulated operator console exposes proposal, challenge countdown, eligible
+finalize action, canonical round, keeper cursors/latency and failure alarms. Show
+role and chain explicitly; UI login alone grants no oracle authority. Use a separate
+operator wallet/provider context and no keys embedded in frontend assets. Real-rate
+shadow values are informational and cannot be copied into settlement through a
+fallback or unlabelled control. The console must respect signature domains and
+challenge/failure timing rather than bypassing them for a demo.
 
-### Slice 1 — Shell, Privy, and read-only dashboard
+SDK, public read API and MCP builders use the same pricing/fee/schema definitions
+and return unsigned scoped transactions plus decoded intent. Wallet signatures
+remain explicit, including contract-wallet support. Public onchain queries must
+not return Privy identity. Opt-in webhook delivery is best-effort, authenticated
+and signed, with safe destination validation; it does not guarantee timely rescue.
+Full interface roles, versions and controls are in reviewed addendum §A6.
 
-- configure Privy provider and Monad testnet;
-- implement login/logout, embedded wallet creation, active wallet selection, and protected routes;
-- add disclosure gate;
-- show wallet address and balances;
-- define environment-safe contract and token configuration.
+## 12. Analytics and implementation slices
 
-### Slice 2 — Funding and order discovery
+Track coarse funnel events: discovery, draft, login, wallet ready, disclosure,
+funding start/confirmation, review, approval, submission, confirmation, indexing,
+call viewed, top-up, outcome, withdrawal. Use aggregate categories; no wallet/DID,
+email, hashes, raw balances, exact trade size, or calldata in analytics. Define
+retention/consent before shipping and separate operational diagnostics from analytics.
 
-- wallet screen and receive/faucet flow;
-- feature-flagged Privy funding route;
-- market config, rate banner, and aggregated order-book levels;
-- intent-first market discovery.
+1. Contract model and arithmetic fixtures: implement both audit acceptance matrices,
+   fixed/pegged reserve and matching, fee ledger, exact health, and canonical
+   config/series/round schemas before wiring financial UI.
+2. Public discovery, payoff examples, Privy readiness, wallet selection, disclosure
+   gate, and read-only four-balance dashboard.
+3. Receive/faucet, gas checks, order preview, exact approval, constrained submission,
+   multiple-fill summary, cancellation/expiration, and claim withdrawal.
+4. Position equity, ordered settlement/keeper status, independent calls, top-ups,
+   final-fixing wait, default and oracle-failure handling.
+5. Reorg/replacement/indexer recovery, sponsorship fallback, accessibility, seeded
+   two-user demo/operator controls, receipts, and minimal analytics. Demo includes
+   persistent peg, payout shortfall and withdrawal. Version the SDK/read API/MCP
+   surfaces and exercise contract-wallet use with unsigned builders.
 
-### Slice 3 — Order ticket and execution
+## 13. Acceptance criteria and remaining inputs
 
-- draft validation and order preview;
-- USDC approval;
-- place/cancel order transaction coordinator;
-- open, partial, filled, and cancelled order screens.
+All cases in the [audit acceptance matrix](./spec-audit.md#acceptance-matrix) are
+requirements together with the [addendum cases](./addendum-audit.md#acceptance-cases).
+Reference arithmetic checks exist; application/contract tests are still unimplemented.
+The public journey must reach a useful preview before funding. Transaction gates
+must preserve defensive actions, never auto-sign changed terms, and never present
+an offsetting position as released collateral. Validate both happy and recovery paths
+with multiple wallets, multiple fills, and delayed/reorganized chain/indexer responses.
 
-### Slice 4 — Positions and margin
+Still required for deployment: actual addresses and supported test token, SDK/API
+versions, verified funding/sponsorship, CBN NFEM source/calendar/dispute roles and
+timings, market bounds/margins, keeper monitoring, finality policy, and privacy/legal
+review before real-value use. Values must come from deployed/configured sources,
+not invented UI constants. The design decisions in this revision are documented
+defaults; economic calibration remains an explicit gate.
 
-- position detail and margin bars;
-- rate settlement timeline;
-- margin-call alert/countdown;
-- add-margin flow.
+## 14. Reference links
 
-### Slice 5 — Terminal states and demo polish
-
-- liquidation, expiry, early-close, and void receipts;
-- indexer-delay recovery;
-- seeded two-user demo path;
-- responsive and accessibility pass;
-- analytics and error instrumentation.
-
-## 19. Acceptance criteria for the frontend flow
-
-- A first-time user can sign in without already owning a crypto wallet.
-- An embedded wallet is created only when the user lacks a usable wallet.
-- A user always knows whether USDC is in their wallet, available in the protocol, or locked as margin.
-- The interface never implies that adding funds and locking margin are the same action.
-- A user can express their real-world hedge intent without knowing “long” or “short.”
-- The market screen communicates available opposite liquidity without exposing named counterparties.
-- Before an order is signed, the user sees strike, notional, tenor, initial margin, maintenance margin, execution expectation, basis risk, and gap risk.
-- Transaction status distinguishes submitted, confirmed, and indexed.
-- A partial fill is never shown as a fully matched hedge.
-- A margin call includes an onchain-derived deadline and a top-up path that preserves context through funding.
-- Demo/simulated rates are unmistakably labelled.
-- Liquidation and expiry produce a one-sentence human-readable receipt with onchain evidence.
-- Wrong-network, insufficient-USDC, insufficient-gas, rejected-wallet, stale-book, disputed-rate, and delayed-indexer states all have designed recovery paths.
-
-## 20. Open product and contract decisions
-
-These answers will change copy, calculation, or state transitions and should be resolved before high-fidelity UI work:
-
-1. Are unmatched orders allowed to rest until expiry, or do they have a separate order deadline?
-2. Can one order create multiple positions, and can a position be partially closed/netted onchain?
-3. Does `placeOrder` pull initial margin directly into `Vault`, or must users first deposit into a protocol balance?
-4. Is margin tracked per position or shared across positions?
-5. Does the contract support permit/batching, or should V1 design for approve + action?
-6. Is liquidation permissionless or platform-operated, and how is the reward displayed?
-7. What exact rule resolves a margin call after top-up—initial margin, maintenance margin, or another target?
-8. What are the final lot size, tick size, tenors, margin percentages, grace period, and confirmation policy?
-9. Which test USDC contract and faucet/bridge route will the demo use?
-10. Will gas be sponsored for embedded wallets on the chosen Monad environment?
-11. Does the rate dispute window delay each settlement or only finalization?
-12. What privacy policy applies to addresses and transaction history associated with Privy identities?
-
-## 21. Reference links
+These external references were inherited from the original spec; SDK behavior and
+current destinations must be checked during implementation.
 
 - [Privy React SDK setup](https://docs.privy.io/basics/react/setup)
 - [Privy EVM network configuration](https://docs.privy.io/basics/react/advanced/configuring-evm-networks)
