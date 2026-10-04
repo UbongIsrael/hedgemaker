@@ -47,7 +47,7 @@ export const DEMO_BOOK = {
 export const DEMO_POSITIONS = [
   {
     id: 'HM-2481',
-    intent: 'I need dollars later',
+    intent: 'Buying dollars later',
     side: 'USD buyer',
     notional: '$1,000',
     strike: '₦1,650.00',
@@ -65,7 +65,7 @@ export const DEMO_POSITIONS = [
 
 export const DEMO_ORDER = {
   id: 'ORD-1047',
-  intent: 'I earn dollars',
+  intent: 'Selling dollars later',
   pricing: 'Reference rate − 0.10%',
   effectiveStrike: '₦1,648.00',
   notional: '$500',

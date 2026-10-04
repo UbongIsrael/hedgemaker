@@ -31,7 +31,7 @@ export function LandingPage() {
           <Badge variant="info"><Sparkles size={14} aria-hidden="true" /> Explore the testnet demo</Badge>
           <h1>Hedge the rate.<br /><em>Keep the plan.</em></h1>
           <p className="hero__lead">
-            Explore how to plan for changes in the dollar-to-naira rate. Choose an end date and preview the test USDC needed to back your hedge. Protection would begin once your order matches with someone taking the other side.
+            Plan ahead for changes in the dollar-to-naira rate. Choose a date and explore protection for future dollar purchases or sales.
           </p>
           <div className="hero__actions">
             <Link to="/market"><Button size="lg">Explore the market <ArrowRight size={17} aria-hidden="true" /></Button></Link>
@@ -111,7 +111,7 @@ export function LandingPage() {
             <h2>Set up your hedge.<br />Follow its progress.</h2>
           </div>
           <ol className="process-list">
-            <li><span>01</span><div><h3>Choose your goal</h3><p>Need dollars later, or earn dollars? Choose the option that fits your plans.</p></div></li>
+            <li><span>01</span><div><h3>Choose your goal</h3><p>Buying or selling dollars later? Choose the option that fits your plans.</p></div></li>
             <li><span>02</span><div><h3>Review the protection</h3><p>Review your rate, end date, required funds and fees. See what could happen if the rate moves against you.</p></div></li>
             <li><span>03</span><div><h3>Match and track</h3><p>Your order can match with someone taking the other side. Confirmed rate updates adjust the funds locked in your hedge.</p></div></li>
             <li><span>04</span><div><h3>Withdraw your remaining funds</h3><p>Once your hedge closes, your remaining funds become available to withdraw to your wallet.</p></div></li>

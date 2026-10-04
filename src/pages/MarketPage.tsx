@@ -103,7 +103,7 @@ export function MarketPage() {
   }, [amount, offsetBps, pricing, side]);
 
   const selectedMaturity = DEMO_MARKET.maturities.find((item) => item.id === maturity);
-  const activeSideLabel = side === 'USD_BUYER' ? 'I need dollars later' : 'I earn dollars';
+  const activeSideLabel = side === 'USD_BUYER' ? 'Buying dollars later' : 'Selling dollars later';
 
   return (
     <div className="market-page page-shell">
@@ -132,8 +132,8 @@ export function MarketPage() {
             value={side}
             onChange={setSide}
             options={[
-              {value: 'USD_BUYER', label: 'I need dollars later'},
-              {value: 'USD_SELLER', label: 'I earn dollars'},
+              {value: 'USD_BUYER', label: 'Buying dollars later'},
+              {value: 'USD_SELLER', label: 'Selling dollars later'},
             ]}
           />
 

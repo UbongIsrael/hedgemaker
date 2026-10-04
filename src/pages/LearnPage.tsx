@@ -12,11 +12,11 @@ export function LearnPage() {
       </div>
       <div className="explanation-grid">
         <Card className="explanation-card explanation-card--buyer">
-          <CardHeader><span className="eyebrow">USD buyer</span><CardTitle>I need dollars later</CardTitle></CardHeader>
+          <CardHeader><span className="eyebrow">USD buyer</span><CardTitle>Buying dollars later</CardTitle></CardHeader>
           <CardContent><p>If the dollar-to-naira rate rises above your agreed rate, your hedge gains USDC. If it falls below your agreed rate, your hedge loses USDC from the funds you set aside. Gains stay locked until your hedge closes.</p></CardContent>
         </Card>
         <Card className="explanation-card explanation-card--seller">
-          <CardHeader><span className="eyebrow">USD seller</span><CardTitle>I earn dollars</CardTitle></CardHeader>
+          <CardHeader><span className="eyebrow">USD seller</span><CardTitle>Selling dollars later</CardTitle></CardHeader>
           <CardContent><p>If the dollar-to-naira rate falls below your agreed rate, your hedge gains USDC. If it rises above your agreed rate, your hedge loses USDC from the funds you set aside. Gains stay locked until your hedge closes.</p></CardContent>
         </Card>
       </div>

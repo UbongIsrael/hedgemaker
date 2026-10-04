@@ -100,7 +100,7 @@ export function AppShell() {
             <span className="brand__mark" aria-hidden="true">H</span>
             <span className="brand__wordmark">HedgeMaker</span>
           </Link>
-          <p>Explore protection against changes in the dollar–naira exchange rate. Payouts depend on the funds backing each position.</p>
+          <p>Explore protection against changes in the dollar–naira exchange rate.</p>
         </div>
         <div className="site-footer__links">
           <Link to="/terms">Risk disclosures</Link>

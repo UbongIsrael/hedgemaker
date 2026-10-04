@@ -6,6 +6,9 @@ This review records **221 approved copy changes or removals** across all nine fr
 
 The proposed voice is clear, direct, and written for people managing dollar–naira rate changes. Developer setup instructions, internal project/version labels, and documentation links are removed or replaced with the consequence that matters to the customer. Necessary financial terms are explained. Demo status, payout limits, locked funds, and unavailable actions stay clear.
 
+
+The later, separately approved [copy refinements](consumer-copy-revisions.md) supersede the original situation labels, home introduction/goal text, and footer description below. The tables retain the initial approval record.
+
 ## Approved scope
 
 | Screen or shared area | Route | Approved items |
