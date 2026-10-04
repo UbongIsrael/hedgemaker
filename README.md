@@ -13,7 +13,7 @@ HedgeMaker is a testnet-first frontend prototype for collateral-limited USD/NGN 
 - Privy authentication and embedded-wallet integration, enabled only when verified environment values are present
 - Protocol writes intentionally disabled until verified contract deployments and addresses exist
 
-The authoritative product documents are in [`docs/`](./docs). The current build follows the v3 build spec and the v0.3 frontend flow.
+The authoritative product documents are in [`docs/`](./docs). The current build follows the v3 build spec and the v0.3 frontend flow. The implemented contract suite and deployment sequence are documented in [`docs/contracts.md`](./docs/contracts.md), with the design rationale in [`docs/contract-architecture-research.md`](./docs/contract-architecture-research.md).
 
 ## Run locally
 
@@ -47,13 +47,16 @@ Privy is activated only when the app ID and complete chain configuration are pre
 npm run check
 ```
 
-That command runs the spec arithmetic harness, domain tests, ESLint, TypeScript, and the production Vite build. The domain layer uses six-decimal integer units and avoids JavaScript floating-point arithmetic for contractual values.
+That command runs the spec arithmetic harness, frontend/domain tests, contract type-checking and integration tests, ESLint, TypeScript, and the production Vite build. The domain and contract layers use six-decimal integer units and avoid JavaScript floating-point arithmetic for contractual values.
 
 ## Project structure
 
 ```text
 docs/                       product specification, flow, schemas, and audits
+contracts/                  Solidity protocol, interfaces, math, and test harness
+ignition/                   deterministic Hardhat deployment module
 scripts/                    executable spec-math verification
+test/                       contract integration tests
 src/app/                    routes, shell, authentication boundary
 src/components/ui/          accessible UI primitives
 src/demo/                   visibly simulated fixtures
