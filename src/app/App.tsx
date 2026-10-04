@@ -17,7 +17,7 @@ function RequireAuth({children}: {children: ReactNode}) {
   const location = useLocation();
 
   if (!auth.ready) {
-    return <div className="page-shell content-page"><p>Preparing secure sign-in…</p></div>;
+    return <div className="page-shell content-page"><p>Getting sign-in ready…</p></div>;
   }
   if (!auth.authenticated) {
     return <Navigate to="/market" state={{from: location.pathname}} replace />;

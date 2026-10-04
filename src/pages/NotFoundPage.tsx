@@ -5,8 +5,8 @@ export function NotFoundPage() {
   return (
     <div className="page-shell not-found">
       <span>404</span>
-      <h1>This market page does not exist.</h1>
-      <p>The order may have moved, or the link may be incomplete.</p>
+      <h1>We couldn’t find this page.</h1>
+      <p>The link may be incorrect or the page may no longer be available.</p>
       <Link to="/"><Button>Return home</Button></Link>
     </div>
   );

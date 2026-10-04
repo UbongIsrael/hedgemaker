@@ -32,10 +32,10 @@ export function AppShell() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="environment-strip" role="status">
         <span className="environment-strip__dot" aria-hidden="true" />
-        Monad testnet preview
+        Demo mode
         <span aria-hidden="true">•</span>
-        Simulated reference rate
-        <span className="environment-strip__detail">No real funds or conversion</span>
+        Sample exchange rates
+        <span className="environment-strip__detail">No real money or currency exchange</span>
       </div>
       <header className="site-header">
         <Link className="brand" to="/" aria-label="HedgeMaker home">
@@ -69,10 +69,10 @@ export function AppShell() {
         <div className={`site-header__actions${inApp ? ' site-header__actions--app' : ''}`}>
           {auth.authenticated ? (
             <>
-              {!inApp && <Link className="hm-button hm-button--secondary hm-button--sm" to="/app">Dashboard</Link>}
+              {!inApp && <Link className="hm-button hm-button--secondary hm-button--sm" to="/app">Overview</Link>}
               <span className="wallet-chip" title={auth.walletAddress}>
                 <ShieldCheck size={15} aria-hidden="true" />
-                {auth.walletAddress ?? 'Wallet loading'}
+                {auth.walletAddress ?? 'Loading wallet…'}
               </span>
               <Button variant="ghost" size="sm" onClick={auth.logout}>Sign out</Button>
             </>
@@ -86,7 +86,7 @@ export function AppShell() {
 
       {auth.mode === 'local_preview' && (
         <div className="preview-notice">
-          <strong>Local preview.</strong> Add the verified Privy and Monad values from <code>.env.example</code> to enable real authentication. Protocol writes remain disabled.
+          You're exploring a demo with sample data. Trading, deposits, and withdrawals are unavailable.
         </div>
       )}
 
@@ -100,13 +100,12 @@ export function AppShell() {
             <span className="brand__mark" aria-hidden="true">H</span>
             <span className="brand__wordmark">HedgeMaker</span>
           </Link>
-          <p>Collateral-limited USD/NGN protection for direct hedgers.</p>
+          <p>Explore protection against changes in the dollar–naira exchange rate.</p>
         </div>
         <div className="site-footer__links">
           <Link to="/terms">Risk disclosures</Link>
-          <a href="https://github.com/UbongIsrael/hedgemaker" rel="noreferrer" target="_blank">GitHub</a>
         </div>
-        <p className="site-footer__legal">Testnet prototype. Simulated rates and test tokens only.</p>
+        <p className="site-footer__legal">Demo on Monad testnet. Sample rates and test tokens only.</p>
       </footer>
     </div>
   );

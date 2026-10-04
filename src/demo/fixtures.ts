@@ -6,8 +6,8 @@ export const DEMO_MARKET = {
   referenceRateRaw: parseFixed('1650'),
   previousRateRaw: parseFixed('1642.5'),
   roundId: 42n,
-  source: 'Simulated NFEM-style fixing',
-  sourceStatus: 'Finalized' as const,
+  source: 'Sample USD/NGN reference rate',
+  sourceStatus: 'Confirmed' as const,
   observedAt: '03 Oct 2026 · 14:00 WAT',
   challenge: 'Challenge complete',
   lotNotionalRaw: parseUsdc('100'),
@@ -47,7 +47,7 @@ export const DEMO_BOOK = {
 export const DEMO_POSITIONS = [
   {
     id: 'HM-2481',
-    intent: 'Need dollars later',
+    intent: 'Buying dollars later',
     side: 'USD buyer',
     notional: '$1,000',
     strike: '₦1,650.00',
@@ -65,19 +65,19 @@ export const DEMO_POSITIONS = [
 
 export const DEMO_ORDER = {
   id: 'ORD-1047',
-  intent: 'Earn dollars',
-  pricing: 'Reference − 10 BPS',
+  intent: 'Selling dollars later',
+  pricing: 'Reference rate − 0.10%',
   effectiveStrike: '₦1,648.00',
   notional: '$500',
   filled: '$200',
   remaining: '$300',
   expiry: 'Today · 16:20 WAT',
-  status: 'Partially filled',
+  status: 'Partly matched',
 };
 
 export const DEMO_ACTIVITY = [
-  {kind: 'Rate finalized', detail: 'Round 42 · ₦1,650.00 / USD', time: '14:06'},
-  {kind: 'Variation settled', detail: '+29.411764 USDC remains locked', time: '14:07'},
-  {kind: 'Order partially filled', detail: '2 of 5 lots filled', time: '13:42'},
-  {kind: 'Claim credited', detail: '29.411764 USDC ready to withdraw', time: 'Yesterday'},
+  {kind: 'Reference rate confirmed', detail: 'Sample rate: ₦1,650.00 per USD', time: '14:06'},
+  {kind: 'Position balance updated', detail: '+29.411764 USDC remains locked', time: '14:07'},
+  {kind: 'Order partly matched', detail: '$200 of your $500 order matched', time: '13:42'},
+  {kind: 'Funds available to withdraw', detail: '29.411764 USDC ready to withdraw', time: 'Yesterday'},
 ];

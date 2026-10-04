@@ -37,17 +37,15 @@ export function MarginBar({ used, total, label = "Margin used", formatAmount = (
   const totalSafe = Number.isFinite(total) && total > 0 ? total : 0;
   const usedSafe = Number.isFinite(used) ? Math.max(used, 0) : 0;
   const percent = totalSafe ? Math.min((usedSafe / totalSafe) * 100, 100) : 0;
-  const remaining = Math.max(totalSafe - usedSafe, 0);
   return (
     <div className={["hm-margin-bar", `hm-margin-bar--${tone}`, className].filter(Boolean).join(" ")} {...props}>
       <div className="hm-margin-bar__heading">
         <span>{label}</span>
         <span>{formatAmount(usedSafe)} / {formatAmount(totalSafe)}</span>
       </div>
-      <div className="hm-margin-bar__track" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={totalSafe} aria-valuenow={Math.min(usedSafe, totalSafe)} aria-valuetext={`${formatAmount(usedSafe)} of ${formatAmount(totalSafe)} used`}>
+      <div className="hm-margin-bar__track" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={totalSafe} aria-valuenow={Math.min(usedSafe, totalSafe)} aria-valuetext={`${label}: ${formatAmount(usedSafe)} out of ${formatAmount(totalSafe)}`}>
         <div className="hm-margin-bar__fill" style={{ width: `${percent}%` }} />
       </div>
-      <div className="hm-margin-bar__remaining">{formatAmount(remaining)} remaining</div>
     </div>
   );
 }
