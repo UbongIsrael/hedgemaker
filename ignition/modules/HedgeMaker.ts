@@ -27,10 +27,10 @@ const HedgeMakerModule = buildModule("HedgeMaker", (m) => {
   ]);
 
   m.call(positionManager, "bindOrderBook", [orderBook], {
-    id: "bind-order-book",
+    id: "bind_order_book",
   });
   m.call(vault, "bindController", [positionManager], {
-    id: "bind-vault-controller",
+    id: "bind_vault_controller",
   });
 
   return {

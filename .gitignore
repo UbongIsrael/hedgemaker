@@ -2,7 +2,7 @@ node_modules
 dist
 .vite
 coverage
-artifacts
+/artifacts
 cache
 typechain-types
 .env

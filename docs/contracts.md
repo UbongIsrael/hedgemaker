@@ -1,8 +1,28 @@
 # HedgeMaker contracts
 
-Status: implemented and locally tested; not deployed  
-Target: Monad testnet (`10143`)  
+Status: deployed to Monad testnet and locally tested
+Target: Monad testnet (`10143`)
 Settlement asset: valueless six-decimal `MockUSDC`
+
+## Monad testnet deployment
+
+Deployment ID: `monad-testnet-v1`
+
+| Contract | Address |
+| --- | --- |
+| `HedgeMakerAccessManager` | `0xef88C37b67a2f0F081B5976a3D425ECEa5ff5B0E` |
+| `MockUSDC` | `0x1104E65eDDC14Db1661667Ee3C3E9BA8717D6395` |
+| `CollateralVault` | `0xC42674265F553889B845641cee0F0E2E65Af5d0b` |
+| `MarketConfig` | `0xd272BD0f3F3951B8926ed10a15747837047861ed` |
+| `RateOracle` | `0x01124Fa39104a6c56550c2328503D5FD51a96c9b` |
+| `PositionManager` | `0x3F8ae4Ec8C1A98b79286065338ABe16D81aB2a1d` |
+| `OrderBook` | `0xdAF7ABc4594868676f4106e788BA88074Cb8CA21` |
+
+The frontend environment uses `VITE_SETTLEMENT_TOKEN_ADDRESS` for the deployed
+`MockUSDC`, so application code remains independent of the test token's contract
+name. Deployment alone does not mean the economic config, oracle calendar, roles,
+or listed series have been initialized; complete and verify the steps below before
+enabling protocol writes.
 
 ## Contract suite
 
