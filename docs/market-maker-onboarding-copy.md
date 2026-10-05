@@ -593,9 +593,9 @@ Track application receipt, qualified conversations, completed integrations, exec
 
 ### Approval and implementation record
 
-The user approved Sections 5–7 and authorized frontend implementation, with an explicit request to refresh availability copy as capabilities ship. Commercial structures in Sections 3–4 remain recommendations for later design, not terms an applicant can rely on.
+The user approved Sections 5–7 and authorized frontend implementation, with an explicit request to refresh availability copy as capabilities ship. The Phase A integration pack from §4.1 is now implemented as canonical contract reads, exact unsigned builders, address-scoped inventory reconciliation, an integration console, and an operator runbook. Commercial structures in §3 and §§4.2–4.4 remain recommendations for later design, not terms an applicant can rely on.
 
-The branch now implements `/market-makers` and `/market-makers/guide`, responsive home promotion, public navigation/mobile navigation/footer links, contextual discovery, and the verified email application handoff. Page metadata and cross-page section navigation are included. No financial write path or contract change is introduced. No outreach is sent and no merge to main or website deployment is performed.
+The frontend implements `/market-makers`, `/market-makers/guide`, and `/market-makers/integration`, responsive home promotion, public navigation/mobile navigation/footer links, contextual discovery, and the verified email application handoff. Page metadata and cross-page section navigation are included. The integration console prepares but never submits transactions; no enabled financial write path or contract change is introduced. No outreach is sent or website deployment is performed.
 
 ### Release copy maintenance
 
@@ -620,12 +620,13 @@ Release review should search all MM surfaces for `planned`, `testnet`, `current`
 ### Implementation verification
 
 - `npm run lint` passed.
-- `npm run test` passed: 17 existing tests across four files, including the live-book domain tests brought in from main.
+- `npm run test` passed: 21 tests across five files, including live-book aggregation and exact unsigned-builder coverage.
 - `npm run build` passed, including TypeScript and the production bundle.
 - Browser checks passed at 320, 375, 768, 980, and 1440 pixels with no page overflow on the home, market-maker page, or guide. Wide guide tables scroll inside their container.
 - Verified home discovery, desktop/mobile navigation, page metadata, application and cross-page anchors, all nine guide links, payoff values, and expandable FAQs.
 - Verified the application link addresses `sheikh@digitalsheikh.co` and does not show an invented receipt. No email was sent during verification.
 - Verified the live-book component and existing order-preview flow remain present and work in local preview. Browser checks did not claim a live fill or validate a funded program.
+- Verified `/market-makers/integration` against the deployed testnet contracts at desktop and narrow widths, including the uninitialized-market boundary and a zero-inventory canonical wallet snapshot.
 - No browser runtime errors were recorded. Local documentation links and `git diff --check` passed.
 
 The browser smoke script and screenshots were temporary review artifacts rather than new implementation-mirroring unit tests. No contract or financial-domain changes were made; contract execution tests were not repeated for this frontend change.

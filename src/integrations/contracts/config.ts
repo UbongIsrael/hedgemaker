@@ -22,7 +22,10 @@ const chainId = chainIdValue && chainIdValue <= BigInt(Number.MAX_SAFE_INTEGER)
   ? Number(chainIdValue)
   : undefined;
 const deploymentBlock = optionalPositiveInteger(import.meta.env.VITE_DEPLOYMENT_BLOCK);
+const settlementTokenAddress = optionalAddress(import.meta.env.VITE_SETTLEMENT_TOKEN_ADDRESS);
+const vaultAddress = optionalAddress(import.meta.env.VITE_VAULT_ADDRESS);
 const marketConfigAddress = optionalAddress(import.meta.env.VITE_MARKET_CONFIG_ADDRESS);
+const positionManagerAddress = optionalAddress(import.meta.env.VITE_POSITION_MANAGER_ADDRESS);
 const orderBookAddress = optionalAddress(import.meta.env.VITE_ORDER_BOOK_ADDRESS);
 const rateOracleAddress = optionalAddress(import.meta.env.VITE_RATE_ORACLE_ADDRESS);
 
@@ -37,8 +40,12 @@ if (!rateOracleAddress) missing.push('RateOracle address');
 export const protocolReadConfig = {
   deploymentId: optionalText(import.meta.env.VITE_DEPLOYMENT_ID) ?? 'unconfigured',
   deploymentBlock,
+  chainId,
   rpcUrl,
+  settlementTokenAddress,
+  vaultAddress,
   marketConfigAddress,
+  positionManagerAddress,
   orderBookAddress,
   rateOracleAddress,
   missing,

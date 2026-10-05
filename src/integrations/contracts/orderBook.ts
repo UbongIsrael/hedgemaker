@@ -12,9 +12,21 @@ import {
 } from './abis';
 import {protocolReadConfig} from './config';
 
-const LOG_BLOCK_RANGE = 50_000n;
+const LOG_BLOCK_RANGE = 1_000n;
+const LOG_QUERY_CONCURRENCY = 8;
+const REORG_RESCAN_BLOCKS = 64n;
 
 type BookSide = 'buyer' | 'seller';
+
+interface SeriesEventRecord {
+  seriesId: Hex;
+  version: bigint;
+  marketId: Hex;
+  fixingAt: bigint;
+  blockNumber: bigint;
+}
+
+let seriesEventCache: {throughBlock: bigint; records: SeriesEventRecord[]} | undefined;
 
 export interface BookEntry {
   side: BookSide;
@@ -38,6 +50,27 @@ export interface LiveSeriesSummary {
   marketId: Hex;
   configVersion: bigint;
   fixingAt: bigint;
+  expiryRoundId: bigint;
+  oracleFailureDeadline: bigint;
+  strikeBandBps: number;
+}
+
+export interface LiveMarketConfig {
+  lotNotionalRaw: bigint;
+  tickSizeRaw: bigint;
+  minStrikeRaw: bigint;
+  maxStrikeRaw: bigint;
+  initialMarginBps: number;
+  maintenanceMarginBps: number;
+  effectiveTakerFeeBps: number;
+  maxLotsPerOrder: number;
+  maxMatchBatch: number;
+  maxScanBatch: number;
+  maxSyncBatch: number;
+  maxOrderLifetime: number;
+  maxPegLifetimeRounds: number;
+  marginGracePeriodSeconds: number;
+  maxOffsetBps: number;
 }
 
 export interface LiveOrderBookSnapshot {
@@ -52,7 +85,9 @@ export interface LiveOrderBookSnapshot {
   tickSizeRaw?: bigint;
   roundId?: bigint;
   referenceRateRaw?: bigint;
+  tradingOpen: boolean;
   matchingPaused: boolean;
+  config?: LiveMarketConfig;
   activeOrderCount: number;
   inactiveOrderCount: number;
   fetchedAt: number;
@@ -127,22 +162,44 @@ async function readSeriesCreatedLogs(
   client: PublicClient,
   fromBlock: bigint,
   toBlock: bigint,
-) {
-  const logs = [];
-  for (let start = fromBlock; start <= toBlock; start += LOG_BLOCK_RANGE) {
-    const end = start + LOG_BLOCK_RANGE - 1n > toBlock
-      ? toBlock
-      : start + LOG_BLOCK_RANGE - 1n;
-    const page = await client.getLogs({
-      address: protocolReadConfig.marketConfigAddress,
-      event: seriesCreatedEvent,
-      fromBlock: start,
-      toBlock: end,
-      strict: true,
-    });
-    logs.push(...page);
+) : Promise<SeriesEventRecord[]> {
+  if (toBlock < fromBlock) return [];
+  if (seriesEventCache && toBlock <= seriesEventCache.throughBlock) {
+    return seriesEventCache.records.filter((record) => record.blockNumber <= toBlock);
   }
-  return logs;
+  const scanFrom = seriesEventCache
+    ? seriesEventCache.throughBlock - REORG_RESCAN_BLOCKS + 1n > fromBlock
+      ? seriesEventCache.throughBlock - REORG_RESCAN_BLOCKS + 1n
+      : fromBlock
+    : fromBlock;
+  const records = seriesEventCache
+    ? seriesEventCache.records.filter((record) => record.blockNumber < scanFrom)
+    : [];
+  const ranges: Array<{start: bigint; end: bigint}> = [];
+  for (let start = scanFrom; start <= toBlock; start += LOG_BLOCK_RANGE) {
+    ranges.push({
+      start,
+      end: start + LOG_BLOCK_RANGE - 1n > toBlock ? toBlock : start + LOG_BLOCK_RANGE - 1n,
+    });
+  }
+  for (let index = 0; index < ranges.length; index += LOG_QUERY_CONCURRENCY) {
+    const pages = await Promise.all(ranges.slice(index, index + LOG_QUERY_CONCURRENCY).map(({start, end}) => (
+      client.getLogs({
+        address: protocolReadConfig.marketConfigAddress,
+        event: seriesCreatedEvent,
+        fromBlock: start,
+        toBlock: end,
+        strict: true,
+      })
+    )));
+    for (const page of pages) {
+      for (const log of page) {
+        records.push({...log.args, blockNumber: log.blockNumber});
+      }
+    }
+  }
+  seriesEventCache = {throughBlock: toBlock, records};
+  return records;
 }
 
 export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrderBookSnapshot> {
@@ -180,6 +237,7 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
     deploymentId: protocolReadConfig.deploymentId,
     series,
     levels: [],
+    tradingOpen: false,
     matchingPaused: false,
     activeOrderCount: 0,
     inactiveOrderCount: 0,
@@ -191,17 +249,46 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
   const logs = await readSeriesCreatedLogs(client, deploymentBlock, blockNumber);
   const seriesById = new Map<Hex, LiveSeriesSummary>();
   for (const log of logs) {
-    const {fixingAt, marketId, seriesId, version} = log.args;
+    const {fixingAt, marketId, seriesId, version} = log;
     if (version !== activeVersion || fixingAt <= block.timestamp) continue;
-    seriesById.set(seriesId, {seriesId, marketId, configVersion: version, fixingAt});
+    seriesById.set(seriesId, {
+      seriesId,
+      marketId,
+      configVersion: version,
+      fixingAt,
+      expiryRoundId: 0n,
+      oracleFailureDeadline: 0n,
+      strikeBandBps: 0,
+    });
   }
-  const series = [...seriesById.values()].sort((left, right) => (
+  const seriesSummaries = [...seriesById.values()].sort((left, right) => (
     left.fixingAt < right.fixingAt ? -1 : left.fixingAt > right.fixingAt ? 1 : 0
   ));
+  if (seriesSummaries.length === 0) return emptySnapshot();
+  const seriesRecords = await client.multicall({
+    allowFailure: false,
+    blockNumber,
+    contracts: seriesSummaries.map((item) => ({
+      address: marketConfigAddress,
+      abi: marketConfigReadAbi,
+      functionName: 'getSeries',
+      args: [item.seriesId],
+    } as const)),
+  });
+  const series = seriesSummaries.map((item, index) => {
+    const record = seriesRecords[index];
+    if (!record) return item;
+    return {
+      ...item,
+      expiryRoundId: record.expiryRoundId,
+      oracleFailureDeadline: record.oracleFailureDeadline,
+      strikeBandBps: record.strikeBandBps,
+    };
+  });
   const selectedSeries = series.find((item) => item.seriesId === selectedSeriesId) ?? series[0];
   if (!selectedSeries) return emptySnapshot(series);
 
-  const [config, round, orderIds, matchingPaused] = await Promise.all([
+  const [config, round, orderIds, matchingPaused, tradingOpen] = await Promise.all([
     client.readContract({
       address: marketConfigAddress,
       abi: marketConfigReadAbi,
@@ -229,7 +316,32 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
       functionName: 'newRiskPaused',
       blockNumber,
     }),
+    client.readContract({
+      address: rateOracleAddress,
+      abi: rateOracleReadAbi,
+      functionName: 'isTradingOpen',
+      args: [selectedSeries.configVersion],
+      blockNumber,
+    }),
   ]);
+
+  const marketConfig: LiveMarketConfig = {
+    lotNotionalRaw: config.lotNotionalRaw,
+    tickSizeRaw: config.tickSizeRaw,
+    minStrikeRaw: config.minStrikeRaw,
+    maxStrikeRaw: config.maxStrikeRaw,
+    initialMarginBps: config.initialMarginBps,
+    maintenanceMarginBps: config.maintenanceMarginBps,
+    effectiveTakerFeeBps: config.effectiveTakerFeeBps,
+    maxLotsPerOrder: config.maxLotsPerOrder,
+    maxMatchBatch: config.maxMatchBatch,
+    maxScanBatch: config.maxScanBatch,
+    maxSyncBatch: config.maxSyncBatch,
+    maxOrderLifetime: config.maxOrderLifetime,
+    maxPegLifetimeRounds: config.maxPegLifetimeRounds,
+    marginGracePeriodSeconds: config.marginGracePeriodSeconds,
+    maxOffsetBps: config.maxOffsetBps,
+  };
 
   if (orderIds.length === 0) {
     return {
@@ -239,7 +351,9 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
       tickSizeRaw: config.tickSizeRaw,
       roundId: round.roundId,
       referenceRateRaw: round.rateRaw,
+      tradingOpen,
       matchingPaused,
+      config: marketConfig,
     };
   }
 
@@ -298,7 +412,9 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
     tickSizeRaw: config.tickSizeRaw,
     roundId: round.roundId,
     referenceRateRaw: round.rateRaw,
+    tradingOpen,
     matchingPaused,
+    config: marketConfig,
     activeOrderCount: orderIds.length,
     inactiveOrderCount,
     fetchedAt: Date.now(),

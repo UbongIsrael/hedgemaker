@@ -12,6 +12,7 @@ import {PositionDetailPage} from '@/pages/app/PositionDetailPage';
 import {NotFoundPage} from '@/pages/NotFoundPage';
 import {MarketMakersPage} from '@/pages/MarketMakersPage';
 import {MarketMakerGuidePage} from '@/pages/MarketMakerGuidePage';
+import {MarketMakerIntegrationPage} from '@/pages/MarketMakerIntegrationPage';
 import {useAuth} from '@/integrations/privy/AuthProvider';
 
 function RequireAuth({children}: {children: ReactNode}) {
@@ -37,6 +38,7 @@ export function App() {
         <Route path="terms" element={<TermsPage />} />
         <Route path="market-makers" element={<MarketMakersPage />} />
         <Route path="market-makers/guide" element={<MarketMakerGuidePage />} />
+        <Route path="market-makers/integration" element={<MarketMakerIntegrationPage />} />
         <Route path="app" element={<RequireAuth><DashboardPage /></RequireAuth>} />
         <Route path="app/wallet" element={<RequireAuth><WalletPage /></RequireAuth>} />
         <Route path="app/positions" element={<RequireAuth><PositionsPage /></RequireAuth>} />

@@ -6,9 +6,9 @@
 export const marketMakerRelease = {
   reviewedMain: '152b3e1',
   environment: 'Monad testnet · valueless test tokens',
-  status: 'Now inviting integration interest. Current environment: testnet with valueless tokens.',
+  status: 'Now inviting integration interest. Canonical reads, unsigned builders, and inventory reconciliation are available for the valueless-token testnet deployment.',
   trading: 'Today’s environment uses test tokens. Real-money trading is not available in the current frontend.',
-  marketData: 'The market page can read a live Monad order-book snapshot when configured. The order ticket remains a demo; visible depth is not a guaranteed fill.',
+  marketData: 'The market page and integration console read canonical Monad snapshots when configured. The console also prepares reviewable unsigned calldata and reconciles isolated inventory; it never signs or submits. Visible depth is not a guaranteed fill.',
   recruitment: 'We’re inviting market makers, FX desks, and specialist liquidity providers to discuss integration and testnet participation.',
   home: {
     body: 'Quote the other side of future dollar purchases and sales. We’re inviting market makers and FX desks to explore testnet integration and help shape planned position takeovers and replacement capacity.',

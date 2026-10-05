@@ -172,6 +172,13 @@ export function LiveOrderBook({className = '', ...props}: LiveOrderBookProps) {
                   <div><dt>Snapshot block</dt><dd>{data.blockNumber.toString()}</dd></div>
                 </dl>
 
+                {!data.tradingOpen && (
+                  <div className="live-book__state live-book__state--warning" role="status">
+                    <TriangleAlert aria-hidden="true" />
+                    <div><strong>Oracle trading is unavailable</strong><p>Orders remain visible for reconciliation, but none are executable until the finalized feed reopens trading.</p></div>
+                  </div>
+                )}
+
                 {data.matchingPaused && (
                   <div className="live-book__state live-book__state--warning" role="status">
                     <TriangleAlert aria-hidden="true" />

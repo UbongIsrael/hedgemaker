@@ -19,6 +19,7 @@ export function MarketMakersPage() {
           <div className="mm-actions">
             <a className="hm-button hm-button--primary hm-button--lg" href="#apply">{copy.apply}<ArrowRight size={17} aria-hidden="true" /></a>
             <Link className="text-link" to="/market-makers/guide">{copy.guide}</Link>
+            <Link className="text-link" to="/market-makers/integration">Open integration console</Link>
           </div>
           <p className="mm-status">{release.status}</p>
         </div>
