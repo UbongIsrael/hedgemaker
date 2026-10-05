@@ -17,6 +17,7 @@ import {Badge, Button, Card, CardContent, CardHeader, CardTitle, Field, Input, S
 import {LiveOrderBook} from '@/components/LiveOrderBook';
 import {DEMO_MARKET} from '@/demo/fixtures';
 import {useAuth} from '@/integrations/privy/AuthProvider';
+import {marketMakerRelease} from '@/content/marketMakers';
 
 type PricingKind = 'pegged' | 'fixed';
 
@@ -210,6 +211,7 @@ export function MarketPage() {
           </Card>
 
           <LiveOrderBook />
+          <Card className="mm-market-callout"><CardContent><span className="eyebrow">For market makers</span><p>{marketMakerRelease.placements.market}</p><Link className="text-link" to="/market-makers">For market makers<ArrowRight size={15} aria-hidden="true" /></Link></CardContent></Card>
         </aside>
       </div>
 

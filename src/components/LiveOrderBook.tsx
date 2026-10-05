@@ -3,6 +3,8 @@ import type {HTMLAttributes, ReactNode} from 'react';
 import type {Hex} from 'viem';
 import {formatFixed, formatUsdc} from '@/domain';
 import {Badge, Button, Card, CardContent, CardHeader, CardTitle} from '@/components/ui';
+import {Link} from 'react-router-dom';
+import {marketMakerRelease} from '@/content/marketMakers';
 import {useLiveOrderBook} from '@/integrations/contracts/useLiveOrderBook';
 import type {LiveBookLevel, LiveSeriesSummary} from '@/integrations/contracts/orderBook';
 
@@ -185,6 +187,7 @@ export function LiveOrderBook({className = '', ...props}: LiveOrderBookProps) {
                       <p>{data.inactiveOrderCount > 0
                         ? `${data.inactiveOrderCount} resting ${data.inactiveOrderCount === 1 ? 'order is' : 'orders are'} currently ineligible.`
                         : 'This maturity has no active buyer or seller orders yet.'}</p>
+                      <Link className="text-link" to="/market-makers">{marketMakerRelease.placements.empty}</Link>
                     </div>
                   </div>
                 ) : (

@@ -1,4 +1,6 @@
 import {Badge, Card, CardContent, CardHeader, CardTitle} from '@/components/ui';
+import {Link} from 'react-router-dom';
+import {marketMakerRelease} from '@/content/marketMakers';
 
 const risks = [
   ['Protection has a funding limit', 'The other side of your hedge may owe more than the funds it has left. Any unpaid amount is recorded, but it is not insured or covered by other users.'],
@@ -25,6 +27,7 @@ export function TermsPage() {
           </Card>
         ))}
       </div>
+      <section className="mm-context-callout"><span className="eyebrow">For market makers</span><p>{marketMakerRelease.placements.risks}</p><Link className="text-link" to="/market-makers/guide#risks">Read market-maker risks</Link></section>
     </div>
   );
 }

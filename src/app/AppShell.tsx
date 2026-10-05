@@ -3,10 +3,12 @@ import {useState} from 'react';
 import {Link, NavLink, Outlet, useLocation} from 'react-router-dom';
 import {Button} from '@/components/ui';
 import {useAuth} from '@/integrations/privy/AuthProvider';
+import {PageNavigation} from '@/components/PageNavigation';
 
 const publicLinks = [
   {to: '/market', label: 'Market'},
   {to: '/learn', label: 'How it works'},
+  {to: '/market-makers', label: 'For market makers'},
   {to: '/terms', label: 'Risks'},
 ];
 
@@ -29,6 +31,7 @@ export function AppShell() {
 
   return (
     <div className="app-frame">
+      <PageNavigation />
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="environment-strip" role="status">
         <span className="environment-strip__dot" aria-hidden="true" />
@@ -103,6 +106,7 @@ export function AppShell() {
           <p>Explore protection against changes in the dollar–naira exchange rate.</p>
         </div>
         <div className="site-footer__links">
+          <Link to="/market-makers">Market makers</Link>
           <Link to="/terms">Risk disclosures</Link>
         </div>
         <p className="site-footer__legal">Demo on Monad testnet. Sample rates and test tokens only.</p>
