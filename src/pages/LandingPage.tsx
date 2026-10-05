@@ -1,6 +1,7 @@
 import {ArrowRight, CircleDollarSign, Clock3, LockKeyhole, ShieldAlert, Sparkles} from 'lucide-react';
 import {Link} from 'react-router-dom';
 import {Badge, Button, Card, CardContent} from '@/components/ui';
+import {marketMakerCopy, marketMakerRelease} from '@/content/marketMakers';
 
 const featureItems = [
   {
@@ -117,6 +118,11 @@ export function LandingPage() {
             <li><span>04</span><div><h3>Withdraw your remaining funds</h3><p>Once your hedge closes, your remaining funds become available to withdraw to your wallet.</p></div></li>
           </ol>
         </div>
+      </section>
+
+      <section className="page-shell mm-home-callout" aria-labelledby="mm-home-title">
+        <div><span className="eyebrow">For market makers</span><h2 id="mm-home-title">{marketMakerCopy.homeHeading}</h2><p>{marketMakerRelease.home.body}</p><p className="mm-status">{marketMakerRelease.home.note}</p></div>
+        <Link className="hm-button hm-button--secondary hm-button--lg" to="/market-makers">{marketMakerCopy.homeLink}<ArrowRight size={17} aria-hidden="true" /></Link>
       </section>
 
       <section className="page-shell callout-band">

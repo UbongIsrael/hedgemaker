@@ -5,6 +5,8 @@ HedgeMaker is a testnet-first frontend prototype for collateral-limited USD/NGN 
 ## What is implemented
 
 - Public landing, education, risk, and market-discovery screens
+- Market-maker recruitment page, nine-section guide, and application email handoff
+- Configured live Monad order-book snapshots, separate from the simulated order ticket
 - An interactive USD-buyer / USD-seller order preview with fixed-point `bigint` calculations
 - Pegged and fixed-limit order concepts, listed maturities, reserves, and payoff scenarios
 - A local, clearly labelled demo sign-in path and an authenticated account area
@@ -14,6 +16,8 @@ HedgeMaker is a testnet-first frontend prototype for collateral-limited USD/NGN 
 - Protocol writes intentionally disabled until verified contract deployments and addresses exist
 
 The authoritative product documents are in [`docs/`](./docs). The current build follows the v3 build spec and the v0.3 frontend flow. The implemented contract suite and deployment sequence are documented in [`docs/contracts.md`](./docs/contracts.md), with the design rationale in [`docs/contract-architecture-research.md`](./docs/contract-architecture-research.md).
+
+Market-maker copy and the release update checklist are in [`docs/market-maker-onboarding-copy.md`](./docs/market-maker-onboarding-copy.md). Shared availability wording lives in `src/content/marketMakers.ts`; update it alongside verified feature releases. Applications open an email to the verified contact address. `VITE_MARKET_MAKER_CONTACT_EMAIL` can override that address, or set `VITE_MARKET_MAKER_APPLICATION_URL` to a real HTTPS application service. The frontend does not store submissions or claim an email has been sent.
 
 ## Run locally
 

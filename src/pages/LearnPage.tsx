@@ -1,6 +1,7 @@
 import {ArrowRight, Info} from 'lucide-react';
 import {Link} from 'react-router-dom';
 import {Badge, Button, Card, CardContent, CardHeader, CardTitle} from '@/components/ui';
+import {marketMakerRelease} from '@/content/marketMakers';
 
 export function LearnPage() {
   return (
@@ -36,6 +37,7 @@ export function LearnPage() {
       </div>
       <div className="risk-note"><Info aria-hidden="true" /><p>Gains stay locked until your hedge closes. If either side runs out of funds, the hedge closes in default. You may receive less than the calculated amount, and any unpaid amount is not insured.</p></div>
       <Link to="/market"><Button size="lg">Try an example hedge <ArrowRight size={17} aria-hidden="true" /></Button></Link>
+      <section className="mm-context-callout"><span className="eyebrow">For market makers</span><p>{marketMakerRelease.placements.learn}</p><Link className="text-link" to="/market-makers">Explore market making<ArrowRight size={15} aria-hidden="true" /></Link></section>
     </div>
   );
 }

@@ -16,6 +16,8 @@ interface ImportMetaEnv {
   readonly VITE_RATE_ORACLE_ADDRESS?: string;
   readonly VITE_POSITION_MANAGER_ADDRESS?: string;
   readonly VITE_ORDER_BOOK_ADDRESS?: string;
+  readonly VITE_MARKET_MAKER_APPLICATION_URL?: string;
+  readonly VITE_MARKET_MAKER_CONTACT_EMAIL?: string;
 }
 
 interface ImportMeta {

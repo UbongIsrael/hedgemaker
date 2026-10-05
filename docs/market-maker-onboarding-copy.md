@@ -1,14 +1,16 @@
 # HedgeMaker market-maker onboarding: opportunity, copy, and documentation
 
-Status: **Draft for copy approval. Frontend implementation has not started.**
+Status: **Copy approved. Frontend and on-site guide implemented for branch review.**
 
 Branch: `copy/market-maker-onboarding`
 
-Reviewed base: `cbea861` (`docs: approve liquidity and continuity proposal`)
+Copy-review base: `cbea861` (`docs: approve liquidity and continuity proposal`)
+
+Implementation base: `152b3e1` (`feat: add live Monad order book`), merged into this branch before frontend work.
 
 Prepared: 2026-10-05
 
-This document contains the market-maker business case, public marketing copy, proposed frontend placements, and draft Mintlify content. Sections 1–4 and 8 are internal strategy and implementation notes. Sections 5–7 contain copy for approval and later publication.
+This document contains the market-maker business case, approved public marketing copy, frontend placements, and draft Mintlify content. Sections 1–4 and 8 are internal strategy and implementation notes. Sections 5–7 preserve the reviewed content, with the implementation record below identifying later delivery and release changes.
 
 The [liquidity, continuity, and exits proposal](./liquidity-continuity-and-exits-proposal.md) is the source for the direction currently being built. Its approval commit establishes product direction; the file still identifies itself as a design proposal outside the normative build specification. Transfer and continuity capabilities below are therefore described as planned. This document proposes commercial terms for discussion; it does not establish a rebate, fee schedule, backstop commitment, or launch date.
 
@@ -51,7 +53,7 @@ Firms requiring pooled liquidity, freely withdrawable gains, immediate position 
 | Funded two-sided quoting | `OrderBook` supports buyer/seller, fixed/pegged, resting/IOC orders and partial fills. Current UI disables writes. | Live book, rate ladder, grouped hedge summaries. | Explain the mechanism; invite integration interest, not real-money deposits. |
 | Maker economics | Older selected order is maker; execution uses its effective limit; maker protocol fee is zero. Testnet taker fees are also zero. | No agreed MM reward schedule. | Trading P&L opportunity; no guaranteed spread, rebate, or yield. |
 | Multi-counterparty liquidity | Each match creates a separate bilateral position. | Parent hedge view with every child’s health and outcome. | Say “serve part or all of an order,” without promising complete execution. |
-| Visible depth | Static frontend demo; contract read methods exist. | Canonical live snapshots and a reorg-aware indexer. | Do not portray demo depth as available capital or customer flow. |
+| Visible depth | Main `152b3e1` adds a configured live contract reader using canonical block snapshots. The order ticket remains a demo. | Production reorg-aware indexer and the remaining Phase A work. | Distinguish live depth from the simulated ticket; a snapshot is not a guaranteed fill. |
 | Full-leg voluntary takeover | No transfer or early netting in current contracts. | Transfer requests and atomic novation preserving original terms and settled state. | Clearly labelled “planned”; application can express interest in this role. |
 | Mutual close | Not implemented. | Both sides consent after settlement through a common round. | Planned; not an MM’s unilateral exit right. |
 | Default replacement | Current default closes the child and records shortfall. | Replacement process, separately funded reserve, and interim risk bearer. | Planned and conditional; never promise automatic protection or funded coverage today. |
@@ -207,9 +209,9 @@ Publish eligibility, capacity, compensation source, activation rules, uncovered 
 
 Do not make cross-margin or pooled insurance a prerequisite for initial quoting. They change risk allocation and should be assessed separately from the approved full-leg transfer direction. The current contracts are non-upgradeable: Phases B and C require a new deployment and an explicit existing-position policy.
 
-## 5. Main marketing document — copy for approval
+## 5. Main marketing document — approved copy
 
-The following is the proposed public narrative for recruitment now. Planned features remain labelled throughout. It can become the core of `/market-makers`, a downloadable overview, or a partner discussion document after copy approval.
+The following narrative was approved for recruitment. Planned features remain labelled throughout. The implementation uses it for `/market-makers`; release-sensitive wording must continue to follow verified capabilities.
 
 ### Make a market for the next dollar–naira hedge.
 
@@ -285,7 +287,7 @@ Editorial note: use only after a real sender/contact destination exists. No outr
 
 Recommend **a dedicated `/market-makers` page plus a compact home section**, with contextual links in the market, education, and footer. The dedicated page gives professional participants the economics and integration context they need without enlarging the consumer ticket.
 
-All placements below are proposed. This branch changes documentation only.
+The home section, dedicated page, guide, navigation/footer links, market sidebar, genuine empty-book link, education link, and risk link are implemented on this branch. The live reader from main is preserved. The application destination is described below.
 
 ### 6.1 Home section
 
@@ -352,6 +354,10 @@ The primary CTA should scroll to `/market-makers#apply`. Build a real submission
 
 If the receiving service/contact route is not ready when the approved page is built, publish the informational page with a verified contact alternative. Do not ship an enabled form that discards applications. Normal Privy sign-in is not a market-maker application or grant of trading permissions.
 
+**Implemented contact alternative:** the user supplied `sheikh@digitalsheikh.co`. The application section opens an email addressed there, with a market-maker application subject and clear instructions about what to include. Applicants review and send in their own email client. The site does not collect/store application details or display a received/success message. This uses the verified contact alternative rather than inventing a submission backend or privacy policy. The in-page CTA remains “Apply to be a market maker”; the actual handoff is labelled “Email your application”.
+
+`VITE_MARKET_MAKER_CONTACT_EMAIL` can override the verified address. A valid HTTPS `VITE_MARKET_MAKER_APPLICATION_URL` takes precedence if a real application service is introduced; applicants then review its privacy information and submit there. Invalid destinations cannot produce an executable link. An empty/invalid email without a valid URL shows an honest contact-setup notice.
+
 ### 6.4 Other placements
 
 | ID | Surface and implementation location | Proposed copy | Destination / condition |
@@ -368,7 +374,7 @@ No promotional modal is needed during top-up, liquidation, or withdrawal flows. 
 
 ## 7. Proposed Mintlify market-maker documentation
 
-This is content and information architecture for approval, not a Mintlify setup in this branch. Extend the ten-topic documentation plan in the liquidity proposal with a **Market makers** group and cross-links to orders, collateral, exits, default coverage, oracle methodology, verified deployments, and developer schemas.
+This is approved content and information architecture, not a Mintlify deployment. The frontend now provides a nine-section guide at `/market-makers/guide`, so the documentation CTA works before Mintlify hosting exists. Extend the ten-topic documentation plan in the liquidity proposal with a **Market makers** group and cross-links to orders, collateral, exits, default coverage, oracle methodology, verified deployments, and developer schemas when the documentation site is built.
 
 Suggested repository pages after approval:
 
@@ -585,11 +591,44 @@ Track application receipt, qualified conversations, completed integrations, exec
 | “Profitable market making” or any return figure | Actual attributable results, all costs and capital exposure, with relevant assumptions and limitations. |
 | “Production API,” “sponsored gas,” or named partners | Delivered integration and verified availability/relationship. |
 
-### Review requested
+### Approval and implementation record
 
-Approve or revise the public narrative in Section 5, the exact frontend copy and placements in Section 6, and the Mintlify draft in Section 7. Commercial structures in Sections 3–4 are recommendations for later design, not terms an applicant can rely on.
+The user approved Sections 5–7 and authorized frontend implementation, with an explicit request to refresh availability copy as capabilities ship. Commercial structures in Sections 3–4 remain recommendations for later design, not terms an applicant can rely on.
 
-This change adds one Markdown document only. Frontend implementation follows copy approval on a branch. No page, form, contract change, outreach message, deployment, or merge is performed by this document change.
+The branch now implements `/market-makers` and `/market-makers/guide`, responsive home promotion, public navigation/mobile navigation/footer links, contextual discovery, and the verified email application handoff. Page metadata and cross-page section navigation are included. No financial write path or contract change is introduced. No outreach is sent and no merge to main or website deployment is performed.
+
+### Release copy maintenance
+
+Shared release-dependent MM wording lives in [`src/content/marketMakers.ts`](../src/content/marketMakers.ts) under `marketMakerRelease`. It covers environment/status, recruitment, home/contextual placements, role availability, takeover/backstop narrative, earnings, and availability FAQs. Stable brand/CTA copy is kept separately in `marketMakerCopy` in the same file.
+
+When a capability ships, update the copy in the same feature/release change:
+
+| Delivery evidence | Required copy update |
+| --- | --- |
+| Live book reader ships | Describe configured canonical snapshots, preserve the distinction from the demo ticket, and avoid guaranteeing fills. Applied against main `152b3e1`. |
+| Frontend writes are enabled against an initialized verified deployment | Update trading/recruitment/status language and the guide evaluation steps. Enablement of sign-in or RPC configuration alone is insufficient. |
+| Verified full-leg transfers are available | Update takeover role labels and descriptions, takeover narrative/FAQ, contextual placements, and the guide’s transfer terms. Document the delivered ABI, equity allocation and payment flow. |
+| Replacement process and a funded backstop ship | Update capacity labels, narrative/FAQ, and the guide with actual eligibility, compensation source, limits and exhaustion behavior. Publishing contracts alone does not establish funded coverage. |
+| Real-value launch is verified | Update environment/risk/trading copy, fees and collateral information, guide evaluation steps and metadata. Review shared demo banners and consumer disclosures in the same release. Testnet remains testnet even when all features are built. |
+| Mintlify is published | Move or sync the nine-section guide to approved versioned pages and update the CTA to a verified destination. Keep the local guide useful until that exists. |
+| Application service changes | Update the public contact configuration and its handoff/privacy wording. Show receipt only when a real receiving service confirms submission. |
+
+The guide contains explanations tied to current contract mechanics in [`MarketMakerGuidePage.tsx`](../src/pages/MarketMakerGuidePage.tsx); review those alongside `marketMakerRelease` when custody, order types, netting, or transfer APIs change. Update the historical truth table and source map in this document, then sync the approved Mintlify drafts. Do not remove “planned” or “testnet” language solely because the frontend has been built.
+
+Release review should search all MM surfaces for `planned`, `testnet`, `current`, `unavailable`, `no`, and fee/coverage claims, check against actual deployed functionality, and verify that home, cards, FAQs, guide, application and shared notices agree. Copy changes should ship with the capability that justifies them, rather than waiting for a separate marketing pass.
+
+### Implementation verification
+
+- `npm run lint` passed.
+- `npm run test` passed: 17 existing tests across four files, including the live-book domain tests brought in from main.
+- `npm run build` passed, including TypeScript and the production bundle.
+- Browser checks passed at 320, 375, 768, 980, and 1440 pixels with no page overflow on the home, market-maker page, or guide. Wide guide tables scroll inside their container.
+- Verified home discovery, desktop/mobile navigation, page metadata, application and cross-page anchors, all nine guide links, payoff values, and expandable FAQs.
+- Verified the application link addresses `sheikh@digitalsheikh.co` and does not show an invented receipt. No email was sent during verification.
+- Verified the live-book component and existing order-preview flow remain present and work in local preview. Browser checks did not claim a live fill or validate a funded program.
+- No browser runtime errors were recorded. Local documentation links and `git diff --check` passed.
+
+The browser smoke script and screenshots were temporary review artifacts rather than new implementation-mirroring unit tests. No contract or financial-domain changes were made; contract execution tests were not repeated for this frontend change.
 
 ## 9. Source map
 
@@ -603,7 +642,7 @@ This change adds one Markdown document only. Frontend implementation follows cop
 | [Contract/deployment documentation](./contracts.md) | Documented Monad testnet deployment, valueless test token and initialization prerequisites. |
 | [OrderBook implementation](../contracts/OrderBook.sol) | Actual quote fields, price-time/maker-price execution, partial fills, ownership, bounds and order maintenance. |
 | [PositionManager implementation](../contracts/PositionManager.sol), [Vault](../contracts/CollateralVault.sol), [ForwardMath](../contracts/libraries/ForwardMath.sol) | Exact entry/variation, isolated collateral, owner top-ups, capped default, terminal release and withdrawals. |
-| [Frontend schemas](./frontend-flow-and-schemas.md), [README](../README.md), [current routes](../src/app/App.tsx) | Designed integration surfaces, current demo/write boundary and absence of an MM page. |
+| [Frontend schemas](./frontend-flow-and-schemas.md), [README](../README.md), [current routes](../src/app/App.tsx) | Designed integration surfaces, current demo/write boundary and new MM page/guide routes. |
 | [Approved consumer copy](./consumer-copy-revisions.md), [home](../src/pages/LandingPage.tsx), [shell](../src/app/AppShell.tsx) | Existing consumer language and placements to preserve while adding MM content after approval. |
 
 This is a repository-based review, not a live deployment verification, independent market study, profit backtest, or confirmation of a funded reserve.
