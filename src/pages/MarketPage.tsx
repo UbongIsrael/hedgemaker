@@ -1,4 +1,4 @@
-import {ArrowDownRight, ArrowRight, ArrowUpRight, CheckCircle2, CircleAlert, Clock3, Info, LockKeyhole} from 'lucide-react';
+import {ArrowDownRight, ArrowRight, ArrowUpRight, CheckCircle2, Clock3, Info, LockKeyhole} from 'lucide-react';
 import {useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {
@@ -14,7 +14,8 @@ import {
   type Side,
 } from '@/domain';
 import {Badge, Button, Card, CardContent, CardHeader, CardTitle, Field, Input, SegmentedControl} from '@/components/ui';
-import {DEMO_BOOK, DEMO_MARKET} from '@/demo/fixtures';
+import {LiveOrderBook} from '@/components/LiveOrderBook';
+import {DEMO_MARKET} from '@/demo/fixtures';
 import {useAuth} from '@/integrations/privy/AuthProvider';
 
 type PricingKind = 'pegged' | 'fixed';
@@ -208,20 +209,7 @@ export function MarketPage() {
             </CardContent>
           </Card>
 
-          <Card className="depth-card">
-            <CardHeader><div><span className="eyebrow">Sample orders</span><CardTitle>Orders at each rate</CardTitle></div><Badge variant="warning">Not live</Badge></CardHeader>
-            <CardContent>
-              <div className="depth-table" role="table" aria-label="Sample orders by rate">
-                <div className="depth-table__head" role="row"><span role="columnheader">Buyers</span><span role="columnheader">Rate</span><span role="columnheader">Sellers</span></div>
-                {[0, 1, 2].map((index) => {
-                  const buyer = DEMO_BOOK.buyers[index];
-                  const seller = DEMO_BOOK.sellers[index];
-                  return <div className="depth-table__row" role="row" key={index}><span>{buyer?.notional}</span><strong>{buyer?.strike} / {seller?.strike}</strong><span>{seller?.notional}</span></div>;
-                })}
-              </div>
-              <div className="inline-notice inline-notice--compact"><CircleAlert aria-hidden="true" /><span>Your order needs someone to take the other side. Any unmatched amount stays open until it is matched, cancelled, expires, or becomes unavailable after a rate update.</span></div>
-            </CardContent>
-          </Card>
+          <LiveOrderBook />
         </aside>
       </div>
 

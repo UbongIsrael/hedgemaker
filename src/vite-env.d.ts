@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_MONAD_RPC_URL?: string;
   readonly VITE_MONAD_EXPLORER_URL?: string;
   readonly VITE_DEPLOYMENT_ID?: string;
+  readonly VITE_DEPLOYMENT_BLOCK?: string;
   readonly VITE_ACCESS_MANAGER_ADDRESS?: string;
   readonly VITE_SETTLEMENT_TOKEN_ADDRESS?: string;
   readonly VITE_VAULT_ADDRESS?: string;
