@@ -1,0 +1,68 @@
+{
+  "space-grotesk": {
+    "nativeCurrencyGlyphs": {
+      "\u20a6": true,
+      "$": true,
+      "\u20ac": true,
+      "\u00a3": true
+    },
+    "digitAdvanceWidths": [
+      638,
+      404,
+      606,
+      603,
+      620,
+      598,
+      610,
+      568,
+      632,
+      610
+    ],
+    "hasTabularSubstitution": true,
+    "woffGlyphCount": 1001
+  },
+  "ibm-plex-sans": {
+    "nativeCurrencyGlyphs": {
+      "\u20a6": true,
+      "$": true,
+      "\u20ac": true,
+      "\u00a3": true
+    },
+    "digitAdvanceWidths": [
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600
+    ],
+    "hasTabularSubstitution": false,
+    "woffGlyphCount": 1025
+  },
+  "ibm-plex-mono": {
+    "nativeCurrencyGlyphs": {
+      "\u20a6": true,
+      "$": true,
+      "\u20ac": true,
+      "\u00a3": true
+    },
+    "digitAdvanceWidths": [
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600,
+      600
+    ],
+    "hasTabularSubstitution": false,
+    "woffGlyphCount": 1033
+  }
+}

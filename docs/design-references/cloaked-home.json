@@ -1,0 +1,637 @@
+{
+  "url": "https://www.cloaked.com/",
+  "title": "Cloaked | Safeguard your online privacy",
+  "headings": [
+    {
+      "tag": "H1",
+      "font": "\"Simula Book\", Arial, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "lineHeight": "61.6px",
+      "letterSpacing": "-1.12px",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 129,
+        "y": 170,
+        "w": 543,
+        "h": 185
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"Simula Book\", Arial, sans-serif",
+      "size": "32px",
+      "weight": "300",
+      "lineHeight": "35.2px",
+      "letterSpacing": "normal",
+      "color": "rgb(251, 248, 239)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 122,
+        "y": 1359,
+        "w": 307,
+        "h": 35
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"Simula Book\", Arial, sans-serif",
+      "size": "32px",
+      "weight": "300",
+      "lineHeight": "35.2px",
+      "letterSpacing": "normal",
+      "color": "rgb(251, 248, 239)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 543,
+        "y": 1324,
+        "w": 307,
+        "h": 70
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"Simula Book\", Arial, sans-serif",
+      "size": "32px",
+      "weight": "300",
+      "lineHeight": "35.2px",
+      "letterSpacing": "normal",
+      "color": "rgb(251, 248, 239)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 963,
+        "y": 1324,
+        "w": 307,
+        "h": 70
+      }
+    }
+  ],
+  "styles": [
+    {
+      "tag": "A",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "17.6px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "12px 16px",
+      "gap": "normal 8px",
+      "radius": "1000px",
+      "box": {
+        "x": 1139,
+        "y": 58,
+        "w": 74,
+        "h": 36
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "17.6px",
+      "letterSpacing": "normal",
+      "color": "rgb(251, 248, 239)",
+      "background": "rgb(255, 85, 12)",
+      "padding": "0px 16px",
+      "gap": "normal",
+      "radius": "1000px",
+      "box": {
+        "x": 1220,
+        "y": 58,
+        "w": 115,
+        "h": 36
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "\"Simula Book\", Arial, sans-serif",
+      "size": "56px",
+      "weight": "400",
+      "lineHeight": "61.6px",
+      "letterSpacing": "-1.12px",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 129,
+        "y": 170,
+        "w": 543,
+        "h": 185
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "22.4px",
+      "letterSpacing": "normal",
+      "color": "rgb(160, 156, 143)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 122,
+        "y": 1406,
+        "w": 307,
+        "h": 90
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "22.4px",
+      "letterSpacing": "normal",
+      "color": "rgb(160, 156, 143)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 543,
+        "y": 1406,
+        "w": 307,
+        "h": 90
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "22.4px",
+      "letterSpacing": "normal",
+      "color": "rgb(160, 156, 143)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 963,
+        "y": 1406,
+        "w": 307,
+        "h": 90
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "16px",
+      "weight": "300",
+      "lineHeight": "17.6px",
+      "letterSpacing": "normal",
+      "color": "rgb(251, 248, 239)",
+      "background": "rgb(19, 15, 2)",
+      "padding": "0px 16px",
+      "gap": "normal",
+      "radius": "1000px",
+      "box": {
+        "x": 663,
+        "y": 4715,
+        "w": 115,
+        "h": 36
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "tag": "BODY",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 7100
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 113
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 39,
+        "w": 1440,
+        "h": 74
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "106px 80px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 652
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 80,
+        "y": 106,
+        "w": 1280,
+        "h": 546
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "24px",
+      "radius": "0px",
+      "box": {
+        "x": 129,
+        "y": 489,
+        "w": 543,
+        "h": 99
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 721,
+        "y": 106,
+        "w": 638,
+        "h": 546
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(243, 239, 226)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "32px",
+      "box": {
+        "x": 737,
+        "y": 122,
+        "w": 606,
+        "h": 514
+      }
+    },
+    {
+      "tag": "VIDEO",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(243, 239, 226)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "32px",
+      "box": {
+        "x": 737,
+        "y": 122,
+        "w": 606,
+        "h": 514
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(19, 15, 2)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 653,
+        "w": 1440,
+        "h": 1176
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 0px 0px 48px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 81,
+        "y": 749,
+        "w": 800,
+        "h": 190
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 1829,
+        "w": 1440,
+        "h": 1100
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 0px 0px 48px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 81,
+        "y": 1909,
+        "w": 742,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 16px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 81,
+        "y": 2177,
+        "w": 1278,
+        "h": 480
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 2930,
+        "w": 1440,
+        "h": 852
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 140px 0px 48px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 81,
+        "y": 3010,
+        "w": 916,
+        "h": 53
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 3783,
+        "w": 1440,
+        "h": 682
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 0px 0px 48px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 81,
+        "y": 3863,
+        "w": 518,
+        "h": 53
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 4466,
+        "w": 1440,
+        "h": 1236
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 346,
+        "y": 4562,
+        "w": 748,
+        "h": 190
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgb(251, 248, 239)",
+      "padding": "0px 80px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 5702,
+        "w": 1440,
+        "h": 558
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "Stkbureausans, Arial, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "14px",
+      "letterSpacing": "normal",
+      "color": "rgb(19, 15, 2)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "16px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 80,
+        "y": 5702,
+        "w": 1280,
+        "h": 558
+      }
+    }
+  ]
+}

@@ -1,0 +1,1663 @@
+{
+  "url": "https://www.gumloop.com/pricing",
+  "title": "Pricing | Gumloop",
+  "headings": [
+    {
+      "tag": "H1",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "48px",
+      "letterSpacing": "-1.2px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 181,
+        "w": 501,
+        "h": 96
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "36px",
+      "weight": "500",
+      "lineHeight": "45px",
+      "letterSpacing": "-0.9px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3001,
+        "w": 1360,
+        "h": 45
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3087,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3152,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3217,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3282,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3347,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3412,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3477,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3542,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "24px",
+      "weight": "500",
+      "lineHeight": "32px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3607,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "36px",
+      "weight": "500",
+      "lineHeight": "45px",
+      "letterSpacing": "-0.54px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 528,
+        "y": 3889,
+        "w": 384,
+        "h": 90
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 272,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 504,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 736,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 968,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1200,
+        "y": 4254,
+        "w": 200,
+        "h": 20
+      }
+    }
+  ],
+  "styles": [
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "8px",
+      "box": {
+        "x": 1404,
+        "y": 2,
+        "w": 28,
+        "h": 28
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 47,
+        "w": 96,
+        "h": 22
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 476,
+        "y": 40,
+        "w": 80,
+        "h": 37
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 557,
+        "y": 40,
+        "w": 87,
+        "h": 37
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 646,
+        "y": 46,
+        "w": 86,
+        "h": 28
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 734,
+        "y": 46,
+        "w": 63,
+        "h": 28
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 799,
+        "y": 46,
+        "w": 94,
+        "h": 28
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 8px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 895,
+        "y": 46,
+        "w": 69,
+        "h": 28
+      }
+    },
+    {
+      "tag": "A",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "lab(100 0 0)",
+      "padding": "0px 14px",
+      "gap": "6px",
+      "radius": "8px",
+      "box": {
+        "x": 1172,
+        "y": 42,
+        "w": 114,
+        "h": 32
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(100 0 0)",
+      "background": "lab(8.71272 -0.0959411 -1.57812)",
+      "padding": "0px 14px",
+      "gap": "6px",
+      "radius": "8px",
+      "box": {
+        "x": 1295,
+        "y": 42,
+        "w": 105,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "48px",
+      "letterSpacing": "-1.2px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 181,
+        "w": 501,
+        "h": 96
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(100 0 0)",
+      "background": "lab(8.71272 -0.0959411 -1.57812)",
+      "padding": "0px 14px",
+      "gap": "6px",
+      "radius": "8px",
+      "box": {
+        "x": 703,
+        "y": 587,
+        "w": 171,
+        "h": 32
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "lab(100 0 0)",
+      "padding": "0px 14px",
+      "gap": "6px",
+      "radius": "8px",
+      "box": {
+        "x": 1136,
+        "y": 587,
+        "w": 120,
+        "h": 32
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 657,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 714,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 771,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 828,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 885,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 991,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1048,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1154,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1211,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1268,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1374,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1431,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1488,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1545,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1651,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1708,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1765,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1822,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1879,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1936,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 1993,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2050,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2107,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2164,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2221,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2278,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2335,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2392,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2449,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2555,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2612,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2718,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2775,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "8px",
+      "radius": "0px",
+      "box": {
+        "x": 57,
+        "y": 2832,
+        "w": 511,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "36px",
+      "weight": "500",
+      "lineHeight": "45px",
+      "letterSpacing": "-0.9px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 40,
+        "y": 3001,
+        "w": 1360,
+        "h": 45
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3087,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3152,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3217,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3282,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3347,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3412,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3477,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3542,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "20px 0px",
+      "gap": "16px",
+      "radius": "8px",
+      "box": {
+        "x": 40,
+        "y": 3607,
+        "w": 1360,
+        "h": 64
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Gellix, \"Gellix Fallback\"",
+      "size": "36px",
+      "weight": "500",
+      "lineHeight": "45px",
+      "letterSpacing": "-0.54px",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 528,
+        "y": 3889,
+        "w": 384,
+        "h": 90
+      }
+    },
+    {
+      "tag": "P",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "26px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.488649 0.00388773 -0.0136895 / 0.88)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 528,
+        "y": 3995,
+        "w": 360,
+        "h": 78
+      }
+    },
+    {
+      "tag": "P",
+      "font": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -1,
+        "y": -1,
+        "w": 1,
+        "h": 1
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "tag": "BODY",
+      "font": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "lab(98.84 0.0000298023 -0.0000119209)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 4857
+      }
+    },
+    {
+      "tag": "MAIN",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 4857
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "lab(98.84 0.0000298023 -0.0000119209)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 4857
+      }
+    },
+    {
+      "tag": "MAIN",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 85,
+        "w": 1440,
+        "h": 4772
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 85,
+        "w": 1440,
+        "h": 232
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "24px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 317,
+        "w": 1440,
+        "h": 128
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "64px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 445,
+        "w": 1440,
+        "h": 2492
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "64px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 2937,
+        "w": 1440,
+        "h": 799
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "GeistSans, \"GeistSans Fallback\"",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "lab(8.70976 -0.096187 -1.58296)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "40px 0px 24px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 3736,
+        "w": 1440,
+        "h": 478
+      }
+    }
+  ]
+}

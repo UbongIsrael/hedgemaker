@@ -1,0 +1,130 @@
+{
+  "id": "cloaked",
+  "top": [
+    {
+      "text": "",
+      "url": "https://www.cloaked.com/"
+    },
+    {
+      "text": "Pricing",
+      "url": "https://www.cloaked.com/plans"
+    },
+    {
+      "text": "Enterprise",
+      "url": "https://business.cloaked.com/"
+    },
+    {
+      "text": "Login",
+      "url": "https://my.cloaked.com/"
+    },
+    {
+      "text": "Get Started",
+      "url": "https://www.cloaked.com/get-started"
+    }
+  ],
+  "menus": [
+    {
+      "label": "Features",
+      "links": [
+        {
+          "text": "Phone Number and Email Aliases Never give out your personal info again",
+          "url": "https://www.cloaked.com/features/identities"
+        },
+        {
+          "text": "Data Removal Remove personal info from 1000+ sites",
+          "url": "https://www.cloaked.com/features/data-removal"
+        },
+        {
+          "text": "Identity Theft Insurance $1 million insurance against identity theft",
+          "url": "https://www.cloaked.com/features/identity-theft-insurance"
+        },
+        {
+          "text": "Call Guard Block spam calls and robocalls instantly",
+          "url": "https://www.cloaked.com/features/call-guard"
+        },
+        {
+          "text": "All features",
+          "url": "https://www.cloaked.com/features"
+        },
+        {
+          "text": "Dark Web & SSN Monitoring Real-time alerts for dark web exposures",
+          "url": "https://www.cloaked.com/features/dark-web-ssn-monitoring"
+        },
+        {
+          "text": "Cloaked VPN Browse securely and privately",
+          "url": "https://www.cloaked.com/features/cloaked-vpn"
+        },
+        {
+          "text": "Privacy Actions New Your personal privacy agent",
+          "url": "https://www.cloaked.com/features/privacy-actions"
+        },
+        {
+          "text": "Cloaked Pay Invite only A secure and private way to pay",
+          "url": "https://www.cloaked.com/features/cloaked-pay"
+        }
+      ]
+    },
+    {
+      "label": "Resources",
+      "links": [
+        {
+          "text": "Downloads Get Cloaked on every device",
+          "url": "https://www.cloaked.com/downloads"
+        },
+        {
+          "text": "Security How we keep your data safe",
+          "url": "https://www.cloaked.com/trust"
+        },
+        {
+          "text": "Privacy Policy Why you can trust us",
+          "url": "https://www.cloaked.com/legal/privacy-policy"
+        },
+        {
+          "text": "Opt Out Guides Step-by-step instructions",
+          "url": "https://www.cloaked.com/opt-out-guides"
+        },
+        {
+          "text": "Changelog What's new in Cloaked",
+          "url": "https://www.cloaked.com/changelog"
+        },
+        {
+          "text": "Blog News, updates, and privacy tips Visit",
+          "url": "https://www.cloaked.com/blog"
+        },
+        {
+          "text": "Research Hub Explore our latest findings on data privacy and online safety Visit",
+          "url": "https://www.cloaked.com/research-hub"
+        }
+      ]
+    },
+    {
+      "label": "About",
+      "links": [
+        {
+          "text": "Investors Top thought leaders believe in Cloaked",
+          "url": "https://www.cloaked.com/investors"
+        },
+        {
+          "text": "In the Press See where we are making news",
+          "url": "https://www.cloaked.com/in-the-press"
+        },
+        {
+          "text": "Contact Us Get in touch with us",
+          "url": "https://www.cloaked.com/contact-us"
+        },
+        {
+          "text": "Careers Join us in building the future of privacy",
+          "url": "https://jobs.ashbyhq.com/cloaked"
+        },
+        {
+          "text": "About Cloaked Why we are building Cloaked Visit",
+          "url": "https://www.cloaked.com/about"
+        },
+        {
+          "text": "MyDataAct Help pass privacy protection into law Visit",
+          "url": "https://mydataact.org/"
+        }
+      ]
+    }
+  ]
+}

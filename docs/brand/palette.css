@@ -1,0 +1,20 @@
+/* Selected brand tokens. Reference only; not imported by the application yet. */
+:root {
+  --brand-green: #0B493A;
+  --brand-paper: #F4F1E8;
+  --brand-ink: #111E26;
+  --brand-blue: #2563EB;
+  --brand-lime: #DAFF01;
+  --brand-clay: #B9472F;
+  --brand-mint: #DCEEE4;
+  --brand-burgundy: #701C2D;
+  --color-surface: #FFFFFF;
+  --color-text-muted: #53645E;
+  --color-line: #D4DBD4;
+  --color-control-border: #71857A;
+  --color-blue-tint: #F0F4FF;
+  --color-green-hover: #07392D;
+  --color-blue-hover: #174DCA;
+  --color-success: #16734F;
+  --color-danger: #B42332;
+}

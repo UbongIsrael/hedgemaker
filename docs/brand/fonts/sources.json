@@ -1,0 +1,88 @@
+{
+  "repository": "google/fonts",
+  "commit": "7085eb89a950e85db5b166b7a58d414544b4140c",
+  "retrieved": "2026-10-06",
+  "files": [
+    {
+      "file": "space-grotesk/SpaceGrotesk[wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf",
+      "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
+    },
+    {
+      "file": "space-grotesk/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/spacegrotesk/OFL.txt",
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "file": "manrope/Manrope[wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/manrope/Manrope%5Bwght%5D.ttf",
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+    },
+    {
+      "file": "manrope/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/manrope/OFL.txt",
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    {
+      "file": "ibm-plex-mono/IBMPlexMono-Regular.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/ibmplexmono/IBMPlexMono-Regular.ttf",
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46"
+    },
+    {
+      "file": "ibm-plex-mono/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/ibmplexmono/OFL.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "file": "dm-sans/DMSans[opsz,wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/dmsans/DMSans%5Bopsz%2Cwght%5D.ttf",
+      "sha256": "8cd08d97e89c24d0aa92edd2f0f4c8ee6195eee9b7c9f154865a58b02f0c1c0d"
+    },
+    {
+      "file": "dm-sans/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/dmsans/OFL.txt",
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "file": "ibm-plex-sans/IBMPlexSans-Italic[wdth,wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/ibmplexsans/IBMPlexSans-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "0b94c5e981993764db32bf9c610ecc60cbd34ad77ec2f10ba03c64ab75124d8e"
+    },
+    {
+      "file": "ibm-plex-sans/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/ibmplexsans/OFL.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "file": "ibm-plex-sans/IBMPlexSans[wdth,wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/ibmplexsans/IBMPlexSans%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "3b031aa4216174205bd8471f88a49b91f093169e9e87bd5262242bc5967fe2e3"
+    }
+  ],
+  "selectedFamilies": [
+    "space-grotesk",
+    "ibm-plex-sans",
+    "ibm-plex-mono"
+  ],
+  "auditedAlternatives": {
+    "manrope": "Not selected: downloaded Google Fonts build lacks U+20A6 naira.",
+    "dm-sans": "Not selected: downloaded Google Fonts build lacks U+20A6 and Yoruba precomposed characters."
+  },
+  "preparedWoff": [
+    {
+      "file": "space-grotesk/space-grotesk.woff",
+      "source": "space-grotesk/SpaceGrotesk[wght].ttf",
+      "sha256": "d83a93742aabc807431b401ec4e064681e1e1cd6975128e49e88e4d9bcca6a91"
+    },
+    {
+      "file": "ibm-plex-sans/ibm-plex-sans.woff",
+      "source": "ibm-plex-sans/IBMPlexSans[wdth,wght].ttf",
+      "sha256": "3777ae5d409c002e703186fa7639398e7d5d75d9534da468f8b24432312f41a7"
+    },
+    {
+      "file": "ibm-plex-mono/ibm-plex-mono.woff",
+      "source": "ibm-plex-mono/IBMPlexMono-Regular.ttf",
+      "sha256": "5d31201a8a8c9ddf2d70aaf3161b96a84a5b753711b072a9026c3644fd213e9f"
+    }
+  ]
+}

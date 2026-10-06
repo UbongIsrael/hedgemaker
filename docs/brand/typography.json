@@ -1,0 +1,117 @@
+{
+  "status": "final selected website type system",
+  "fonts": {
+    "display": "Space Grotesk",
+    "body": "IBM Plex Sans",
+    "technical": "IBM Plex Mono"
+  },
+  "roles": {
+    "marketingHero": {
+      "family": "display",
+      "weight": 600,
+      "sizePx": [
+        40,
+        80
+      ],
+      "lineHeight": 1.05,
+      "letterSpacingEm": -0.035
+    },
+    "marketingSection": {
+      "family": "display",
+      "weight": 600,
+      "sizePx": [
+        32,
+        48
+      ],
+      "lineHeight": 1.12,
+      "letterSpacingEm": -0.025
+    },
+    "productHeading": {
+      "family": "display",
+      "weight": 600,
+      "sizePx": [
+        28,
+        36
+      ],
+      "lineHeight": 1.15
+    },
+    "marketingBody": {
+      "family": "body",
+      "weight": 400,
+      "sizePx": 18,
+      "lineHeight": 1.55,
+      "maxWidthCh": 65
+    },
+    "productBody": {
+      "family": "body",
+      "weight": 400,
+      "sizePx": 16,
+      "lineHeight": 1.55
+    },
+    "control": {
+      "family": "body",
+      "weight": 500,
+      "sizePx": [
+        14,
+        16
+      ],
+      "lineHeight": 1.4
+    },
+    "financialRow": {
+      "family": "display",
+      "weight": 500,
+      "sizePx": [
+        16,
+        20
+      ],
+      "lineHeight": 1.4,
+      "numericFeatures": [
+        "lnum",
+        "tnum"
+      ],
+      "letterSpacingEm": 0
+    },
+    "financialSummary": {
+      "family": "display",
+      "weight": 500,
+      "sizePx": [
+        28,
+        40
+      ],
+      "lineHeight": 1.2,
+      "numericFeatures": [
+        "lnum",
+        "tnum"
+      ],
+      "letterSpacingEm": 0
+    },
+    "technical": {
+      "family": "technical",
+      "weight": 400,
+      "sizePx": [
+        13,
+        14
+      ],
+      "lineHeight": 1.5
+    },
+    "secondary": {
+      "family": "body",
+      "weight": 400,
+      "sizePx": 14,
+      "lineHeight": 1.5
+    }
+  },
+  "logo": {
+    "selectedDirection": "03-currency-wordmark",
+    "selectedBy": "user",
+    "name": "Currency-cut wordmark",
+    "assetDirectory": "src/assets/brand/logo",
+    "preserveTerminalR": true,
+    "wordmark": "custom concept lettering; not an exact font rendering",
+    "format": "PNG raster asset; vector master pending production preparation",
+    "backgroundVariants": [
+      "light",
+      "dark"
+    ]
+  }
+}

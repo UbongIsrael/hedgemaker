@@ -1,0 +1,130 @@
+[
+  {
+    "pair": "Ink / paper",
+    "foreground": "#111E26",
+    "background": "#F4F1E8",
+    "ratio": 15.0251,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Muted text / paper",
+    "foreground": "#53645E",
+    "background": "#F4F1E8",
+    "ratio": 5.5466,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "White / green",
+    "foreground": "#FFFFFF",
+    "background": "#0B493A",
+    "ratio": 10.3533,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Lime / green",
+    "foreground": "#DAFF01",
+    "background": "#0B493A",
+    "ratio": 9.015,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Ink / lime",
+    "foreground": "#111E26",
+    "background": "#DAFF01",
+    "ratio": 14.7758,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Blue / paper",
+    "foreground": "#2563EB",
+    "background": "#F4F1E8",
+    "ratio": 4.5764,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "White / blue",
+    "foreground": "#FFFFFF",
+    "background": "#2563EB",
+    "ratio": 5.1686,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Clay / paper",
+    "foreground": "#B9472F",
+    "background": "#F4F1E8",
+    "ratio": 4.6425,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "White / clay",
+    "foreground": "#FFFFFF",
+    "background": "#B9472F",
+    "ratio": 5.2432,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Green / mint",
+    "foreground": "#0B493A",
+    "background": "#DCEEE4",
+    "ratio": 8.5751,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Paper / burgundy",
+    "foreground": "#F4F1E8",
+    "background": "#701C2D",
+    "ratio": 9.8228,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Blue / blue tint",
+    "foreground": "#2563EB",
+    "background": "#F0F4FF",
+    "ratio": 4.6983,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Success / paper",
+    "foreground": "#16734F",
+    "background": "#F4F1E8",
+    "ratio": 5.166,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Danger / paper",
+    "foreground": "#B42332",
+    "background": "#F4F1E8",
+    "ratio": 5.7618,
+    "normalTextAA": true,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Control border / paper",
+    "foreground": "#71857A",
+    "background": "#F4F1E8",
+    "ratio": 3.4832,
+    "normalTextAA": false,
+    "largeTextAndNonTextAA": true
+  },
+  {
+    "pair": "Decorative line / paper",
+    "foreground": "#D4DBD4",
+    "background": "#F4F1E8",
+    "ratio": 1.2494,
+    "normalTextAA": false,
+    "largeTextAndNonTextAA": false
+  }
+]

@@ -1,0 +1,2290 @@
+{
+  "url": "https://www.auxia.io/agent-studio",
+  "title": "Agent Studio",
+  "headings": [
+    {
+      "tag": "H1",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "104px",
+      "weight": "500",
+      "lineHeight": "98.8px",
+      "letterSpacing": "-3.12px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 218,
+        "w": 800,
+        "h": 296
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 1309,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1424,
+        "w": 469,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1522,
+        "w": 473,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1620,
+        "w": 476,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 2078,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2193,
+        "w": 456,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2291,
+        "w": 467,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2389,
+        "w": 475,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 2821,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 2936,
+        "w": 481,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 3034,
+        "w": 465,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 3152,
+        "w": 437,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 3683,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 3798,
+        "w": 485,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 3895,
+        "w": 449,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 3993,
+        "w": 475,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 4519,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4634,
+        "w": 486,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4731,
+        "w": 433,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4829,
+        "w": 475,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 5193,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5308,
+        "w": 485,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5405,
+        "w": 461,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "20px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5503,
+        "w": 445,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 268,
+        "y": 5837,
+        "w": 904,
+        "h": 122
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 6767,
+        "w": 580,
+        "h": 122
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 148,
+        "y": 8371,
+        "w": 274,
+        "h": 91
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 8814,
+        "w": 698,
+        "h": 122
+      }
+    }
+  ],
+  "styles": [
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1376,
+        "y": 8,
+        "w": 24,
+        "h": 24
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 737,
+        "y": 57,
+        "w": 76,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 814,
+        "y": 57,
+        "w": 141,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 955,
+        "y": 57,
+        "w": 66,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "8px 20px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 1164,
+        "y": 58,
+        "w": 154,
+        "h": 37
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1352,
+        "y": 66,
+        "w": 48,
+        "h": 19
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "104px",
+      "weight": "500",
+      "lineHeight": "98.8px",
+      "letterSpacing": "-3.12px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 218,
+        "w": 800,
+        "h": 296
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgba(35, 35, 35, 0.9)",
+      "background": "rgb(240, 239, 227)",
+      "padding": "14px 24px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 936,
+        "y": 414,
+        "w": 168,
+        "h": 53
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 1279,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 1309,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1456,
+        "w": 469,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1554,
+        "w": 473,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 1652,
+        "w": 476,
+        "h": 62
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 2048,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 2078,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2225,
+        "w": 456,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2323,
+        "w": 467,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 2421,
+        "w": 475,
+        "h": 62
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 2791,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 2821,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 2968,
+        "w": 481,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 3066,
+        "w": 465,
+        "h": 62
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 3184,
+        "w": 437,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 3652,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 3683,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 3830,
+        "w": 485,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 3927,
+        "w": 449,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 4025,
+        "w": 475,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 4488,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 4519,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4666,
+        "w": 486,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4763,
+        "w": 433,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 120,
+        "y": 4861,
+        "w": 475,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 5163,
+        "w": 504,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 832,
+        "y": 5193,
+        "w": 504,
+        "h": 91
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5340,
+        "w": 485,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5437,
+        "w": 461,
+        "h": 42
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 848,
+        "y": 5535,
+        "w": 445,
+        "h": 42
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 268,
+        "y": 5837,
+        "w": 904,
+        "h": 122
+      }
+    },
+    {
+      "tag": "P",
+      "font": "\"IBM Plex Mono\", Arial, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "18.2px",
+      "letterSpacing": "0.196px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 6725,
+        "w": 77,
+        "h": 18
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 6767,
+        "w": 580,
+        "h": 122
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "48px",
+      "weight": "500",
+      "lineHeight": "45.6px",
+      "letterSpacing": "-1.44px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 148,
+        "y": 8371,
+        "w": 274,
+        "h": 91
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgba(35, 35, 35, 0.9)",
+      "background": "rgb(240, 239, 227)",
+      "padding": "14px 24px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 1139,
+        "y": 8390,
+        "w": 153,
+        "h": 53
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 8814,
+        "w": 698,
+        "h": 122
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "14px 24px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 104,
+        "y": 8968,
+        "w": 164,
+        "h": 49
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgba(255, 255, 255, 0.7)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "14px 24px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 284,
+        "y": 8968,
+        "w": 165,
+        "h": 49
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "tag": "BODY",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgb(240, 239, 227)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 9976
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 40
+      }
+    },
+    {
+      "tag": "MAIN",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 9197
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "112px 0px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 869
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "64px 0px",
+      "gap": "80px",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 112,
+        "w": 1232,
+        "h": 757
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "24px",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 176,
+        "w": 1232,
+        "h": 339
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "16px",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 218,
+        "w": 1232,
+        "h": 296
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 218,
+        "w": 800,
+        "h": 296
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "40px",
+      "radius": "0px",
+      "box": {
+        "x": 936,
+        "y": 218,
+        "w": 400,
+        "h": 249
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 936,
+        "y": 414,
+        "w": 168,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "16px 16px 0px 0px",
+      "box": {
+        "x": 104,
+        "y": 595,
+        "w": 1232,
+        "h": 210
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 728,
+        "w": 1440,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 20px 0px 0px",
+      "gap": "20px",
+      "radius": "0px",
+      "box": {
+        "x": -528,
+        "y": 728,
+        "w": 2122,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -528,
+        "y": 728,
+        "w": 277,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -512,
+        "y": 744,
+        "w": 245,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -231,
+        "y": 728,
+        "w": 258,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -215,
+        "y": 744,
+        "w": 226,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 46,
+        "y": 728,
+        "w": 256,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 62,
+        "y": 744,
+        "w": 224,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 322,
+        "y": 728,
+        "w": 241,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 338,
+        "y": 744,
+        "w": 209,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 583,
+        "y": 728,
+        "w": 281,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 599,
+        "y": 744,
+        "w": 249,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 885,
+        "y": 728,
+        "w": 102,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 901,
+        "y": 744,
+        "w": 70,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1007,
+        "y": 728,
+        "w": 324,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1023,
+        "y": 744,
+        "w": 292,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1350,
+        "y": 728,
+        "w": 224,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1366,
+        "y": 744,
+        "w": 192,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px 20px 0px 0px",
+      "gap": "20px",
+      "radius": "0px",
+      "box": {
+        "x": 1595,
+        "y": 728,
+        "w": 2122,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1595,
+        "y": 728,
+        "w": 277,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1611,
+        "y": 744,
+        "w": 245,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1891,
+        "y": 728,
+        "w": 258,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1907,
+        "y": 744,
+        "w": 226,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2169,
+        "y": 728,
+        "w": 256,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2185,
+        "y": 744,
+        "w": 224,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2445,
+        "y": 728,
+        "w": 241,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2461,
+        "y": 744,
+        "w": 209,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2706,
+        "y": 728,
+        "w": 281,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 2722,
+        "y": 744,
+        "w": 249,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 3007,
+        "y": 728,
+        "w": 102,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 3023,
+        "y": 744,
+        "w": 70,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 3129,
+        "y": 728,
+        "w": 324,
+        "h": 53
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 3145,
+        "y": 744,
+        "w": 292,
+        "h": 21
+      }
+    },
+    {
+      "tag": "DIV",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(35, 35, 35)",
+      "padding": "16px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 3472,
+        "y": 728,
+        "w": 224,
+        "h": 53
+      }
+    }
+  ]
+}

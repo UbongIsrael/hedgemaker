@@ -1,0 +1,428 @@
+{
+  "url": "https://www.auxia.io/about-us",
+  "title": "About Auxia | AI-Native Customer Interaction Platform",
+  "headings": [
+    {
+      "tag": "H1",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "104px",
+      "weight": "500",
+      "lineHeight": "98.8px",
+      "letterSpacing": "-3.12px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 201,
+        "w": 876,
+        "h": 296
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 1261,
+        "w": 715,
+        "h": 182
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 2280,
+        "w": 1096,
+        "h": 61
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 3880,
+        "w": 480,
+        "h": 122
+      }
+    }
+  ],
+  "styles": [
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(11, 79, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1376,
+        "y": 8,
+        "w": 24,
+        "h": 24
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 737,
+        "y": 57,
+        "w": 76,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 814,
+        "y": 57,
+        "w": 141,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px 16px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 955,
+        "y": 57,
+        "w": 66,
+        "h": 39
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "8px 20px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 1164,
+        "y": 58,
+        "w": 154,
+        "h": 37
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1352,
+        "y": 66,
+        "w": 48,
+        "h": 19
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "104px",
+      "weight": "500",
+      "lineHeight": "98.8px",
+      "letterSpacing": "-3.12px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 201,
+        "w": 876,
+        "h": 296
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 1261,
+        "w": 715,
+        "h": 182
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 2280,
+        "w": 1096,
+        "h": 61
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "64px",
+      "weight": "500",
+      "lineHeight": "60.8px",
+      "letterSpacing": "-1.92px",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 104,
+        "y": 3880,
+        "w": 480,
+        "h": 122
+      }
+    },
+    {
+      "tag": "A",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "14px 24px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 832,
+        "y": 3954,
+        "w": 184,
+        "h": 52
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "tag": "BODY",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgb(240, 239, 227)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 5386
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 40
+      }
+    },
+    {
+      "tag": "MAIN",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 4606
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 1149
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(240, 239, 227)",
+      "background": "rgb(11, 79, 255)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 1149,
+        "w": 1440,
+        "h": 957
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 2105,
+        "w": 1440,
+        "h": 1630
+      }
+    },
+    {
+      "tag": "SECTION",
+      "font": "\"PP Neue Montreal\", Arial, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "20.8px",
+      "letterSpacing": "normal",
+      "color": "rgb(35, 35, 35)",
+      "background": "rgb(230, 229, 216)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 3735,
+        "w": 1440,
+        "h": 871
+      }
+    }
+  ]
+}
