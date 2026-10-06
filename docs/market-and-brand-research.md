@@ -120,3 +120,9 @@ Primary sources establish that benchmarks, competing products and certain regula
 Some official sites served only search-indexed content or dynamically loaded pages. No production feed was connected, and no legal framework was treated as complete solely because an old warning or a consultation document was available. Dates matter: Kenya's cited document is a March 2026 draft notice; Egypt's warnings are from 2022/2023; Bangladesh's cited prohibition is from 2022; Pakistan's cited change is from April 2026. Verify subsequent instruments during country diligence.
 
 The decision I recommend now is to retain HedgeMaker, establish a general currency-risk brand with Nigerian origin, keep USD/NGN as the first product and acquisition focus, and use Ghana/Kenya discovery to choose the first expansion. Leave the detailed claim of universal currency coverage for when the product can substantiate it.
+
+## Copy implementation follow-up, 6 October 2026
+
+Following the requested copy review, the frontend review branch applies the currency-risk positioning: “Currency risk. More control.” opens the hero, “Explore a new way to manage exchange-rate risk, starting with USD/NGN.” supports the existing tagline, and the footer states “Built in Nigeria. Building for more markets.” The shared market-maker introduction now begins with the currency-hedging infrastructure mission and immediately describes the current Monad testnet scope.
+
+The existing market headline, routes, buyer/seller explanations, demo status, and risk disclosures remain. Additional-market availability and future SDK/API claims are not introduced. See [design.md](../design.md#market-and-brand-research-copy-direction) for the implementation decision and [the redesign review](redesign/README.md) for validation.

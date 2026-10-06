@@ -104,7 +104,8 @@ export function AppShell() {
           <Link className="brand brand--footer" to="/" aria-label="HedgeMaker home">
             <BrandLogo dark />
           </Link>
-          <p>Explore protection against changes in the dollar–naira exchange rate.</p>
+          <p>Explore a new way to manage exchange-rate risk, starting with USD/NGN.</p>
+          <p className="site-footer__origin">Built in Nigeria. Building for more markets.</p>
         </div>
         <div className="site-footer__links">
           <Link to="/market">Explore the market</Link>

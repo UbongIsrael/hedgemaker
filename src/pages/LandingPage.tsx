@@ -49,12 +49,12 @@ export function LandingPage() {
     <div className="landing-page brand-marketing">
       <PageMetadata
         title="HedgeMaker | Hedge the rate. Keep the plan."
-        description="Explore protection for future dollar purchases or sales in HedgeMaker’s USD/NGN testnet demo. Protection is limited to the funds backing each hedge."
+        description="Explore a new way to manage exchange-rate risk, starting with USD/NGN. HedgeMaker’s testnet demo uses sample rates and test tokens; protection is limited to the funds backing each hedge."
       />
       <section className="brand-hero page-shell" aria-labelledby="home-title">
         <div className="brand-hero__copy">
           <span className="brand-kicker">
-            Your plans, with a little more control.
+            Currency risk. More control.
           </span>
           <h1 id="home-title">
             Hedge the rate.
@@ -62,8 +62,8 @@ export function LandingPage() {
             <span>Keep the plan.</span>
           </h1>
           <p>
-            Plan ahead for dollar–naira rate changes. Explore protection for
-            future dollar purchases or sales.
+            Explore a new way to manage exchange-rate risk, starting with
+            USD/NGN.
           </p>
           <div className="brand-actions">
             <Link className="hm-button hm-button--lg" to="/market">

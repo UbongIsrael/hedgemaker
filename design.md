@@ -217,3 +217,15 @@ Motion uses native CSS transforms and a small React state layer. No scroll hijac
 Market, overview, positions, wallet, guide, and integration retain their working components and disclosures. Shared branding and compact product headings improve consistency; mobile table-label containment and card shrinking fix narrow-screen overflow. The learning example calls the existing BigInt payoff function and separates calculated value from available funds.
 
 See [the implementation review](docs/redesign/README.md), [browser results](docs/redesign/browser-review.json), and [desktop hero](docs/redesign/screenshots/home-hero.png). This branch is for review before merge. Canonical reads, real authentication, and transactions require their own environment verification; the visual review uses local demo authentication and sends no transactions.
+
+
+### Market and brand research: copy direction
+
+The [Brand, marketing and Nigerian identity section](docs/market-and-brand-research.md#brand-marketing-and-nigerian-identity) guides the company voice: currency-risk management is the broader promise; Nigeria is the origin; USD/NGN is the first product focus.
+
+- Opening brand line: **Currency risk. More control.** The hero retains **Hedge the rate. Keep the plan.** as its action-oriented headline.
+- Hero support and company description: **Explore a new way to manage exchange-rate risk, starting with USD/NGN.** The visible demo status and limits remain alongside this message.
+- Origin and ambition: **Built in Nigeria. Building for more markets.** Appears in the footer as company intent, not a list of available markets.
+- Partner narrative: **We’re building currency-hedging infrastructure, starting with USD/NGN.** The introduction then describes the current Monad testnet instrument and market-maker role.
+
+Product examples retain their concrete buyer/seller goals and USD/NGN context. Expansion candidates remain research, and no additional market, SDK, API, guaranteed payout, or real-money capability is advertised by this copy update.

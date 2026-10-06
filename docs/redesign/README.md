@@ -14,6 +14,8 @@ The audited interface used serif headings, a generic H mark, a tilted quote pane
 | Cloaked | Human context through image cards | Nigerian entrepreneur and creative-workspace imagery, plus a risk-focused still life; readable copy below photographs |
 | Gumloop Enterprise | Direct participation/contact split with clear resources | Market-maker copy beside the existing application handoff; compact role rows; retained economics, planned capabilities, and capital-risk sections |
 
+The [market and brand research](../market-and-brand-research.md#brand-marketing-and-nigerian-identity) also guides the company voice: “Currency risk. More control.” opens the hero, the original tagline remains its headline, supporting copy says “starting with USD/NGN,” the footer states Nigerian origin and broader-market ambition, and the market-maker introduction explains the infrastructure direction alongside the current testnet scope. Expansion candidates remain research rather than advertised availability.
+
 The buyer/seller image links lead to their respective example; the seller uses `/market?side=seller`, preserving the existing route. Marketing visuals contain no invented rates, clients, testimonials, or guaranteed outcomes. The interactive learning example calls the existing BigInt `buyerPayoffRaw` calculation, explicitly labels calculated values, and retains the original formula and worked examples.
 
 ## Taste Skill review
@@ -50,3 +52,7 @@ Browser checks of protected pages used an isolated local demo-auth preview with 
 - [Artwork provenance and originals](images/manifest.json)
 
 The favicon is an SVG container around the selected raster symbol, not a traced vector master. Exact vector, transparent, and monochrome logo masters remain future asset work; the frontend uses the existing chosen artwork.
+
+## Brand-copy follow-up
+
+Applied the market/brand research positioning to the hero's opening line and support, the shared footer, homepage metadata, and the market-maker/guide introduction. The original hero tagline and product-page headline remain. Lint and the production build were re-run; [copy review results](copy-review.json) cover the revised surfaces at five viewport widths. Review screenshots were refreshed.
