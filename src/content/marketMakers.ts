@@ -62,7 +62,7 @@ export const marketMakerRelease = {
 export const marketMakerCopy = {
   heading: 'Make a market for the next dollar–naira hedge.',
   lead: 'Bring your pricing expertise to HedgeMaker. Help users find the other side of their USD/NGN exposure, and help shape the market’s next stage.',
-  introduction: 'HedgeMaker is building a collateral-backed USD/NGN forward market on Monad. It is designed for people and businesses planning future dollar purchases or sales. Market makers can help bridge differences in when those users arrive, how much they need, and which side they take.',
+  introduction: 'We’re building currency-hedging infrastructure, starting with USD/NGN. The current testnet explores a collateral-backed forward market on Monad for people and businesses planning future dollar purchases or sales. Market makers can help bridge differences in when those users arrive, how much they need, and which side they take.',
   apply: 'Apply to be a market maker',
   guide: 'Explore the market-maker guide',
   homeHeading: 'Are you a market maker? Help shape USD/NGN liquidity.',

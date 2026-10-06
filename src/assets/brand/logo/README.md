@@ -14,7 +14,7 @@ The original display order differed from the archive filenames. The third displa
 
 The user confirmed `02-woven-monogram` as the intended main file. Its custom “HedgeMaker” lettering is the wordmark; the HM shape is the accompanying symbol. The full selected logo includes both.
 
-Both PNGs are unmodified copies of the selected concept outputs, 1983 × 793, with opaque backgrounds. These are the canonical selected raster assets. The upcoming frontend redesign includes preparing precise vector, transparent, monochrome, and favicon versions while preserving the chosen wordmark design.
+Both PNGs are unmodified copies of the selected concept outputs, 1983 × 793, with opaque backgrounds. These are the canonical selected raster assets. The frontend uses WebP delivery copies encoded from these original PNGs, preserving their dimensions, artwork, and composition. `BrandLogo` trims outer whitespace in CSS. `public/favicon.svg` frames the original HM bitmap without tracing or inventing new geometry. Precise vector, transparent, and monochrome masters remain separate asset-preparation work.
 
 All six original concepts remain in [`docs/brand/logos/`](../../../../docs/brand/logos/README.txt). The other directions are archived alternatives, not main logo variants. A selected-logo ZIP is available at [`hedgemaker-main-logo.zip`](../../../../docs/brand/logos/hedgemaker-main-logo.zip).
 

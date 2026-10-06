@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-06",
+  "source": "OpenAI image generation, original HedgeMaker art direction",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "subjects": "Active artwork depicts illustrative price direction on devices, not a live product screenshot or quoted price. Initial generated people and sculpture remain archived.",
+  "delivery": "Whole original image encoded to WebP at quality 88. Layout crops use CSS object-fit; no artwork redrawn.",
+  "entries": [
+    {
+      "name": "currency-sculpture",
+      "original": "docs/redesign/images/currency-sculpture-original.png",
+      "delivery": "src/assets/brand/images/currency-sculpture.webp",
+      "generatedFile": "exec-f88d4fe3-98d4-4ab9-b05c-0f96d7df6a8d.png",
+      "use": "Preserved for reference; no longer used by active pages",
+      "sha256": "99388e0f8e7381b202d1d068daade4b0edc6e3648e3c6420a758427ab36033f8",
+      "status": "archived initial concept",
+      "previousUse": "Hero, risk image card, learning hero, market-maker participation"
+    },
+    {
+      "name": "importer",
+      "original": "docs/redesign/images/importer-original.png",
+      "delivery": "src/assets/brand/images/importer.webp",
+      "generatedFile": "exec-56da6ffc-163e-49e4-ad83-a19a42dc872e.png",
+      "use": "Preserved for reference; no longer used by active pages",
+      "sha256": "53dffa737b269afac286a691a93a574524b15b255b159c4af87013131c4a5ddf",
+      "status": "archived initial concept",
+      "previousUse": "Buyer image card"
+    },
+    {
+      "name": "dollar-earner",
+      "original": "docs/redesign/images/dollar-earner-original.png",
+      "delivery": "src/assets/brand/images/dollar-earner.webp",
+      "generatedFile": "exec-1ecebef5-9a0f-492f-9c30-6d926140ddfc.png",
+      "use": "Preserved for reference; no longer used by active pages",
+      "sha256": "c1139a73e4272b8ca268691f4e52aa3b18e1537d67e179548a8a095dcedf9b8e",
+      "status": "archived initial concept",
+      "previousUse": "Seller image card"
+    },
+    {
+      "name": "buyer-price-phone",
+      "status": "active price illustration",
+      "original": "docs/redesign/images/buyer-price-phone-original.png",
+      "delivery": "src/assets/brand/images/buyer-price-phone.webp",
+      "generatedFile": "exec-151b9b21-5a20-459a-ab93-5e75308d8647.png",
+      "use": "Buyer image card and learning hero",
+      "sha256": "247cbeaa4f5cf213b619a6fc2b508033cf149bbcc9496ef9675a1b00867991cd"
+    },
+    {
+      "name": "seller-price-phone",
+      "status": "active price illustration",
+      "original": "docs/redesign/images/seller-price-phone-original.png",
+      "delivery": "src/assets/brand/images/seller-price-phone.webp",
+      "generatedFile": "exec-ea1fe3c2-7851-4c69-8474-fc44031164d3.png",
+      "use": "Seller image card",
+      "sha256": "9c518cb2f1bf6774c9109ec73c3e534f6fc32d9389dbb88e90d5e366c99dc622"
+    }
+  ]
+}

@@ -1,24 +1,24 @@
 :root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #17211d;
-  background: #f3f0e7;
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  color: #111E26;
+  background: #F4F1E8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ink: #17211d;
-  --ink-soft: #52605a;
-  --forest: #0e382c;
-  --forest-deep: #08281f;
-  --green: #0b7654;
-  --mint: #b8f0d2;
-  --lime: #d6ee85;
-  --paper: #f3f0e7;
-  --paper-bright: #fbfaf5;
-  --line: #d8d4c8;
-  --line-dark: #a9aea8;
-  --orange: #d85e31;
-  --red: #b23b32;
+  --ink: #111E26;
+  --ink-soft: #53645E;
+  --forest: #0B493A;
+  --forest-deep: #07392D;
+  --green: #0B493A;
+  --mint: #DCEEE4;
+  --lime: #DAFF01;
+  --paper: #F4F1E8;
+  --paper-bright: #FFFFFF;
+  --line: #D4DBD4;
+  --line-dark: #71857A;
+  --orange: #B9472F;
+  --red: #B42332;
   --yellow: #e8b44a;
-  --blue: #2c5f89;
+  --blue: #2563EB;
   --shadow: 0 18px 55px rgba(14, 56, 44, 0.09);
   --radius-sm: 0.55rem;
   --radius-md: 0.9rem;
@@ -37,9 +37,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(214, 238, 133, 0.18), transparent 26rem),
-    var(--paper);
+  background: var(--paper);
 }
 
 body,
@@ -83,8 +81,8 @@ h3 {
 
 h1,
 h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
 }
 
 button:focus-visible,
@@ -180,13 +178,13 @@ select:focus-visible {
   color: var(--paper);
   background: var(--forest);
   border-radius: 0.55rem 0.55rem 0.55rem 0.1rem;
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
   font-style: italic;
 }
 
 .brand__wordmark {
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -240,7 +238,7 @@ select:focus-visible {
   padding: 0.5rem 0.72rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.73rem;
 }
 
@@ -414,348 +412,6 @@ select:focus-visible {
   text-decoration-color: rgba(14, 56, 44, 0.35);
 }
 
-.hero {
-  min-height: 680px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.78fr);
-  align-items: center;
-  gap: clamp(3rem, 8vw, 7rem);
-  padding-block: 5.5rem;
-}
-
-.hero__copy h1 {
-  max-width: 760px;
-  margin: 1.2rem 0 1.5rem;
-  font-size: clamp(3.6rem, 7.2vw, 6.6rem);
-  line-height: 0.89;
-}
-
-.hero__copy h1 em {
-  color: var(--green);
-  font-weight: 400;
-}
-
-.hero__lead {
-  max-width: 640px;
-  margin-bottom: 1.8rem;
-  color: var(--ink-soft);
-  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
-  line-height: 1.62;
-}
-
-.hero__actions {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.hero__footnote {
-  max-width: 600px;
-  margin: 1.2rem 0 0;
-  color: #7a807c;
-  font-size: 0.76rem;
-}
-
-.hero-market {
-  position: relative;
-  overflow: hidden;
-  padding: 1.4rem;
-  color: #eef8f2;
-  background:
-    linear-gradient(145deg, rgba(214, 238, 133, 0.08), transparent 45%),
-    var(--forest-deep);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.7rem 1.7rem 1.7rem 0.25rem;
-  box-shadow: 0 35px 70px rgba(8, 40, 31, 0.22);
-  transform: rotate(1.4deg);
-}
-
-.hero-market > * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-market__topline,
-.hero-market__change {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.hero-market__topline > span:first-child {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-}
-
-.hero-market__rate {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: end;
-  gap: 0 0.3rem;
-  margin: 3.2rem 0 0.35rem;
-}
-
-.hero-market__rate strong {
-  font-family: Georgia, serif;
-  font-size: clamp(3.4rem, 6vw, 5rem);
-  font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 0.9;
-}
-
-.hero-market__rate > span:last-child {
-  grid-column: 2;
-  color: #98afa6;
-  font-size: 0.78rem;
-}
-
-.hero-market__currency {
-  align-self: start;
-  color: var(--lime);
-  font-family: Georgia, serif;
-  font-size: 1.8rem;
-}
-
-.hero-market__change {
-  justify-content: flex-start;
-  color: #9db3aa;
-  font-size: 0.74rem;
-}
-
-.hero-market__change span:first-child {
-  color: var(--mint);
-  font-weight: 750;
-}
-
-.hero-market__divider {
-  height: 1px;
-  margin: 2rem 0 1.3rem;
-  background: rgba(255, 255, 255, 0.13);
-}
-
-.hero-market__quote-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.hero-market__quote-grid div {
-  display: grid;
-  gap: 0.28rem;
-}
-
-.hero-market__quote-grid span,
-.hero-market__quote-grid small {
-  color: #91a9a0;
-  font-size: 0.7rem;
-}
-
-.hero-market__quote-grid strong {
-  font-size: 1.1rem;
-}
-
-.hero-market__cta {
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.3rem;
-  padding: 0 1rem;
-  color: var(--forest-deep);
-  background: var(--lime);
-  border-radius: 0.62rem;
-  font-weight: 800;
-}
-
-.hero-market__stamp {
-  position: absolute;
-  z-index: 0;
-  right: -2.3rem;
-  bottom: 4rem;
-  color: rgba(255, 255, 255, 0.045);
-  font-size: 3.3rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  transform: rotate(-90deg);
-}
-
-.signal-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  color: #dbe9e1;
-  background: var(--forest);
-}
-
-.signal-bar > div {
-  min-height: 92px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 1rem 2rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.signal-bar svg {
-  color: var(--lime);
-}
-
-.signal-bar span {
-  display: grid;
-  gap: 0.18rem;
-  font-size: 0.75rem;
-}
-
-.signal-bar strong {
-  color: white;
-  font-size: 0.8rem;
-}
-
-.section-block {
-  padding-block: 7rem;
-}
-
-.section-heading {
-  max-width: 720px;
-  margin-bottom: 3rem;
-}
-
-.section-heading h2 {
-  margin-bottom: 1rem;
-  font-size: clamp(2.6rem, 5vw, 4.6rem);
-  line-height: 1;
-}
-
-.section-heading p {
-  max-width: 580px;
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.feature-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 310px;
-}
-
-.feature-card .hm-card__content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 1.8rem;
-}
-
-.feature-card__number {
-  position: absolute;
-  top: 1.4rem;
-  right: 1.5rem;
-  color: #b5bbb6;
-  font-family: ui-monospace, monospace;
-  font-size: 0.7rem;
-}
-
-.feature-card__icon {
-  width: 42px;
-  height: 42px;
-  margin-bottom: auto;
-  color: var(--green);
-  padding: 0.65rem;
-  background: #e0efe7;
-  border-radius: 0.7rem;
-}
-
-.feature-card h3 {
-  margin: 0 0 0.7rem;
-  font-size: 1.3rem;
-}
-
-.feature-card p {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.how-it-works {
-  color: #eaf4ed;
-  background: var(--forest-deep);
-}
-
-.how-it-works__inner {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 5rem;
-  padding-block: 7rem;
-}
-
-.section-heading--light .eyebrow {
-  color: var(--lime);
-}
-
-.section-heading--light h2 {
-  color: white;
-}
-
-.process-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.process-list li {
-  display: grid;
-  grid-template-columns: 3.2rem 1fr;
-  gap: 1rem;
-  padding: 1.4rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.process-list > li > span {
-  color: var(--lime);
-  font-family: ui-monospace, monospace;
-  font-size: 0.74rem;
-}
-
-.process-list h3 {
-  margin-bottom: 0.35rem;
-  color: white;
-  font-size: 1.05rem;
-}
-
-.process-list p {
-  margin: 0;
-  color: #9eb3aa;
-  font-size: 0.87rem;
-  line-height: 1.55;
-}
-
-.callout-band {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding-block: 5rem;
-}
-
-.callout-band h2 {
-  max-width: 720px;
-  margin: 0;
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  line-height: 1;
-}
-
 .market-page {
   padding-block: 3.5rem 6rem;
 }
@@ -803,7 +459,7 @@ select:focus-visible {
 }
 
 .rate-panel strong {
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
 }
 
@@ -1002,7 +658,7 @@ select:focus-visible {
 
 .ticket-summary__primary strong {
   margin: 0.35rem 0;
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
 }
 
@@ -1147,7 +803,7 @@ select:focus-visible {
 }
 
 .depth-table__row strong {
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.68rem;
 }
 
@@ -1207,7 +863,7 @@ select:focus-visible {
 .live-book__summary dd {
   overflow: hidden;
   margin: 0;
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.7rem;
   font-weight: 760;
   text-overflow: ellipsis;
@@ -1293,7 +949,7 @@ select:focus-visible {
 }
 
 .live-book__table tbody th {
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
   white-space: nowrap;
 }
@@ -1439,7 +1095,7 @@ select:focus-visible {
 
 .formula-card strong {
   color: var(--lime);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.8rem, 4vw, 3.2rem);
   font-weight: 500;
 }
@@ -1520,7 +1176,7 @@ select:focus-visible {
 
 .risk-card__number {
   color: var(--green);
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.7rem;
 }
 
@@ -1533,7 +1189,7 @@ select:focus-visible {
 
 .not-found > span {
   color: var(--green);
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
 }
 
@@ -1662,7 +1318,7 @@ select:focus-visible {
 
 .hm-stat__value {
   margin: 0;
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.3rem, 3vw, 1.8rem);
   letter-spacing: -0.04em;
 }
@@ -1712,7 +1368,7 @@ select:focus-visible {
 }
 
 .hm-market-card__number {
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2.5rem, 5vw, 4.2rem);
   letter-spacing: -0.055em;
 }
@@ -1790,7 +1446,7 @@ select:focus-visible {
   justify-content: space-between;
   gap: 0.5rem;
   color: var(--ink-soft);
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.67rem;
 }
 
@@ -1802,7 +1458,7 @@ select:focus-visible {
 }
 
 .hm-position-summary__id {
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.74rem;
   font-weight: 750;
 }
@@ -1944,7 +1600,7 @@ select:focus-visible {
 
 .hm-wallet-balance > span {
   flex: 1;
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.8rem;
 }
 
@@ -2013,7 +1669,7 @@ select:focus-visible {
 .hm-position-value {
   margin-bottom: 1.2rem;
   color: var(--green);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   letter-spacing: -0.05em;
 }
@@ -2181,7 +1837,7 @@ select:focus-visible {
 
 .mm-market-map__center strong {
   color: var(--lime);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
   font-weight: 400;
 }
@@ -2254,7 +1910,7 @@ select:focus-visible {
 
 .mm-role-card__top span {
   color: var(--line-dark);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2.5rem;
 }
 
@@ -2424,7 +2080,7 @@ select:focus-visible {
 
 .mm-guide__formula strong {
   color: var(--lime);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.4rem, 4vw, 2.5rem);
   font-weight: 400;
 }
@@ -2527,7 +2183,7 @@ select:focus-visible {
 
 .mm-integration-hero h1 em {
   color: var(--green);
-  font-family: Georgia, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 500;
 }
 
@@ -2582,7 +2238,7 @@ select:focus-visible {
   letter-spacing: 0.045em;
 }
 
-.mm-ready { color: #0b7654; }
+.mm-ready { color: #0B493A; }
 .mm-waiting { color: #8a6917; }
 .mm-deferred { color: #7b4f45; }
 
@@ -2660,7 +2316,7 @@ select:focus-visible {
 .mm-build-output__summary strong,
 .mm-portfolio__summary dd {
   margin: 0;
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.73rem;
   overflow-wrap: anywhere;
 }
@@ -2716,7 +2372,7 @@ select:focus-visible {
 
 .mm-portfolio__head {
   color: var(--muted);
-  font-family: ui-monospace, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.76rem;
 }
 

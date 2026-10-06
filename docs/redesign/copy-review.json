@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-06",
+  "scope": "Brand research copy alignment",
+  "viewports": [
+    {
+      "route": "/",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "assertions": [
+    "Opening currency-risk line",
+    "Original hero headline retained",
+    "USD/NGN starting-point language",
+    "Visible demo status",
+    "Nigerian origin / market ambition footer",
+    "Shared infrastructure introduction on market-maker page and guide"
+  ],
+  "pageErrors": []
+}

@@ -67,7 +67,7 @@ export function AuthProvider({children}: {children: ReactNode}) {
         supportedChains: [chain],
         appearance: {
           theme: 'light',
-          accentColor: '#086b4c',
+          accentColor: '#0B493A',
         },
       }}
     >

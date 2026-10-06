@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-06",
+  "checks": [
+    "Full-width mobile menu without rounded floating panel",
+    "Escape from trigger and link returns keyboard focus",
+    "Desktop resize and history navigation close menu",
+    "Demo sign-in and sign-out remain available inside mobile menu",
+    "Risk panel has neutral 1px border on every side",
+    "Accessible infrastructure mission replaces origin slogan",
+    "Active image cards contain price artwork, no previous portraits or sculpture",
+    "Pattern covers green callout; artwork text uses paper color"
+  ],
+  "risk": {
+    "leftWidth": "1px",
+    "leftColor": "rgb(212, 219, 212)",
+    "rightColor": "rgb(212, 219, 212)"
+  },
+  "callout": {
+    "background": "rgb(11, 73, 58)",
+    "text": "rgb(244, 241, 232)",
+    "pattern": "url(\"http://127.0.0.1:5173/src/assets/brand/engraved-rosette.svg\")",
+    "art": "rgb(244, 241, 232)"
+  },
+  "artwork": [
+    "/src/assets/brand/images/buyer-price-phone.webp",
+    "/src/assets/brand/images/seller-price-phone.webp"
+  ],
+  "pageErrors": []
+}

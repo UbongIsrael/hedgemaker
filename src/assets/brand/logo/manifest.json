@@ -44,5 +44,22 @@
     "wordmark": "custom HedgeMaker lettering with angled terminal r",
     "symbol": "interlocking HM shape with central lime diamond",
     "selectedAsset": "full symbol-and-wordmark lockup"
+  },
+  "webDelivery": {
+    "light": {
+      "file": "hedgemaker-logo-light.webp",
+      "source": "hedgemaker-logo-light.png",
+      "encoding": "WebP quality 92; original dimensions and composition retained"
+    },
+    "dark": {
+      "file": "hedgemaker-logo-dark.webp",
+      "source": "hedgemaker-logo-dark.png",
+      "encoding": "WebP quality 92; original dimensions and composition retained"
+    },
+    "favicon": {
+      "file": "public/favicon.svg",
+      "format": "SVG framing the original raster HM symbol; not traced vector outlines"
+    },
+    "layout": "BrandLogo uses CSS to trim outer whitespace, preserving the selected terminal r and HM geometry"
   }
 }

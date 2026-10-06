@@ -1,6 +1,6 @@
 import {ArrowDownRight, ArrowRight, ArrowUpRight, CheckCircle2, Clock3, Info, LockKeyhole} from 'lucide-react';
 import {useMemo, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 import {
   DEFAULT_INITIAL_MARGIN_BPS,
   DEFAULT_MAINTENANCE_MARGIN_BPS,
@@ -55,7 +55,8 @@ function previewErrorMessage(error: unknown): string {
 
 export function MarketPage() {
   const auth = useAuth();
-  const [side, setSide] = useState<Side>('USD_BUYER');
+  const [searchParams] = useSearchParams();
+  const [side, setSide] = useState<Side>(() => searchParams.get('side') === 'seller' ? 'USD_SELLER' : 'USD_BUYER');
   const [amount, setAmount] = useState('1000');
   const [pricing, setPricing] = useState<PricingKind>('pegged');
   const [offsetBps, setOffsetBps] = useState('0');
