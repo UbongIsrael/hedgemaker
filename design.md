@@ -200,17 +200,17 @@ The redesign runs in the existing React/Vite/native CSS stack. Public navigation
 
 ### Reference decisions
 
-- **Auxia:** keep “Hedge the rate. Keep the plan.” beside an illustrated participation diagram. Animated points connect future buyers and sellers; a pause control and reduced-motion support keep movement optional. A problem/approach chapter explains rate uncertainty and a funded USDC position. The four-stage explainer moves its active marker when a reader chooses a step; it does not imply automatic settlement or live market activity.
-- **Cloaked:** replace flat feature cards with original image-led stories for importers, dollar earners, and visible risk. The buyer/seller links open the corresponding market example. Images sit above readable paper-backed copy; no text is overlaid on detailed textures.
+- **Auxia:** keep “Hedge the rate. Keep the plan.” beside a rate/value chart that makes the two sides of a hedge concrete. Selecting a sample reference rate moves the buyer/seller markers and updates calculated values. A problem/approach chapter explains rate uncertainty and a funded USDC position. The four-stage explainer moves its active marker when a reader chooses a step; it does not imply automatic settlement or live market activity. Navigation follows Auxia’s right-aligned desktop links and full-width mobile rows with a primary action beneath them.
+- **Cloaked:** retain image-led feature cards while using price-focused imagery: rising and falling phone charts, plus a compact buyer/seller value chart. The buyer/seller links open the corresponding market example. Images sit above readable paper-backed copy; no text is overlaid on detailed textures.
 - **Gumloop Enterprise:** lead the market-maker page with a simple copy/contact split, followed by direct guide/console links, participation, compact role rows, economics, planned capabilities, capital risks, and integration. Existing application fields, handoff behavior, release-dependent paragraphs, and risk copy are preserved. No imitation submission form or success receipt is introduced.
 
 ### Artwork, pattern, and motion
 
-Three original 1536 × 1024 generated images bring Nigerian contemporary workspaces and banknote-inspired paper craftsmanship into the brand. The sculpture carries fine woven lines, guilloché engraving, a green paper loop, lime diamond, and blue sphere. The portraits illustrate user situations; they are not customer claims. Full-resolution originals and provenance live in [the redesign artwork archive](docs/redesign/images/manifest.json); production WebP copies live in `src/assets/brand/images/`.
+Two original 1536 × 1024 phone/chart illustrations emphasize price movement. Their chart fills and supports carry fine woven and guilloché detail, with green frames, blue accents, and restrained lime elements. The hero, risk card, and market-maker participation section use an actual domain-math chart rather than the abstract paper sculpture. All earlier portraits and the sculpture remain archived alongside the new full-resolution originals in [the artwork manifest](docs/redesign/images/manifest.json); delivery WebP copies live in `src/assets/brand/images/`.
 
-The exact original rosette paths from the approved palette are reused in `src/assets/brand/engraved-rosette.svg`, appearing in desktop margins and the market-maker artwork. Patterns stay outside balances and controls. Green leads actions; blue is reserved for functional focus and the learning example; clay identifies the rate-pressure explanation. Paper stays the public page theme, with the selected green footer.
+The exact original rosette paths from the approved palette are reused in `src/assets/brand/engraved-rosette.svg`, appearing in desktop margins, chart fills, and across the entire green market-maker callout. The “Price. Fund. Carry.” lettering uses paper and lime for contrast. Patterns stay outside balances and controls. Green leads actions; blue is reserved for functional focus and the learning example; clay identifies the rate-pressure explanation. Paper stays the public page theme, with the selected green footer.
 
-Motion uses native CSS transforms and a small React state layer. No scroll hijacking, animation framework, or autoplay workflow steps. The continuous hero diagram can be paused; all movement stops under reduced-motion preferences.
+Motion uses native CSS transforms and a small React state layer. No scroll hijacking, animation framework, or autoplay workflow steps. Hero chart markers move only when a reader chooses a sample rate; all movement stops under reduced-motion preferences.
 
 ### Product treatment and validation
 
@@ -225,7 +225,14 @@ The [Brand, marketing and Nigerian identity section](docs/market-and-brand-resea
 
 - Opening brand line: **Currency risk. More control.** The hero retains **Hedge the rate. Keep the plan.** as its action-oriented headline.
 - Hero support and company description: **Explore a new way to manage exchange-rate risk, starting with USD/NGN.** The visible demo status and limits remain alongside this message.
-- Origin and ambition: **Built in Nigeria. Building for more markets.** Appears in the footer as company intent, not a list of available markets.
+- Company mission: **Building accessible hedging infrastructure.** Appears in the footer. Nigerian identity is expressed through the established visual language rather than a literal origin slogan.
 - Partner narrative: **We’re building currency-hedging infrastructure, starting with USD/NGN.** The introduction then describes the current Monad testnet instrument and market-maker role.
 
 Product examples retain their concrete buyer/seller goals and USD/NGN context. Expansion candidates remain research, and no additional market, SDK, API, guaranteed payout, or real-money capability is advertised by this copy update.
+
+
+### Visual review corrections
+
+The user’s marked screenshots guide this revision: remove the clay/red risk-panel border; use Auxia’s full-width mobile navigation rather than a floating card; replace literal origin copy with the infrastructure mission; retire the ambiguous ribbon sculpture and human portraits from active pages; and make the market-maker callout a fully patterned green surface with light lettering.
+
+The chart’s communication goal is specific: show that a higher reference rate benefits the buyer side while a lower reference rate benefits the seller side. It samples the existing BigInt payoff function for a $1,000 hedge at an agreed ₦1,650 rate. The three rate choices are illustrative calculations before fees or default, not quotes or withdrawable balances. Banknote-style detail is clipped inside chart fills; labels and plotted lines stay clear. The phone artwork illustrates the two price directions and carries no invented interface controls, rates, or endorsements.

@@ -13,7 +13,7 @@ import {
   marketMakerRelease as release,
 } from "@/content/marketMakers";
 import { marketMakerContact } from "@/integrations/marketMakers/contact";
-import sculpture from "@/assets/brand/images/currency-sculpture.webp";
+import { PriceChart } from "@/components/PriceChart";
 
 const roleIcons = [Waypoints, Layers3, ShieldCheck];
 
@@ -122,13 +122,7 @@ export function MarketMakersPage() {
           </p>
         </div>
         <figure className="maker-participation">
-          <img
-            src={sculpture}
-            alt="Interlocking patterned paper ribbons representing two sides of a hedge"
-            width="1536"
-            height="1024"
-            loading="lazy"
-          />
+          <PriceChart compact />
           <figcaption>
             <span>Future dollar purchases</span>
             <strong>Price. Fund. Carry.</strong>

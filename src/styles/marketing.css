@@ -44,122 +44,7 @@
   font-size: 18px;
   margin-bottom: 2rem;
 }
-.hedge-flow {
-  position: relative;
-  margin: 0;
-  min-width: 0;
-  padding-top: 1rem;
-}
-.hedge-flow__nodes {
-  display: grid;
-  grid-template-columns: 1fr 0.22fr 40px 0.22fr 1fr;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-.hedge-flow__node {
-  padding: 0.9rem 0.7rem;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  border-radius: 8px;
-}
-.hedge-flow__node span {
-  display: block;
-  font-size: 10px;
-  color: var(--ink-soft);
-  margin-bottom: 0.25rem;
-}
-.hedge-flow__node strong {
-  font-size: 12px;
-  font-weight: 500;
-}
-.hedge-flow__join {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--forest);
-  color: var(--lime);
-  font-size: 23px;
-  font-family: var(--font-display);
-}
-.hedge-flow__connection {
-  height: 1px;
-  background: var(--forest);
-  position: relative;
-}
-.hedge-flow__connection i {
-  display: block;
-  height: 6px;
-  width: 6px;
-  background: var(--blue);
-  position: absolute;
-  top: -3px;
-  animation: flow-point 3s ease-in-out infinite;
-  border-radius: 50%;
-}
-.hedge-flow__connection--reverse i {
-  animation-direction: reverse;
-  animation-delay: 0.6s;
-}
-@keyframes flow-point {
-  0% {
-    transform: translateX(0);
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(22px);
-    opacity: 0.3;
-  }
-}
-.hedge-flow--paused i {
-  animation-play-state: paused;
-}
-.hedge-flow__image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  margin-top: 1.2rem;
-}
-.hedge-flow figcaption {
-  padding: 1rem 2.5rem 0.2rem 0;
-}
-.hedge-flow figcaption span,
-.hedge-flow figcaption small {
-  display: block;
-}
-.hedge-flow figcaption span {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 500;
-}
-.hedge-flow figcaption small {
-  color: var(--ink-soft);
-  font-size: 11px;
-  margin-top: 0.4rem;
-}
-.motion-control {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  color: var(--forest);
-  background: transparent;
-  border: 1px solid var(--line-dark);
-  border-radius: 50%;
-  cursor: pointer;
-}
-.motion-control:hover {
-  background: var(--mint);
-}
+
 .brand-disclosure {
   display: flex;
   align-items: center;
@@ -701,7 +586,6 @@
 .maker-risks {
   padding: 3.5rem;
   border: 1px solid var(--line);
-  border-left: 3px solid var(--clay);
   border-radius: 10px;
 }
 .maker-risk-copy {
@@ -891,22 +775,7 @@
   .brand-hero h1 {
     font-size: clamp(2.7rem, 5.2vw, 4rem);
   }
-  .hedge-flow__nodes {
-    grid-template-columns: 1fr 12px 32px 12px 1fr;
-  }
-  .hedge-flow__join {
-    width: 32px;
-    height: 32px;
-  }
-  .hedge-flow__node {
-    padding: 0.65rem 0.5rem;
-  }
-  .hedge-flow__node strong {
-    font-size: 10px;
-  }
-  .hedge-flow__node span {
-    font-size: 9px;
-  }
+
   .brand-disclosure {
     gap: 1rem;
   }
@@ -1000,27 +869,7 @@
   .brand-actions .hm-button {
     padding-inline: 1rem;
   }
-  .hedge-flow {
-    padding-top: 0;
-  }
-  .hedge-flow__node strong {
-    font-size: 11px;
-  }
-  .hedge-flow__node span {
-    font-size: 9px;
-  }
-  .hedge-flow__nodes {
-    grid-template-columns: 1fr 18px 32px 18px 1fr;
-  }
-  .hedge-flow__image {
-    margin-top: 0.8rem;
-  }
-  .hedge-flow figcaption span {
-    font-size: 15px;
-  }
-  .hedge-flow figcaption small {
-    font-size: 10px;
-  }
+
   .brand-disclosure {
     flex-direction: column;
     align-items: flex-start;
@@ -1192,11 +1041,7 @@
     font-size: 1.8rem;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .motion-control {
-    display: none;
-  }
-}
+
 /* Reuse the exact original rosette paths from the approved palette study. */
 .brand-hero,
 .maker-hero {
@@ -1254,10 +1099,243 @@
     display: none;
   }
 }
-.motion-control {
-  width: 44px;
-  height: 44px;
-}
+
 .learn-example__controls input {
   min-height: 44px;
+}
+/* The hero now explains the rate/value relationship with real fixed-point sample math. */
+.price-chart {
+  min-width: 0;
+  padding: 1.7rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.price-chart__heading {
+  display: grid;
+  gap: 0.4rem;
+}
+.price-chart__heading strong {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 600;
+}
+.price-chart__heading span {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.price-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1.3rem;
+  overflow: visible;
+}
+.price-chart svg text {
+  font-family: var(--font-body);
+  fill: var(--ink-soft);
+  font-size: 14px;
+}
+.price-chart__grid {
+  stroke: var(--line);
+  stroke-width: 0.7;
+}
+.price-chart__zero {
+  stroke: var(--line-dark);
+  stroke-width: 1;
+}
+.price-chart__agreed {
+  stroke: var(--line-dark);
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+}
+.price-chart__line {
+  fill: none;
+  stroke-width: 3;
+}
+.price-chart__line--buyer {
+  stroke: var(--blue);
+}
+.price-chart__line--seller {
+  stroke: var(--forest);
+}
+.price-chart__point {
+  transition: transform 450ms ease;
+}
+.price-chart__point circle {
+  stroke: var(--paper);
+  stroke-width: 2;
+}
+.price-chart__legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  margin-top: 1rem;
+  font-size: 13px;
+}
+.price-chart__legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.price-chart__legend i {
+  width: 17px;
+  height: 3px;
+  display: inline-block;
+}
+.price-chart__key--buyer {
+  background: var(--blue);
+}
+.price-chart__key--seller {
+  background: var(--forest);
+}
+.price-chart__choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+.price-chart__choices button {
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 5px;
+  color: var(--forest);
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.price-chart__choices button[aria-pressed="true"] {
+  background: var(--forest);
+  color: var(--paper);
+  border-color: var(--forest);
+}
+.price-chart__choices button:hover:not([aria-pressed="true"]) {
+  background: var(--mint);
+}
+.price-chart__values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.price-chart__values strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.price-chart__note {
+  font-size: 11px !important;
+  color: var(--ink-soft);
+  line-height: 1.5 !important;
+  margin: 1rem 0 0;
+}
+.price-chart--compact {
+  padding: 1.2rem;
+}
+.price-chart--compact .price-chart__heading strong {
+  font-size: 18px;
+}
+.price-chart--compact svg text {
+  font-size: 18px;
+}
+.image-feature__visual,
+.image-feature:nth-child(2) .image-feature__visual {
+  aspect-ratio: 3 / 2;
+}
+.image-feature__visual img {
+  object-fit: contain;
+}
+.image-feature:nth-child(3) .image-feature__visual {
+  aspect-ratio: auto;
+  background: transparent;
+  overflow: visible;
+}
+.image-feature__visual .price-chart {
+  border: 0;
+  background: #ebe6db;
+}
+.maker-participation > .price-chart {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+/* Apply the selected texture to the entire market-maker card, with readable light text. */
+.brand-maker-callout {
+  position: relative;
+  isolation: isolate;
+  background: var(--forest);
+  color: var(--paper);
+}
+.brand-maker-callout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../assets/brand/engraved-rosette.svg") center / 210px 210px
+    repeat;
+  opacity: 0.14;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+}
+.brand-maker-callout .brand-label,
+.brand-maker-callout p {
+  color: var(--mint);
+}
+.brand-maker-callout .text-link {
+  color: var(--paper);
+}
+.brand-maker-callout .text-link:focus-visible {
+  outline-color: var(--lime);
+}
+.maker-art {
+  padding: 1rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  transform: none;
+  color: var(--paper);
+}
+.maker-art span {
+  line-height: 1.05;
+}
+.maker-art span:last-child {
+  color: var(--lime);
+}
+@media (max-width: 680px) {
+  .price-chart {
+    padding: 1.2rem;
+  }
+  .price-chart__heading strong {
+    font-size: 22px;
+  }
+  .price-chart svg text {
+    font-size: 19px;
+  }
+  .price-chart__values strong {
+    font-size: 17px;
+  }
+  .image-feature__visual,
+  .image-feature:nth-child(2) .image-feature__visual {
+    aspect-ratio: 3 / 2;
+  }
+  .image-feature:nth-child(3) .image-feature__visual {
+    aspect-ratio: auto;
+  }
+  .maker-art {
+    max-width: none;
+    justify-self: start;
+    margin: 0;
+    padding: 0;
+  }
+  .maker-art span {
+    font-size: 3.5rem;
+  }
 }

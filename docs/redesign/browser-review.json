@@ -305,14 +305,14 @@
   ],
   "checks": [
     "Menu navigation and route close",
-    "Pause/resume animation",
+    "Hero chart values at lower, agreed, and higher reference rates",
     "Keyboard stage selection",
     "Buyer/seller example and rate changes",
     "Market invalid lot size and review; writes disabled",
+    "Seller image-card handoff",
     "Guide anchor",
     "Reduced motion",
-    "No page errors",
-    "Seller image-card opens the seller market example"
+    "No page errors"
   ],
   "pageErrors": []
 }

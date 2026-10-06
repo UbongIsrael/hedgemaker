@@ -383,3 +383,98 @@ textarea {
   align-items: center;
   min-height: 44px;
 }
+/* Auxia reference: unboxed desktop links and a full-width mobile menu with its CTA. */
+.site-header {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding-inline: clamp(1.25rem, 2.8vw, 3rem);
+  gap: 2rem;
+}
+.site-nav {
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+.site-nav__link {
+  border-radius: 0;
+  font-size: 15px;
+  padding-inline: 0.6rem;
+}
+.site-nav__link:hover {
+  background: transparent;
+}
+.mobile-nav-actions {
+  display: none;
+}
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    grid-template-areas: "brand toggle" "navigation navigation";
+    gap: 0;
+    padding: 0 1.25rem;
+  }
+  .site-header .brand {
+    grid-area: brand;
+    align-self: center;
+    margin-block: 1.2rem;
+  }
+  .site-header__menu {
+    grid-area: toggle;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+  }
+  .site-header__actions {
+    display: none;
+  }
+  .site-nav {
+    grid-area: navigation;
+    position: static;
+    display: none;
+    margin: 0 -1.25rem;
+    padding: 0.3rem 1.25rem 1.5rem;
+    background: var(--paper);
+    border: 0;
+    border-bottom: 2px solid var(--forest);
+    border-radius: 0;
+    box-shadow: none;
+    gap: 0;
+    max-height: calc(100dvh - 115px);
+    overflow-y: auto;
+  }
+  .site-nav--open {
+    display: flex;
+  }
+  .site-nav__link {
+    display: flex;
+    justify-content: center;
+    min-height: 50px;
+    border: 1px solid var(--line-dark);
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0.65rem 1rem;
+  }
+  .site-nav__link + .site-nav__link {
+    margin-top: -1px;
+  }
+  .site-nav__link--active {
+    color: var(--forest);
+    background: transparent;
+    box-shadow: none;
+    font-weight: 600;
+  }
+  .site-nav__link:hover {
+    background: var(--mint);
+  }
+  .mobile-nav-actions {
+    display: grid;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+  .mobile-nav-actions .hm-button {
+    min-height: 50px;
+    font-size: 16px;
+    width: 100%;
+  }
+  .mobile-nav-actions .wallet-chip {
+    display: none;
+  }
+}

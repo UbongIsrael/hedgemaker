@@ -6,7 +6,7 @@ import { PageMetadata } from "@/components/PageMetadata";
 import { SegmentedControl } from "@/components/ui";
 import { buyerPayoffRaw, formatFixed, parseUsdc, type Side } from "@/domain";
 import { marketMakerRelease } from "@/content/marketMakers";
-import sculpture from "@/assets/brand/images/currency-sculpture.webp";
+import buyerPhone from "@/assets/brand/images/buyer-price-phone.webp";
 
 function HedgeExample() {
   const [side, setSide] = useState<Side>("USD_BUYER");
@@ -100,8 +100,8 @@ export function LearnPage() {
           </p>
         </div>
         <img
-          src={sculpture}
-          alt="Two interlocking etched paper ribbons around a lime diamond, illustrating connected exposure"
+          src={buyerPhone}
+          alt="A phone illustration with a rising blue price chart and woven line fill"
           width="1536"
           height="1024"
         />

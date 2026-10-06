@@ -126,3 +126,8 @@ The decision I recommend now is to retain HedgeMaker, establish a general curren
 Following the requested copy review, the frontend review branch applies the currency-risk positioning: “Currency risk. More control.” opens the hero, “Explore a new way to manage exchange-rate risk, starting with USD/NGN.” supports the existing tagline, and the footer states “Built in Nigeria. Building for more markets.” The shared market-maker introduction now begins with the currency-hedging infrastructure mission and immediately describes the current Monad testnet scope.
 
 The existing market headline, routes, buyer/seller explanations, demo status, and risk disclosures remain. Additional-market availability and future SDK/API claims are not introduced. See [design.md](../design.md#market-and-brand-research-copy-direction) for the implementation decision and [the redesign review](redesign/README.md) for validation.
+
+
+### Visual-review copy adjustment
+
+The subsequent user review replaces the literal origin/expansion footer line with **“Building accessible hedging infrastructure.”** The broad currency-risk promise and USD/NGN starting point remain. Nigerian roots continue through the selected colors, logo, and banknote-inspired patterns; the footer focuses on the company mission.

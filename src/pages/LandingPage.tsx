@@ -6,18 +6,17 @@ import {
   LockKeyhole,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { HedgeFlow } from "@/components/HedgeFlow";
+import { PriceChart } from "@/components/PriceChart";
 import { HedgeJourney } from "@/components/HedgeJourney";
 import { PageMetadata } from "@/components/PageMetadata";
 import { marketMakerCopy, marketMakerRelease } from "@/content/marketMakers";
-import importer from "@/assets/brand/images/importer.webp";
-import earner from "@/assets/brand/images/dollar-earner.webp";
-import sculpture from "@/assets/brand/images/currency-sculpture.webp";
+import buyerPhone from "@/assets/brand/images/buyer-price-phone.webp";
+import sellerPhone from "@/assets/brand/images/seller-price-phone.webp";
 
 const featureItems = [
   {
-    image: importer,
-    alt: "A Nigerian entrepreneur reviewing inventory in a workspace with woven textiles and packed goods",
+    image: buyerPhone,
+    alt: "A clean phone illustration with a rising blue price chart and woven chart fill",
     label: "For importers",
     title: "Plan for a higher dollar.",
     body: "Choose the buyer side if a more expensive dollar would put pressure on your budget.",
@@ -25,8 +24,8 @@ const featureItems = [
     link: "Explore the buyer side",
   },
   {
-    image: earner,
-    alt: "A Nigerian creative professional working at a sunlit desk with a blue notebook and woven wall textile",
+    image: sellerPhone,
+    alt: "A phone illustration with a falling green price chart and banknote-inspired chart fill",
     label: "For dollar earners",
     title: "Protect a naira target.",
     body: "Choose the seller side if a stronger naira would mean getting fewer naira for your dollar income.",
@@ -34,8 +33,8 @@ const featureItems = [
     link: "Explore the seller side",
   },
   {
-    image: sculpture,
-    alt: "Etched paper ribbons interlocking around a lime diamond",
+    image: undefined,
+    alt: "A chart comparing buyer and seller values as the exchange rate changes",
     label: "Know your limits",
     title: "Risk is visible before you sign.",
     body: "Review the funds you need to set aside, when you may need to add more, any starting adjustment, and the limits of protection.",
@@ -53,9 +52,7 @@ export function LandingPage() {
       />
       <section className="brand-hero page-shell" aria-labelledby="home-title">
         <div className="brand-hero__copy">
-          <span className="brand-kicker">
-            Currency risk. More control.
-          </span>
+          <span className="brand-kicker">Currency risk. More control.</span>
           <h1 id="home-title">
             Hedge the rate.
             <br />
@@ -76,7 +73,7 @@ export function LandingPage() {
             </Link>
           </div>
         </div>
-        <HedgeFlow />
+        <PriceChart />
       </section>
       <div className="brand-disclosure page-shell">
         <p>
@@ -173,13 +170,17 @@ export function LandingPage() {
           {featureItems.map((item) => (
             <article className="image-feature" key={item.title}>
               <div className="image-feature__visual">
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  width="1536"
-                  height="1024"
-                  loading="lazy"
-                />
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                  />
+                ) : (
+                  <PriceChart compact />
+                )}
               </div>
               <div className="image-feature__copy">
                 <span className="brand-label">{item.label}</span>
