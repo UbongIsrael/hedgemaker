@@ -1,0 +1,64 @@
+{
+  "status": "final selected brand palette",
+  "brand": {
+    "green": {
+      "name": "Banknote green",
+      "hex": "#0B493A",
+      "role": "Primary brand / main action",
+      "onColor": "#FFFFFF"
+    },
+    "paper": {
+      "name": "Naira paper",
+      "hex": "#F4F1E8",
+      "role": "Default canvas",
+      "onColor": "#111E26"
+    },
+    "ink": {
+      "name": "Engraved ink",
+      "hex": "#111E26",
+      "role": "Headlines / numbers / body",
+      "onColor": "#F4F1E8"
+    },
+    "blue": {
+      "name": "Trust blue",
+      "hex": "#2563EB",
+      "role": "Links / selection / focus",
+      "onColor": "#FFFFFF"
+    },
+    "lime": {
+      "name": "Electric lime",
+      "hex": "#DAFF01",
+      "role": "Small signature highlights",
+      "onColor": "#111E26"
+    },
+    "clay": {
+      "name": "Heritage clay",
+      "hex": "#B9472F",
+      "role": "Editorial / pattern accent",
+      "onColor": "#FFFFFF"
+    },
+    "mint": {
+      "name": "Soft mint",
+      "hex": "#DCEEE4",
+      "role": "Supporting green surface",
+      "onColor": "#0B493A"
+    },
+    "burgundy": {
+      "name": "Heritage burgundy",
+      "hex": "#701C2D",
+      "role": "Supporting artwork only",
+      "onColor": "#FFFFFF"
+    }
+  },
+  "utility": {
+    "surface": "#FFFFFF",
+    "text-muted": "#53645E",
+    "line": "#D4DBD4",
+    "control-border": "#71857A",
+    "blue-tint": "#F0F4FF",
+    "green-hover": "#07392D",
+    "blue-hover": "#174DCA",
+    "success": "#16734F",
+    "danger": "#B42332"
+  }
+}

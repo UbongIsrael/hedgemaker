@@ -1,0 +1,827 @@
+{
+  "url": "https://docs.auxia.io/",
+  "title": "Welcome! - Auxia Docs",
+  "headings": [
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -1,
+        "y": -1,
+        "w": 1,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H3",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(22, 26, 30)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 48,
+        "y": 96,
+        "w": 76,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 104,
+        "w": 264,
+        "h": 24
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "36px",
+      "weight": "600",
+      "lineHeight": "40px",
+      "letterSpacing": "-0.9px",
+      "color": "rgb(22, 26, 30)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 136,
+        "w": 167,
+        "h": 40
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 328,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1227,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1561,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1851,
+        "w": 633,
+        "h": 32
+      }
+    }
+  ],
+  "styles": [
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -1,
+        "y": -1,
+        "w": 1,
+        "h": 24
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -1,
+        "y": 23,
+        "w": 1,
+        "h": 24
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": -1,
+        "y": 47,
+        "w": 1,
+        "h": 24
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(111, 115, 119)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 48,
+        "y": 18,
+        "w": 84,
+        "h": 28
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(22, 26, 30)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 10px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 148,
+        "y": 16,
+        "w": 89,
+        "h": 32
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(111, 115, 119)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "0px 12px 0px 14px",
+      "gap": "8px",
+      "radius": "12px",
+      "box": {
+        "x": 501,
+        "y": 14,
+        "w": 249,
+        "h": 36
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(111, 115, 119)",
+      "background": "rgb(255, 255, 255)",
+      "padding": "0px 14px 0px 12px",
+      "gap": "6px",
+      "radius": "12px",
+      "box": {
+        "x": 761,
+        "y": 14,
+        "w": 178,
+        "h": 36
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "6px",
+      "radius": "0px",
+      "box": {
+        "x": 1289,
+        "y": 22,
+        "w": 55,
+        "h": 20
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "oklab(0.15767 -0.00243126 -0.00955348 / 0.5)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "8px",
+      "gap": "4px",
+      "radius": "8px",
+      "box": {
+        "x": 1360,
+        "y": 16,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 105, 237)",
+      "background": "oklab(0.554127 -0.0408953 -0.211317 / 0.1)",
+      "padding": "6px 12px 6px 16px",
+      "gap": "normal 12px",
+      "radius": "12px",
+      "box": {
+        "x": 32,
+        "y": 130,
+        "w": 312,
+        "h": 36
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "-0.07px",
+      "color": "rgb(62, 65, 69)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 12px 6px 16px",
+      "gap": "normal 12px",
+      "radius": "12px",
+      "box": {
+        "x": 32,
+        "y": 167,
+        "w": 312,
+        "h": 36
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "-0.07px",
+      "color": "rgb(62, 65, 69)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 12px 6px 16px",
+      "gap": "normal 12px",
+      "radius": "12px",
+      "box": {
+        "x": 32,
+        "y": 204,
+        "w": 312,
+        "h": 36
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "24px",
+      "letterSpacing": "-0.07px",
+      "color": "rgb(62, 65, 69)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px 12px 6px 16px",
+      "gap": "normal 12px",
+      "radius": "12px",
+      "box": {
+        "x": 32,
+        "y": 241,
+        "w": 312,
+        "h": 36
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 104,
+        "w": 264,
+        "h": 24
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(62, 65, 69)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 104,
+        "w": 105,
+        "h": 24
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 105, 237)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "4px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 128,
+        "w": 264,
+        "h": 32
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "4px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 160,
+        "w": 264,
+        "h": 32
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "4px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 192,
+        "w": 264,
+        "h": 32
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "4px 0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 1144,
+        "y": 224,
+        "w": 264,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H1",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "36px",
+      "weight": "600",
+      "lineHeight": "40px",
+      "letterSpacing": "-0.9px",
+      "color": "rgb(22, 26, 30)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 136,
+        "w": 167,
+        "h": 40
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 328,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "28px",
+      "letterSpacing": "normal",
+      "color": "rgb(23, 23, 23)",
+      "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.55)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "9999px",
+      "box": {
+        "x": 419,
+        "y": 1059,
+        "w": 2,
+        "h": 2
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1227,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1561,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "H2",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "24px",
+      "weight": "600",
+      "lineHeight": "31.9999px",
+      "letterSpacing": "-0.6px",
+      "color": "oklch(0.21 0.034 264.665)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 419,
+        "y": 1851,
+        "w": 633,
+        "h": 32
+      }
+    },
+    {
+      "tag": "A",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(62, 65, 69)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "12px",
+      "radius": "2px",
+      "box": {
+        "x": 971,
+        "y": 2033,
+        "w": 79,
+        "h": 20
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(111, 115, 119)",
+      "background": "oklab(0.554127 -0.0408953 -0.211317 / 0.3)",
+      "padding": "4px",
+      "gap": "normal",
+      "radius": "9999px",
+      "box": {
+        "x": 1017,
+        "y": 943,
+        "w": 24,
+        "h": 24
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(10, 13, 17)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 543,
+        "y": 2252,
+        "w": 34,
+        "h": 20
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(10, 13, 17)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 707,
+        "y": 2252,
+        "w": 78,
+        "h": 20
+      }
+    },
+    {
+      "tag": "P",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "lineHeight": "20px",
+      "letterSpacing": "normal",
+      "color": "rgb(10, 13, 17)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 885,
+        "y": 2252,
+        "w": 93,
+        "h": 20
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(79, 83, 87)",
+      "background": "rgb(222, 225, 229)",
+      "padding": "6px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 1080,
+        "y": 2445,
+        "w": 28,
+        "h": 28
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(158, 161, 165)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 1116,
+        "y": 2445,
+        "w": 28,
+        "h": 28
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(158, 161, 165)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "6px",
+      "gap": "normal",
+      "radius": "8px",
+      "box": {
+        "x": 1152,
+        "y": 2445,
+        "w": 28,
+        "h": 28
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "tag": "BODY",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(0, 0, 0)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 2585
+      }
+    },
+    {
+      "tag": "MAIN",
+      "font": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif, -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lineHeight": "24px",
+      "letterSpacing": "normal",
+      "color": "rgb(111, 115, 119)",
+      "background": "rgba(0, 0, 0, 0)",
+      "padding": "0px",
+      "gap": "normal",
+      "radius": "0px",
+      "box": {
+        "x": 376,
+        "y": 64,
+        "w": 1032,
+        "h": 2075
+      }
+    }
+  ]
+}

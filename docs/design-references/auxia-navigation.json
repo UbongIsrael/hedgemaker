@@ -1,0 +1,44 @@
+{
+  "id": "auxia",
+  "top": [
+    {
+      "text": "",
+      "url": "https://www.auxia.io/"
+    },
+    {
+      "text": "About",
+      "url": "https://www.auxia.io/about-us"
+    },
+    {
+      "text": "Documentation",
+      "url": "https://docs.auxia.io/"
+    },
+    {
+      "text": "Blog",
+      "url": "https://www.auxia.io/blog"
+    },
+    {
+      "text": "Request a demo",
+      "url": "https://www.auxia.io/demo"
+    },
+    {
+      "text": "日本語",
+      "url": "https://www.auxia.io/ja"
+    }
+  ],
+  "menus": [
+    {
+      "label": "Products",
+      "links": [
+        {
+          "text": "Agent Studio",
+          "url": "https://www.auxia.io/agent-studio"
+        },
+        {
+          "text": "Decisioning",
+          "url": "https://www.auxia.io/decisioning"
+        }
+      ]
+    }
+  ]
+}

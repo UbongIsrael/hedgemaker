@@ -1,0 +1,157 @@
+{
+  "id": "gumloop",
+  "top": [
+    {
+      "text": "",
+      "url": "https://www.gumloop.com/home"
+    },
+    {
+      "text": "Enterprise Enterprise",
+      "url": "https://www.gumloop.com/enterprise"
+    },
+    {
+      "text": "Pricing Pricing",
+      "url": "https://www.gumloop.com/pricing"
+    },
+    {
+      "text": "Connectors Connectors",
+      "url": "https://www.gumloop.com/connectors"
+    },
+    {
+      "text": "Careers Careers",
+      "url": "https://www.gumloop.com/careers"
+    },
+    {
+      "text": "Book a demo",
+      "url": "https://www.gumloop.com/contact"
+    }
+  ],
+  "menus": [
+    {
+      "label": "Solutions",
+      "links": [
+        {
+          "text": "Marketing",
+          "url": "https://www.gumloop.com/solutions/marketing"
+        },
+        {
+          "text": "Sales",
+          "url": "https://www.gumloop.com/solutions/sales"
+        },
+        {
+          "text": "Operations",
+          "url": "https://www.gumloop.com/solutions/operations"
+        },
+        {
+          "text": "Engineering",
+          "url": "https://www.gumloop.com/solutions/engineering"
+        },
+        {
+          "text": "Support",
+          "url": "https://www.gumloop.com/solutions/support"
+        },
+        {
+          "text": "Security",
+          "url": "https://www.gumloop.com/solutions/security"
+        },
+        {
+          "text": "Data Analysis Agent",
+          "url": "https://www.gumloop.com/use-cases/data-agent"
+        },
+        {
+          "text": "Meeting Prep Agent",
+          "url": "https://www.gumloop.com/use-cases/meeting-prep-agent"
+        },
+        {
+          "text": "Support Agent",
+          "url": "https://www.gumloop.com/use-cases/support-agent"
+        },
+        {
+          "text": "SEO Automation",
+          "url": "https://www.gumloop.com/use-cases/seo-automation"
+        },
+        {
+          "text": "Lead Qualification Agent",
+          "url": "https://www.gumloop.com/use-cases/lead-qualification-agent"
+        },
+        {
+          "text": "Ad Campaign Management",
+          "url": "https://www.gumloop.com/use-cases/ad-campaign-management"
+        },
+        {
+          "text": "Content Creation",
+          "url": "https://www.gumloop.com/use-cases/content-creation"
+        },
+        {
+          "text": "Competitor Analysis",
+          "url": "https://www.gumloop.com/use-cases/competitor-analysis"
+        },
+        {
+          "text": "CRM Agent",
+          "url": "https://www.gumloop.com/use-cases/crm-agent"
+        },
+        {
+          "text": "Call Analysis Agent",
+          "url": "https://www.gumloop.com/use-cases/call-analysis-agent"
+        },
+        {
+          "text": "Lead Generation Agent",
+          "url": "https://www.gumloop.com/use-cases/lead-generation-agent"
+        },
+        {
+          "text": "Shopify Stores",
+          "url": "https://www.gumloop.com/use-cases/shopify"
+        },
+        {
+          "text": "See more use cases",
+          "url": "https://www.gumloop.com/use-cases"
+        }
+      ]
+    },
+    {
+      "label": "Resources",
+      "links": [
+        {
+          "text": "Templates",
+          "url": "https://www.gumloop.com/templates"
+        },
+        {
+          "text": "Blog",
+          "url": "https://www.gumloop.com/blog"
+        },
+        {
+          "text": "Customer stories",
+          "url": "https://www.gumloop.com/category/case-studies"
+        },
+        {
+          "text": "University",
+          "url": "https://university.gumloop.com/"
+        },
+        {
+          "text": "Learning Cohorts",
+          "url": "https://www.gumloop.com/cohorts"
+        },
+        {
+          "text": "Workshops",
+          "url": "https://www.gumloop.com/workshops"
+        },
+        {
+          "text": "Docs",
+          "url": "https://docs.gumloop.com/"
+        },
+        {
+          "text": "Hire an expert",
+          "url": "https://www.gumloop.com/experts"
+        },
+        {
+          "text": "Creators",
+          "url": "https://www.gumloop.com/partners/apply-to-be-a-creator"
+        },
+        {
+          "text": "Forum",
+          "url": "https://forum.gumloop.com/"
+        }
+      ]
+    }
+  ]
+}

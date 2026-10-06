@@ -1,0 +1,404 @@
+[
+  {
+    "site": "auxia",
+    "group": "Top navigation",
+    "text": "About",
+    "url": "https://www.auxia.io/about-us"
+  },
+  {
+    "site": "auxia",
+    "group": "Top navigation",
+    "text": "Documentation",
+    "url": "https://docs.auxia.io/"
+  },
+  {
+    "site": "auxia",
+    "group": "Top navigation",
+    "text": "Blog",
+    "url": "https://www.auxia.io/blog"
+  },
+  {
+    "site": "auxia",
+    "group": "Top navigation",
+    "text": "Request a demo",
+    "url": "https://www.auxia.io/demo"
+  },
+  {
+    "site": "auxia",
+    "group": "Top navigation",
+    "text": "日本語",
+    "url": "https://www.auxia.io/ja"
+  },
+  {
+    "site": "auxia",
+    "group": "Products",
+    "text": "Agent Studio",
+    "url": "https://www.auxia.io/agent-studio"
+  },
+  {
+    "site": "auxia",
+    "group": "Products",
+    "text": "Decisioning",
+    "url": "https://www.auxia.io/decisioning"
+  },
+  {
+    "site": "gumloop",
+    "group": "Top navigation",
+    "text": "Enterprise Enterprise",
+    "url": "https://www.gumloop.com/enterprise"
+  },
+  {
+    "site": "gumloop",
+    "group": "Top navigation",
+    "text": "Pricing Pricing",
+    "url": "https://www.gumloop.com/pricing"
+  },
+  {
+    "site": "gumloop",
+    "group": "Top navigation",
+    "text": "Connectors Connectors",
+    "url": "https://www.gumloop.com/connectors"
+  },
+  {
+    "site": "gumloop",
+    "group": "Top navigation",
+    "text": "Careers Careers",
+    "url": "https://www.gumloop.com/careers"
+  },
+  {
+    "site": "gumloop",
+    "group": "Top navigation",
+    "text": "Book a demo",
+    "url": "https://www.gumloop.com/contact"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Marketing",
+    "url": "https://www.gumloop.com/solutions/marketing"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Sales",
+    "url": "https://www.gumloop.com/solutions/sales"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Operations",
+    "url": "https://www.gumloop.com/solutions/operations"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Engineering",
+    "url": "https://www.gumloop.com/solutions/engineering"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Support",
+    "url": "https://www.gumloop.com/solutions/support"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Security",
+    "url": "https://www.gumloop.com/solutions/security"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Data Analysis Agent",
+    "url": "https://www.gumloop.com/use-cases/data-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Meeting Prep Agent",
+    "url": "https://www.gumloop.com/use-cases/meeting-prep-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Support Agent",
+    "url": "https://www.gumloop.com/use-cases/support-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "SEO Automation",
+    "url": "https://www.gumloop.com/use-cases/seo-automation"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Lead Qualification Agent",
+    "url": "https://www.gumloop.com/use-cases/lead-qualification-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Ad Campaign Management",
+    "url": "https://www.gumloop.com/use-cases/ad-campaign-management"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Content Creation",
+    "url": "https://www.gumloop.com/use-cases/content-creation"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Competitor Analysis",
+    "url": "https://www.gumloop.com/use-cases/competitor-analysis"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "CRM Agent",
+    "url": "https://www.gumloop.com/use-cases/crm-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Call Analysis Agent",
+    "url": "https://www.gumloop.com/use-cases/call-analysis-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Lead Generation Agent",
+    "url": "https://www.gumloop.com/use-cases/lead-generation-agent"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "Shopify Stores",
+    "url": "https://www.gumloop.com/use-cases/shopify"
+  },
+  {
+    "site": "gumloop",
+    "group": "Solutions",
+    "text": "See more use cases",
+    "url": "https://www.gumloop.com/use-cases"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Templates",
+    "url": "https://www.gumloop.com/templates"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Blog",
+    "url": "https://www.gumloop.com/blog"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Customer stories",
+    "url": "https://www.gumloop.com/category/case-studies"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "University",
+    "url": "https://university.gumloop.com/"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Learning Cohorts",
+    "url": "https://www.gumloop.com/cohorts"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Workshops",
+    "url": "https://www.gumloop.com/workshops"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Docs",
+    "url": "https://docs.gumloop.com/"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Hire an expert",
+    "url": "https://www.gumloop.com/experts"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Creators",
+    "url": "https://www.gumloop.com/partners/apply-to-be-a-creator"
+  },
+  {
+    "site": "gumloop",
+    "group": "Resources",
+    "text": "Forum",
+    "url": "https://forum.gumloop.com/"
+  },
+  {
+    "site": "cloaked",
+    "group": "Top navigation",
+    "text": "Pricing",
+    "url": "https://www.cloaked.com/plans"
+  },
+  {
+    "site": "cloaked",
+    "group": "Top navigation",
+    "text": "Enterprise",
+    "url": "https://business.cloaked.com/"
+  },
+  {
+    "site": "cloaked",
+    "group": "Top navigation",
+    "text": "Login",
+    "url": "https://my.cloaked.com/"
+  },
+  {
+    "site": "cloaked",
+    "group": "Top navigation",
+    "text": "Get Started",
+    "url": "https://www.cloaked.com/get-started"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Phone Number and Email Aliases Never give out your personal info again",
+    "url": "https://www.cloaked.com/features/identities"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Data Removal Remove personal info from 1000+ sites",
+    "url": "https://www.cloaked.com/features/data-removal"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Identity Theft Insurance $1 million insurance against identity theft",
+    "url": "https://www.cloaked.com/features/identity-theft-insurance"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Call Guard Block spam calls and robocalls instantly",
+    "url": "https://www.cloaked.com/features/call-guard"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "All features",
+    "url": "https://www.cloaked.com/features"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Dark Web & SSN Monitoring Real-time alerts for dark web exposures",
+    "url": "https://www.cloaked.com/features/dark-web-ssn-monitoring"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Cloaked VPN Browse securely and privately",
+    "url": "https://www.cloaked.com/features/cloaked-vpn"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Privacy Actions New Your personal privacy agent",
+    "url": "https://www.cloaked.com/features/privacy-actions"
+  },
+  {
+    "site": "cloaked",
+    "group": "Features",
+    "text": "Cloaked Pay Invite only A secure and private way to pay",
+    "url": "https://www.cloaked.com/features/cloaked-pay"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Downloads Get Cloaked on every device",
+    "url": "https://www.cloaked.com/downloads"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Security How we keep your data safe",
+    "url": "https://www.cloaked.com/trust"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Privacy Policy Why you can trust us",
+    "url": "https://www.cloaked.com/legal/privacy-policy"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Opt Out Guides Step-by-step instructions",
+    "url": "https://www.cloaked.com/opt-out-guides"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Changelog What's new in Cloaked",
+    "url": "https://www.cloaked.com/changelog"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Blog News, updates, and privacy tips Visit",
+    "url": "https://www.cloaked.com/blog"
+  },
+  {
+    "site": "cloaked",
+    "group": "Resources",
+    "text": "Research Hub Explore our latest findings on data privacy and online safety Visit",
+    "url": "https://www.cloaked.com/research-hub"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "Investors Top thought leaders believe in Cloaked",
+    "url": "https://www.cloaked.com/investors"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "In the Press See where we are making news",
+    "url": "https://www.cloaked.com/in-the-press"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "Contact Us Get in touch with us",
+    "url": "https://www.cloaked.com/contact-us"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "Careers Join us in building the future of privacy",
+    "url": "https://jobs.ashbyhq.com/cloaked"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "About Cloaked Why we are building Cloaked Visit",
+    "url": "https://www.cloaked.com/about"
+  },
+  {
+    "site": "cloaked",
+    "group": "About",
+    "text": "MyDataAct Help pass privacy protection into law Visit",
+    "url": "https://mydataact.org/"
+  }
+]

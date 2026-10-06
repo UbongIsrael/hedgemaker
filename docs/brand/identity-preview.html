@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HedgeMaker — final brand foundation</title>
+  <link rel="stylesheet" href="palette.css">
+  <link rel="stylesheet" href="typography.css">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:var(--brand-paper);color:var(--brand-ink);font-family:var(--font-body);font-size:17px;line-height:1.55}main{max-width:1440px;margin:auto;padding:48px 64px 64px}h1,h2,h3{font-family:var(--font-display);line-height:1.12;letter-spacing:-.025em}h1{font-size:clamp(30px,3.5vw,48px);margin:0 0 16px}h2{font-size:32px;margin:0 0 16px}h3{font-size:26px;margin:0 0 12px}p{margin:0 0 18px;max-width:70ch}.muted{color:var(--color-text-muted)}a{color:var(--brand-blue);text-underline-offset:3px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[contenteditable]:focus-visible{outline:3px solid var(--brand-blue);outline-offset:4px}.intro{padding-bottom:28px;border-bottom:1px solid var(--color-line)}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:32px 0}.choices strong{display:block;font-family:var(--font-display);font-size:24px;line-height:1.2;margin-bottom:8px}.choices p{font-size:16px;margin:0}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:20px 0 24px}.controls label{display:flex;gap:8px;align-items:center}.theme{display:flex;gap:8px}button,select{font:inherit;font-size:15px;border:1px solid var(--color-control-border);background:#fff;color:var(--brand-ink);border-radius:5px;padding:8px 12px;cursor:pointer}button[aria-pressed=true]{background:var(--brand-green);color:#fff;border-color:var(--brand-green)}button:hover{box-shadow:0 0 0 1px var(--brand-green)}.specimen{padding:44px;background:#fff;border-radius:12px}.specimen h2{max-width:1000px;margin-bottom:22px;font-size:clamp(40px,5.5vw,80px);font-weight:600;line-height:1.05;letter-spacing:-.035em}.specimen[data-theme=dark]{background:var(--brand-green);color:var(--brand-paper)}.specimen[data-theme=dark] .muted{color:var(--brand-mint)}.specimen[data-theme=dark] [contenteditable]:focus-visible{outline-color:var(--brand-lime)}.specimen .type-body{font-size:18px}.sample-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:48px;padding-top:24px;border-top:1px solid var(--color-line);margin-top:32px}.sample-label{font-size:14px;margin-bottom:8px;font-weight:500}.amount{font-size:clamp(25px,3vw,40px);line-height:1.2;margin-bottom:16px;overflow-wrap:anywhere}.figure-lines{font-size:20px;line-height:1.8}.technical{padding:12px 0}.sample-action{display:inline-block;background:var(--brand-green);color:#fff;border-radius:6px;padding:12px 24px;font-weight:500;margin-top:10px}.specimen[data-theme=dark] .sample-action{background:var(--brand-paper);color:var(--brand-green)}.sample-note{font-size:14px;margin-top:16px}.font-proof{font-size:17px;letter-spacing:.02em;overflow-wrap:anywhere}.logos{margin-top:64px}.concept{padding:32px 0;border-top:1px solid var(--color-line)}.version-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.version{margin:0}.version img{width:100%;height:auto;display:block;border-radius:8px}.version figcaption{padding-top:10px;font-size:16px}.recommended{font-size:15px;letter-spacing:0;color:var(--brand-green);font-family:var(--font-body);font-weight:500;margin-left:8px}.links{display:flex;gap:20px;flex-wrap:wrap;padding-top:24px}footer{border-top:1px solid var(--color-line);padding-top:28px;margin-top:36px;font-size:15px}.font-row{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.font-row .box{padding:24px;border:1px solid var(--color-line);border-radius:8px}.font-row .heading-font{font-family:var(--font-display);font-size:28px}.font-row .body-font{font-family:var(--font-body);font-size:24px}.edit-note{font-size:14px;margin:0}.notes{font-size:15px}@media(max-width:900px){main{padding:28px}.choices{gap:20px}.choices strong{font-size:20px}.specimen{padding:28px}.sample-grid{gap:24px}}@media(max-width:600px){main{padding:22px 18px}.choices{grid-template-columns:1fr;gap:20px}.controls{gap:12px}.controls label{font-size:15px}.specimen{padding:24px 20px}.specimen h2{font-size:40px}.sample-grid,.font-row,.version-grid{grid-template-columns:1fr}.sample-grid{gap:20px}.logos{margin-top:40px}h3{font-size:24px}.recommended{display:block;margin:8px 0}.version-grid{gap:22px}.font-row .box{padding:20px}.choices p{max-width:50ch}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <h1>HedgeMaker: selected brand identity.</h1>
+    <p class="muted">Currency-cut wordmark selected, with its distinctive terminal R preserved. Space Grotesk and IBM Plex Sans pair with the finalized naira-inspired palette.</p>
+  </header>
+  <section aria-label="Recommended website typefaces">
+    <div class="choices">
+      <div><strong>Space Grotesk</strong><p>Headings and financial figures.<br>Geometric character; native ₦ and tabular numerals.</p></div>
+      <div><strong>IBM Plex Sans</strong><p>Body, navigation, forms, and buttons.<br>Readable supporting voice; native ₦.</p></div>
+      <div><strong>IBM Plex Mono</strong><p>Short technical labels and IDs.<br>A supporting role, not the whole interface.</p></div>
+    </div>
+    <div class="controls" aria-label="Typography specimen controls">
+      <div class="theme" aria-label="Specimen background">
+        <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
+      <label for="heading-weight">Heading weight <select id="heading-weight"><option value="400">400</option><option value="500">500</option><option value="600" selected>600</option><option value="700">700</option></select></label>
+      <label for="body-size">Body size <input id="body-size" type="range" min="16" max="20" value="18"><output for="body-size" id="size-value">18px</output></label>
+    </div>
+    <article class="specimen" data-theme="light" id="specimen">
+      <h2 contenteditable="true" role="textbox" aria-label="Editable headline sample" aria-multiline="true" spellcheck="false" id="sample-heading">A clearer view of<br>USD/NGN protection.</h2>
+      <p class="type-body" id="sample-body">Explore forward protection, compare maturities, and review collateral requirements before placing an order.</p>
+      <p class="muted edit-note">Edit the heading to test your own copy. This is a type specimen, not an active trading screen.</p>
+      <div class="sample-grid">
+        <div>
+          <p class="sample-label">Financial figures · Space Grotesk 500</p>
+          <p class="type-financial amount">₦1,548.75 / $1.00</p>
+          <div class="type-financial figure-lines">₦1,111.11<br>₦8,888.88<br>−12.50% &nbsp; +12.50%</div>
+          <p class="muted sample-note">Numeral specimens only. Equal-width digits keep amounts aligned.</p>
+        </div>
+        <div>
+          <p class="sample-label">Controls · IBM Plex Sans 500</p>
+          <span class="sample-action">Review quote</span>
+          <p class="type-technical technical">USD/NGN · 30d · USDC</p>
+          <p class="font-proof">Aa Bb Gg Mm Rr<br>0123456789 · ₦ $ € £</p>
+          <p class="muted sample-note">Simple text and symbols stay clear at interface sizes.</p>
+        </div>
+      </div>
+    </article>
+    <div class="font-row">
+      <div class="box"><p class="sample-label">Display letterforms</p><p class="heading-font">Space Grotesk<br>Aa Gg Hh Mm ₦</p><p class="muted notes">Use weight 600 for most headings and 700 for a short emphatic statement. Keep the custom logo lettering as an image asset.</p></div>
+      <div class="box"><p class="sample-label">Body letterforms</p><p class="body-font">IBM Plex Sans<br>Aa Gg Hh Mm ₦</p><p class="muted notes">Use weight 400 for paragraphs, 500 for controls, and 600 for emphasis. Keep native width and a relaxed reading line height.</p></div>
+    </div>
+  </section>
+  <section class="logos" aria-labelledby="logo-heading">
+    <h2 id="logo-heading">Selected logo and preserved alternatives.</h2>
+    <p class="muted">The selected main logo appears first. Earlier directions remain archived below. Every light/dark version is an individual PNG, ready to save.</p>
+    <article class="concept">
+      <h3>03 — Currency-cut wordmark <span class="recommended">Selected main logo</span></h3>
+      <p>The selected wordmark carries the identity through its double-bar H, lime inset in M, and distinctive terminal R. Preserve the R and the original custom lettering when preparing production assets.</p>
+      <div class="version-grid">
+        <figure class="version"><img src="../../src/assets/brand/logo/hedgemaker-wordmark-light.png" width="1942" height="809" alt="HedgeMaker wordmark with double-bar H and small lime inset on paper"><figcaption><a href="../../src/assets/brand/logo/hedgemaker-wordmark-light.png" download>Download 03 — light PNG</a></figcaption></figure>
+        <figure class="version"><img src="../../src/assets/brand/logo/hedgemaker-wordmark-dark.png" width="1942" height="809" alt="HedgeMaker currency-cut wordmark in paper and lime on green"><figcaption><a href="../../src/assets/brand/logo/hedgemaker-wordmark-dark.png" download>Download 03 — dark PNG</a></figcaption></figure>
+      </div>
+    </article>
+    <article class="concept">
+      <h3>01 — Woven naira H <span class="recommended">Archived alternative</span></h3>
+      <p>Two bands suggest the naira's double bar; the diagonal join suggests woven construction. A small lime detail connects it to our color palette.</p>
+      <div class="version-grid">
+        <figure class="version"><img src="logos/01-woven-naira-light.png" width="1942" height="809" alt="Woven naira H icon and HedgeMaker wordmark in green on light paper"><figcaption><a href="logos/01-woven-naira-light.png" download>Download 01 — light PNG</a></figcaption></figure>
+        <figure class="version"><img src="logos/01-woven-naira-dark.png" width="1942" height="809" alt="Woven naira H icon and HedgeMaker wordmark in paper and lime on deep green"><figcaption><a href="logos/01-woven-naira-dark.png" download>Download 01 — dark PNG</a></figcaption></figure>
+      </div>
+    </article>
+    <article class="concept">
+      <h3>02 — Woven HM monogram <span class="recommended">Archived alternative</span></h3>
+      <p>Interlocking angular bands and a lime diamond emphasize geometric heritage. This has more symbol detail than direction 01.</p>
+      <div class="version-grid">
+        <figure class="version"><img src="logos/02-woven-monogram-light.png" width="1983" height="793" alt="Angular HM monogram with lime diamond and HedgeMaker wordmark on paper"><figcaption><a href="logos/02-woven-monogram-light.png" download>Download 02 — light PNG</a></figcaption></figure>
+        <figure class="version"><img src="logos/02-woven-monogram-dark.png" width="1983" height="793" alt="Angular HM monogram and HedgeMaker wordmark in paper and lime on green"><figcaption><a href="logos/02-woven-monogram-dark.png" download>Download 02 — dark PNG</a></figcaption></figure>
+      </div>
+    </article>
+    <div class="links"><a href="logos/hedgemaker-main-logo.zip" download>Download selected logo</a><a href="logos/hedgemaker-logo-concepts.zip" download>Download all six original logos</a><a href="fonts/hedgemaker-website-fonts.zip" download>Download selected fonts and licenses</a><a href="../../design.md">Read the design specification</a></div>
+  </section>
+  <footer><p>The selected raster logo and archived alternatives have light/dark background fills. Colors target our palette; generated pixels can vary slightly. Production asset preparation will preserve the selected wordmark while adding a precise vector master and small-size icon variants.</p><p class="muted">The logo wordmarks are custom concept lettering, not exact font-file renderings. The type specimen above uses the bundled website fonts. All three selected families include their SIL Open Font License files.</p></footer>
+</main>
+<script>
+  const specimen=document.getElementById('specimen');
+  document.querySelectorAll('[data-theme-choice]').forEach(button=>button.addEventListener('click',()=>{
+    specimen.dataset.theme=button.dataset.themeChoice;
+    document.querySelectorAll('[data-theme-choice]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  }));
+  document.getElementById('heading-weight').addEventListener('change',event=>{document.getElementById('sample-heading').style.fontWeight=event.target.value});
+  document.getElementById('body-size').addEventListener('input',event=>{
+    document.getElementById('sample-body').style.fontSize=event.target.value+'px';
+    document.getElementById('size-value').textContent=event.target.value+'px';
+  });
+</script>
+</body>
+</html>
