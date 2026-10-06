@@ -1,40 +1,48 @@
 {
   "brand": "HedgeMaker",
-  "status": "selected by user",
+  "status": "selected by user; original archive file 02 explicitly confirmed",
   "selectedOn": "2026-10-06",
-  "direction": "03-currency-wordmark",
-  "name": "Currency-cut wordmark",
+  "direction": "02-woven-monogram",
+  "originalDisplayPosition": 3,
+  "name": "Woven HM with cut-terminal wordmark",
   "format": "PNG",
   "protectedFeatures": [
-    "distinctive custom terminal R",
-    "double-bar H",
-    "lime inset in M",
+    "distinctive angled terminal r",
+    "interlocking HM symbol",
+    "central lime diamond",
     "original HedgeMaker capitalization, spacing, and proportions"
   ],
   "wordmarkTypeface": "custom generated lettering; do not recreate with website fonts",
   "variants": {
     "light": {
-      "file": "hedgemaker-wordmark-light.png",
-      "source": "docs/brand/logos/03-currency-wordmark-light.png",
-      "width": 1942,
-      "height": 809,
+      "file": "hedgemaker-logo-light.png",
+      "source": "docs/brand/logos/02-woven-monogram-light.png",
+      "width": 1983,
+      "height": 793,
       "transparent": false,
-      "sha256": "02d85483d1c87237d5ef99a393c301b91d7e9b257c2de03b9f97b658363a2bf3"
+      "sha256": "f6469bea81a6fce0e5e78ed49388c88b80aedcb8fcea94581d8ce27615af1627"
     },
     "dark": {
-      "file": "hedgemaker-wordmark-dark.png",
-      "source": "docs/brand/logos/03-currency-wordmark-dark.png",
-      "width": 1942,
-      "height": 809,
+      "file": "hedgemaker-logo-dark.png",
+      "source": "docs/brand/logos/02-woven-monogram-dark.png",
+      "width": 1983,
+      "height": 793,
       "transparent": false,
-      "sha256": "033569803f9d3f75dc1d3a9c2bec588d4b66d7490c69156d0515557dbb63ac89"
+      "sha256": "b38dc6b9e7f4fdf4b1da0f4770dd0e9075053424caea4eb64305fba61ad87688"
     }
   },
   "archive": "docs/brand/logos",
+  "selectionNote": "Original generated images appeared in completion order, not filename-number order. The third displayed image is stored as 02-woven-monogram. Archive filenames are retained for provenance.",
   "productionAssetPreparation": [
     "precise vector master",
     "transparent light/dark variants",
     "monochrome variant",
-    "derived double-bar H favicon with small-size validation"
-  ]
+    "simplified HM favicon with small-size validation"
+  ],
+  "selectionConfirmedOn": "2026-10-06",
+  "composition": {
+    "wordmark": "custom HedgeMaker lettering with angled terminal r",
+    "symbol": "interlocking HM shape with central lime diamond",
+    "selectedAsset": "full symbol-and-wordmark lockup"
+  }
 }

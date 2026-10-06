@@ -102,9 +102,9 @@
     }
   },
   "logo": {
-    "selectedDirection": "03-currency-wordmark",
+    "selectedDirection": "02-woven-monogram",
     "selectedBy": "user",
-    "name": "Currency-cut wordmark",
+    "name": "Woven HM with cut-terminal wordmark",
     "assetDirectory": "src/assets/brand/logo",
     "preserveTerminalR": true,
     "wordmark": "custom concept lettering; not an exact font rendering",
@@ -112,6 +112,7 @@
     "backgroundVariants": [
       "light",
       "dark"
-    ]
+    ],
+    "originalDisplayPosition": 3
   }
 }
