@@ -1,6 +1,6 @@
 # HedgeMaker brand artifacts
 
-The final brand foundation is [`design.md`](../../design.md). The selected logo is **03 — Currency-cut wordmark**, with its distinctive terminal R preserved. The website pairing is **Space Grotesk + IBM Plex Sans**, supported by IBM Plex Mono.
+The final brand foundation is [`design.md`](../../design.md). The selected logo is **the third displayed visual, woven HM with cut-terminal wordmark**, with its distinctive terminal R preserved. The website pairing is **Space Grotesk + IBM Plex Sans**, supported by IBM Plex Mono.
 
 | Artifact | Location |
 | --- | --- |

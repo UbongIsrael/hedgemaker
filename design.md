@@ -1,6 +1,6 @@
 # HedgeMaker design system — brand foundation
 
-Status: **final brand foundation**, 6 October 2026. The user selected **03 — Currency-cut wordmark**, specifically preferring its distinctive terminal R. The selected website typefaces are **Space Grotesk + IBM Plex Sans**, with **IBM Plex Mono** for short technical labels. The palette, typography, logo, and supporting texture rules below are the source of truth for the upcoming frontend redesign.
+Status: **final brand foundation**, 6 October 2026. The user selected **the third image originally displayed: the woven HM symbol with cut-terminal wordmark**, specifically preferring its distinctive terminal R. The selected website typefaces are **Space Grotesk + IBM Plex Sans**, with **IBM Plex Mono** for short technical labels. The palette, typography, logo, and supporting texture rules below are the source of truth for the upcoming frontend redesign.
 
 This document finalizes the brand choices. Page layouts, navigation, component specifications, responsive composition, and final imagery will be planned in the next phase. The current application has not yet been restyled.
 
@@ -8,8 +8,8 @@ This document finalizes the brand choices. Page layouts, navigation, component s
 
 | Element | Decision |
 | --- | --- |
-| Main logo | Currency-cut wordmark, direction 03; preserve the custom terminal R, double-bar H, and lime inset in M |
-| Main logo assets | `src/assets/brand/logo/hedgemaker-wordmark-light.png` and `hedgemaker-wordmark-dark.png` |
+| Main logo | Woven HM symbol with cut-terminal wordmark; preserve the angled terminal r, interlocking HM geometry, and central lime diamond |
+| Main logo assets | `src/assets/brand/logo/hedgemaker-logo-light.png` and `hedgemaker-logo-dark.png` |
 | Headings and financial values | Space Grotesk |
 | Body, navigation, forms, and buttons | IBM Plex Sans |
 | Technical labels and IDs | IBM Plex Mono, used sparingly |
@@ -135,24 +135,26 @@ The [typography CSS](docs/brand/typography.css) defines specimen roles and token
 
 Font sources: [Space Grotesk's foundry](https://fonts.floriankarsten.com/space-grotesk), [IBM Plex](https://github.com/IBM/plex), and the bundled license files. Wise references: [official rebrand](https://wise.com/gb/blog/a-brand-for-everywhere-wise-unveils-bold-new-look) and [the typography design team's case study](https://nessgrixti.com/portfolio/wise-typography/).
 
-## Main logo — Currency-cut wordmark
+## Main logo — Woven HM with cut-terminal wordmark
 
-**Selected by the user: direction 03.** The name carries the identity. A double-bar H supplies the currency cue, the lime inset in M supplies a geometric signature, and the distinctive custom terminal R is a defining feature of the chosen design.
+**Selected visual: the third image originally displayed**, with an interlocking HM symbol, central lime diamond, and an angled terminal r in the HedgeMaker wordmark. The original images were displayed in generation-completion order, which differed from their filenames. This selected image is stored in the archive as `02-woven-monogram`; that original filename is retained for provenance. Use the visual and canonical main-logo paths below as the selection, not a concept number.
 
-![Selected HedgeMaker currency-cut wordmark on paper](src/assets/brand/logo/hedgemaker-wordmark-light.png)
+The user confirmed `02-woven-monogram` as the intended file. **Wordmark** means the custom “HedgeMaker” lettering; **symbol** means the interlocking HM shape beside it. The selected full logo combines both. Preserve the chosen wordmark lettering, especially its final r, when preparing any future text-only variant.
 
-- [Main light logo](src/assets/brand/logo/hedgemaker-wordmark-light.png): deep green on paper.
-- [Main dark logo](src/assets/brand/logo/hedgemaker-wordmark-dark.png): paper on deep green.
+![Selected HedgeMaker HM logo and cut-terminal wordmark on paper](src/assets/brand/logo/hedgemaker-logo-light.png)
+
+- [Main light logo](src/assets/brand/logo/hedgemaker-logo-light.png): deep green on paper.
+- [Main dark logo](src/assets/brand/logo/hedgemaker-logo-dark.png): paper on deep green.
 - [Selected-logo download bundle](docs/brand/logos/hedgemaker-main-logo.zip): both versions plus the asset manifest and usage notes.
 
-The canonical folder is **`src/assets/brand/logo/`**. Its [manifest](src/assets/brand/logo/manifest.json) identifies the selection, original source files, variants, and protected features. The two selected images are exact copies of the original direction 03 assets; they have not been regenerated or redrawn.
+The canonical folder is **`src/assets/brand/logo/`**. Its [manifest](src/assets/brand/logo/manifest.json) identifies the selection, original source files, variants, and protected features. The two selected images are exact copies of the original `02-woven-monogram` assets—the third visual originally shown. They have not been regenerated or redrawn.
 
 ### Features to preserve
 
 - Keep the terminal R's custom shape. Do not replace it with a basic font-rendered R/r or simplify it while preparing the vector master.
-- Keep the double-bar H, lime inset in M, original case `HedgeMaker`, letter spacing, and relative proportions.
+- Keep the interlocking HM geometry, central lime diamond, original case `HedgeMaker`, letter spacing, and relative proportions.
 - Use the supplied wordmark as an asset. Website sans fonts are for live text; they must not be used to retype the logo.
-- The selected lockup has no separate icon. Derive a simplified double-bar H favicon during the production-asset pass, without changing the full wordmark.
+- The selected lockup has a separate HM symbol. Derive a simplified HM favicon during the production-asset pass, without changing the full wordmark.
 - Leave space around the wordmark. Establish precise clear-space and minimum-size measurements with the vector master; do not introduce a tagline into these main files.
 - Use the light version on paper/light compositions and the dark version on deep-green compositions. These PNGs have background fills; transparent versions belong to the production-asset pass.
 
@@ -163,8 +165,8 @@ The earlier concepts remain in `docs/brand/logos/`. They are reference alternati
 | Direction | Visual idea | Separate light asset | Separate dark asset |
 | --- | --- | --- | --- |
 | 01 — Woven naira H, alternative | Two joined bands form H, with a diagonal gap and lime detail. The two bands suggest the naira's double stroke. | [Light PNG](docs/brand/logos/01-woven-naira-light.png) | [Dark PNG](docs/brand/logos/01-woven-naira-dark.png) |
-| 02 — Woven HM monogram | Interlocking angular strips, generous internal gaps, and a central lime diamond emphasize geometric heritage. | [Light PNG](docs/brand/logos/02-woven-monogram-light.png) | [Dark PNG](docs/brand/logos/02-woven-monogram-dark.png) |
-| 03 — Currency-cut wordmark, original selection source | A double-bar H, lime inset in M, and distinctive terminal R put the signature inside the name, with no separate icon. | [Original light PNG](docs/brand/logos/03-currency-wordmark-light.png) | [Original dark PNG](docs/brand/logos/03-currency-wordmark-dark.png) |
+| 02 — Woven HM monogram, original source of the selected third visual | Interlocking angular strips, generous internal gaps, and a central lime diamond emphasize geometric heritage. | [Light PNG](docs/brand/logos/02-woven-monogram-light.png) | [Dark PNG](docs/brand/logos/02-woven-monogram-dark.png) |
+| 03 — Currency-cut wordmark, archived alternative | A double-bar H and lime inset in M put the signature inside the name, with no separate icon. | [Original light PNG](docs/brand/logos/03-currency-wordmark-light.png) | [Original dark PNG](docs/brand/logos/03-currency-wordmark-dark.png) |
 
 All six original images contain one logo each, with clear space and no captions or comparison grids. Light versions target green on paper; dark versions target paper on deep green, preserving the lime accent. Download them individually or together in the [six-logo archive ZIP](docs/brand/logos/hedgemaker-logo-concepts.zip). The source outputs remain unmodified; the dark versions were generated as edits referencing their corresponding light versions.
 
@@ -172,7 +174,7 @@ These are PNG concept assets, approximately 1942 × 809 or 1983 × 793, not prod
 
 The geometric construction is original concept artwork inspired by the board, not an assertion that the shape reproduces a particular Nigerian textile or traditional symbol. Avoid squeezing the engraving textures inside the logo's small gaps. The logo should remain simple; rosettes, fine lines, and portraits belong to the surrounding brand artwork.
 
-For the selected production mark, prepare precise vector outlines, transparent light/dark files, a single-color version, and clear-space rules while preserving the defining R, H, and M details. Validate the derived icon at 16, 24, and 32px; simplify the icon where necessary without redesigning the wordmark. This is an asset-preparation step for the upcoming redesign, not a reopening of the logo selection.
+For the selected production mark, prepare precise vector outlines, transparent light/dark files, a single-color version, and clear-space rules while preserving the defining terminal r, HM geometry, and lime diamond. Validate the derived icon at 16, 24, and 32px; simplify the icon where necessary without redesigning the wordmark. This is an asset-preparation step for the upcoming redesign, not a reopening of the logo selection.
 
 ## Sources and deliverables
 

@@ -9,3 +9,12 @@ typechain-types
 .env.local
 .DS_Store
 *.log
+
+# Local agent instructions and installed agent skills
+AGENTS.md
+agents.md
+.agent/
+.agents/
+Agent Skills/
+AgentSkills/
+agent-skills/
