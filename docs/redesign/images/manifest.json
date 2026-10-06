@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-06",
+  "source": "OpenAI image generation, original HedgeMaker art direction",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "subjects": "Illustrative generated people and objects, not customers, endorsements, real banknotes, or documentary evidence.",
+  "delivery": "Whole original image encoded to WebP at quality 88. Layout crops use CSS object-fit; no artwork redrawn.",
+  "entries": [
+    {
+      "name": "currency-sculpture",
+      "original": "docs/redesign/images/currency-sculpture-original.png",
+      "delivery": "src/assets/brand/images/currency-sculpture.webp",
+      "generatedFile": "exec-f88d4fe3-98d4-4ab9-b05c-0f96d7df6a8d.png",
+      "use": "Hero, risk image card, learning hero, market-maker participation",
+      "sha256": "99388e0f8e7381b202d1d068daade4b0edc6e3648e3c6420a758427ab36033f8"
+    },
+    {
+      "name": "importer",
+      "original": "docs/redesign/images/importer-original.png",
+      "delivery": "src/assets/brand/images/importer.webp",
+      "generatedFile": "exec-56da6ffc-163e-49e4-ad83-a19a42dc872e.png",
+      "use": "Buyer image card",
+      "sha256": "53dffa737b269afac286a691a93a574524b15b255b159c4af87013131c4a5ddf"
+    },
+    {
+      "name": "dollar-earner",
+      "original": "docs/redesign/images/dollar-earner-original.png",
+      "delivery": "src/assets/brand/images/dollar-earner.webp",
+      "generatedFile": "exec-1ecebef5-9a0f-492f-9c30-6d926140ddfc.png",
+      "use": "Seller image card",
+      "sha256": "c1139a73e4272b8ca268691f4e52aa3b18e1537d67e179548a8a095dcedf9b8e"
+    }
+  ]
+}

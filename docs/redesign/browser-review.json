@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-06",
+  "environment": "Local demo auth; no external sign-in or transactions",
+  "viewports": [
+    {
+      "route": "/",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/learn",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/integration",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/app",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions/HM-2481",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/app/wallet",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/not-found",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/learn",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/integration",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/app",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions/HM-2481",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/app/wallet",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/not-found",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/learn",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/integration",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/app",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions/HM-2481",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/app/wallet",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/not-found",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/learn",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/integration",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/app",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions/HM-2481",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/app/wallet",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/not-found",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/learn",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/guide",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/market-makers/integration",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/app",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/app/positions/HM-2481",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/app/wallet",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/not-found",
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "checks": [
+    "Menu navigation and route close",
+    "Pause/resume animation",
+    "Keyboard stage selection",
+    "Buyer/seller example and rate changes",
+    "Market invalid lot size and review; writes disabled",
+    "Guide anchor",
+    "Reduced motion",
+    "No page errors",
+    "Seller image-card opens the seller market example"
+  ],
+  "pageErrors": []
+}

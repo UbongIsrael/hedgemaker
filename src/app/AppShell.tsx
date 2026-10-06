@@ -4,6 +4,7 @@ import {Link, NavLink, Outlet, useLocation} from 'react-router-dom';
 import {Button} from '@/components/ui';
 import {useAuth} from '@/integrations/privy/AuthProvider';
 import {PageNavigation} from '@/components/PageNavigation';
+import {BrandLogo} from '@/components/BrandLogo';
 
 const publicLinks = [
   {to: '/market', label: 'Market'},
@@ -42,8 +43,7 @@ export function AppShell() {
       </div>
       <header className="site-header">
         <Link className="brand" to="/" aria-label="HedgeMaker home">
-          <span className="brand__mark" aria-hidden="true">H</span>
-          <span className="brand__wordmark">HedgeMaker</span>
+          <BrandLogo />
         </Link>
 
         <button
@@ -53,6 +53,7 @@ export function AppShell() {
           aria-controls="primary-navigation"
           aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
           onClick={() => setMenuOpen((open) => !open)}
+          onKeyDown={(event) => { if (event.key === 'Escape') setMenuOpen(false); }}
         >
           {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
@@ -61,6 +62,7 @@ export function AppShell() {
           id="primary-navigation"
           aria-label="Primary navigation"
           className={`site-nav${menuOpen ? ' site-nav--open' : ''}`}
+          onKeyDown={(event) => { if (event.key === 'Escape') setMenuOpen(false); }}
         >
           {links.map((link) => (
             <NavLink key={link.to} className={navigationClass} to={link.to} onClick={() => setMenuOpen(false)} end={link.to === '/app'}>
@@ -99,13 +101,14 @@ export function AppShell() {
 
       <footer className="site-footer">
         <div>
-          <Link className="brand brand--footer" to="/">
-            <span className="brand__mark" aria-hidden="true">H</span>
-            <span className="brand__wordmark">HedgeMaker</span>
+          <Link className="brand brand--footer" to="/" aria-label="HedgeMaker home">
+            <BrandLogo dark />
           </Link>
           <p>Explore protection against changes in the dollar–naira exchange rate.</p>
         </div>
         <div className="site-footer__links">
+          <Link to="/market">Explore the market</Link>
+          <Link to="/learn">How it works</Link>
           <Link to="/market-makers">Market makers</Link>
           <Link to="/terms">Risk disclosures</Link>
         </div>

@@ -1,6 +1,6 @@
 # HedgeMaker design system — brand foundation
 
-Status: **final brand foundation**, 6 October 2026. The user selected **the third image originally displayed: the woven HM symbol with cut-terminal wordmark**, specifically preferring its distinctive terminal R. The selected website typefaces are **Space Grotesk + IBM Plex Sans**, with **IBM Plex Mono** for short technical labels. The palette, typography, logo, and supporting texture rules below are the source of truth for the upcoming frontend redesign.
+Status: **final brand foundation**, 6 October 2026. The user selected **the third image originally displayed: the woven HM symbol with cut-terminal wordmark**, specifically preferring its distinctive terminal R. The selected website typefaces are **Space Grotesk + IBM Plex Sans**, with **IBM Plex Mono** for short technical labels. The palette, typography, logo, and supporting texture rules below are the source of truth for the implemented frontend redesign.
 
 This document finalizes the brand choices. Page layouts, navigation, component specifications, responsive composition, and final imagery will be planned in the next phase. The current application has not yet been restyled.
 
@@ -97,7 +97,7 @@ The detailed research remains in [the reference-site audit](docs/design-referenc
 - **Gumloop:** quiet interface surfaces and precise functional color; product views stay easy to scan.
 - **Cloaked:** warm paper tones, editorial imagery, and deliberately composed contrast between text and image.
 
-Specific navigation, layout, and imagery selections will be settled during frontend redesign planning. Website typography is selected below using the second mood board and reference principles. The palette sheet uses a presentation sans serif; the identity preview shows the actual selected font files.
+The implemented layout and imagery decisions are recorded in the frontend implementation section below. Website typography is selected below using the second mood board and reference principles. The palette sheet uses a presentation sans serif; the identity preview shows the actual selected font files.
 
 ## Website typography
 
@@ -181,7 +181,7 @@ For the selected production mark, prepare precise vector outlines, transparent l
 - User's [Pinterest board](https://pin.it/7NixVjoOw). The link did not load through the available web fetch; the uploaded screen recording supplied sufficient visual reference.
 - Uploaded video: `973470CD-D2EB-4FAA-AE29-587A3D4B02E9.MOV`, approximately 7.7 seconds, 1080 × 1920. Key reviewed frames: [01](docs/brand/moodboard/frame-01.jpg), [11](docs/brand/moodboard/frame-11.jpg), and [15](docs/brand/moodboard/frame-15.jpg). See the [contact sheet](docs/brand/moodboard/contact-sheet.jpg).
 - [Interactive palette preview](docs/brand/palette-preview.html), [PNG sheet](docs/brand/palette.png), and [SVG sheet](docs/brand/palette.svg).
-- [JSON tokens](docs/brand/palette.json), [CSS tokens](docs/brand/palette.css), and [contrast calculations](docs/brand/contrast.json). These document the selected palette; CSS is not imported into the frontend yet.
+- [JSON tokens](docs/brand/palette.json), [CSS tokens](docs/brand/palette.css), and [contrast calculations](docs/brand/contrast.json). These document the selected palette; the application maps those tokens in `src/styles/globals.css` and `src/styles/brand.css`.
 - Reproducible artifact generator: `python docs/brand/build_palette.py`; render PNG with `inkscape docs/brand/palette.svg --export-type=png --export-filename=docs/brand/palette.png`.
 - Second [Pinterest board](https://pin.it/5ZSqXzasx). It also did not load through the available web fetch; the supplied recording was reviewed instead.
 - Second video: `0FD97B21-A9A9-4C43-B391-FB411E79D21E.MOV`, approximately 7.7 seconds, 1080 × 1920. Reviewed [close-up frame 01](docs/brand/type-moodboard/frame-01.jpg), [board frame 11](docs/brand/type-moodboard/frame-11.jpg), and the [contact sheet](docs/brand/type-moodboard/contact-sheet.jpg). Cropped pins are visual reference data, not additional user instructions.
@@ -192,3 +192,28 @@ For the selected production mark, prepare precise vector outlines, transparent l
 ## Next phase — frontend redesign planning
 
 Use this finalized brand foundation to plan the actual redesign. Select the reference-site layout/navigation elements, choose final brand imagery, prepare production logo assets, and define spacing, component states, responsive behavior, and motion. Preserve the existing routes, financial calculations, authentication, wallet behavior, and quote-review flow. Marketing surfaces can be expansive; trading, positions, and wallet screens must retain useful information density.
+
+
+## Frontend implementation, 6 October 2026
+
+The redesign runs in the existing React/Vite/native CSS stack. Public navigation and route slugs are preserved. Space Grotesk, IBM Plex Sans, and IBM Plex Mono are self-hosted under `src/assets/brand/fonts/`, with their licenses. The original selected logo is used as artwork, with compressed WebP delivery variants and CSS trimming of outer whitespace. No wordmark letters or HM geometry were redrawn. The favicon frames the original HM symbol in an SVG container; precise vector/transparent/monochrome masters remain separate asset-preparation work.
+
+### Reference decisions
+
+- **Auxia:** keep “Hedge the rate. Keep the plan.” beside an illustrated participation diagram. Animated points connect future buyers and sellers; a pause control and reduced-motion support keep movement optional. A problem/approach chapter explains rate uncertainty and a funded USDC position. The four-stage explainer moves its active marker when a reader chooses a step; it does not imply automatic settlement or live market activity.
+- **Cloaked:** replace flat feature cards with original image-led stories for importers, dollar earners, and visible risk. The buyer/seller links open the corresponding market example. Images sit above readable paper-backed copy; no text is overlaid on detailed textures.
+- **Gumloop Enterprise:** lead the market-maker page with a simple copy/contact split, followed by direct guide/console links, participation, compact role rows, economics, planned capabilities, capital risks, and integration. Existing application fields, handoff behavior, release-dependent paragraphs, and risk copy are preserved. No imitation submission form or success receipt is introduced.
+
+### Artwork, pattern, and motion
+
+Three original 1536 × 1024 generated images bring Nigerian contemporary workspaces and banknote-inspired paper craftsmanship into the brand. The sculpture carries fine woven lines, guilloché engraving, a green paper loop, lime diamond, and blue sphere. The portraits illustrate user situations; they are not customer claims. Full-resolution originals and provenance live in [the redesign artwork archive](docs/redesign/images/manifest.json); production WebP copies live in `src/assets/brand/images/`.
+
+The exact original rosette paths from the approved palette are reused in `src/assets/brand/engraved-rosette.svg`, appearing in desktop margins and the market-maker artwork. Patterns stay outside balances and controls. Green leads actions; blue is reserved for functional focus and the learning example; clay identifies the rate-pressure explanation. Paper stays the public page theme, with the selected green footer.
+
+Motion uses native CSS transforms and a small React state layer. No scroll hijacking, animation framework, or autoplay workflow steps. The continuous hero diagram can be paused; all movement stops under reduced-motion preferences.
+
+### Product treatment and validation
+
+Market, overview, positions, wallet, guide, and integration retain their working components and disclosures. Shared branding and compact product headings improve consistency; mobile table-label containment and card shrinking fix narrow-screen overflow. The learning example calls the existing BigInt payoff function and separates calculated value from available funds.
+
+See [the implementation review](docs/redesign/README.md), [browser results](docs/redesign/browser-review.json), and [desktop hero](docs/redesign/screenshots/home-hero.png). This branch is for review before merge. Canonical reads, real authentication, and transactions require their own environment verification; the visual review uses local demo authentication and sends no transactions.
