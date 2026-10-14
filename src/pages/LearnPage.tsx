@@ -9,7 +9,7 @@ export function LearnPage() {
       <div className="content-page__intro">
         <Badge variant="info">A two-minute guide</Badge>
         <h1>How your hedge gains or loses value.</h1>
-        <p>Explore how a hedge can help you manage changes in the dollar-to-naira reference rate. Gains and losses are calculated in USDC, and protection is limited to the funds backing the hedge. This demo uses sample rates and test USDC. No dollars or naira are exchanged.</p>
+        <p>Explore how a hedge can help you manage changes in the dollar-to-naira reference rate. Gains and losses are calculated in USDC, and protection is limited to the funds backing the hedge. Testnet markets use finalized onchain rehearsal rates and valueless test USDC. No dollars or naira are exchanged.</p>
       </div>
       <div className="explanation-grid">
         <Card className="explanation-card explanation-card--buyer">

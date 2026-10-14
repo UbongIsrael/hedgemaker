@@ -1,13 +1,15 @@
-import {ArrowDownRight, ArrowRight, ArrowUpRight, CheckCircle2, Clock3, Info, LockKeyhole} from 'lucide-react';
-import {useMemo, useState} from 'react';
+import {ArrowDownRight, ArrowRight, ArrowUpRight, CheckCircle2, Clock3, Info, LockKeyhole, RefreshCw, TriangleAlert} from 'lucide-react';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
+import {keccak256, stringToHex, type Hex} from 'viem';
 import {
-  DEFAULT_INITIAL_MARGIN_BPS,
-  DEFAULT_MAINTENANCE_MARGIN_BPS,
   buyerPayoffRaw,
+  cumulativeFeeRaw,
+  fixedAdverseEntryReservePerLotRaw,
   formatFixed,
   formatUsdc,
   orderReserve,
+  parseFixed,
   parseUsdc,
   peggedAdverseEntryReservePerLotRaw,
   peggedStrikeRaw,
@@ -15,11 +17,17 @@ import {
 } from '@/domain';
 import {Badge, Button, Card, CardContent, CardHeader, CardTitle, Field, Input, SegmentedControl} from '@/components/ui';
 import {LiveOrderBook} from '@/components/LiveOrderBook';
-import {DEMO_MARKET} from '@/demo/fixtures';
-import {useAuth} from '@/integrations/privy/AuthProvider';
 import {marketMakerRelease} from '@/content/marketMakers';
-
-type PricingKind = 'pegged' | 'fixed';
+import {
+  buildPlaceOrder,
+  buildSettlementTokenApproval,
+  type BuiltPlaceOrder,
+  type OrderPriceType,
+} from '@/integrations/contracts/transactionBuilders';
+import {useLiveOrderBook} from '@/integrations/contracts/useLiveOrderBook';
+import {useMarketMakerPortfolio} from '@/integrations/contracts/useMarketMakerPortfolio';
+import {useProtocolTransaction} from '@/integrations/contracts/useProtocolTransaction';
+import {useAuth} from '@/integrations/privy/AuthProvider';
 
 function formatRate(raw: bigint) {
   return `₦${formatFixed(raw, 2, 6)}`;
@@ -27,210 +35,319 @@ function formatRate(raw: bigint) {
 
 function formatSignedUsdc(raw: bigint) {
   const sign = raw > 0n ? '+' : '';
-  return `${sign}${formatFixed(raw, 6)} USDC`;
+  return `${sign}${formatFixed(raw, 6)} mUSDC`;
 }
 
-function previewErrorMessage(error: unknown): string {
-  if (error instanceof SyntaxError) {
-    return "Enter a whole number for the rate adjustment, such as 10 or -10.";
-  }
+function previewErrorMessage(error: unknown, lotNotionalRaw?: bigint): string {
+  if (error instanceof SyntaxError) return 'Enter a valid whole-number rate adjustment.';
   if (error instanceof Error) {
-    switch (error.message) {
-      case "Enter a positive notional.":
-        return "Enter an amount greater than $0.";
-      case "Use $100 whole-lot increments.":
-        return "Enter a multiple of $100, such as $100 or $1,000.";
-      case "Enter a plain decimal amount.":
-        return "Enter a number, such as 100 or 1000, without commas or a currency symbol.";
-      case "Pegged strike multiplier must be positive.":
-        return "Enter a rate adjustment greater than -10,000 basis points (-100%).";
-      case "Strike must be positive.":
-        return "This adjustment makes the rate too low. Increase the rate adjustment.";
-    }
-    const precision = /^Amount supports at most (\d+) decimal places\.$/.exec(error.message);
-    if (precision) return `Use no more than ${precision[1]} decimal places.`;
+    if (error.message === 'Enter a positive notional.') return 'Enter an amount greater than $0.';
+    if (error.message === 'Use whole-lot increments.') return `Enter a multiple of $${lotNotionalRaw ? formatUsdc(lotNotionalRaw) : 'the configured lot size'}.`;
+    if (error.message === 'Enter a plain decimal amount.') return 'Enter a number without commas or a currency symbol.';
+    return error.message;
   }
-  return "We couldn't calculate this example. Check your entries and try again.";
+  return 'The order could not be calculated from current chain state.';
+}
+
+type TicketPreview = {
+  ok: true;
+  notionalRaw: bigint;
+  lots: number;
+  effectiveStrikeRaw: bigint;
+  initialRaw: bigint;
+  adverseRaw: bigint;
+  feeRaw: bigint;
+  totalRequiredRaw: bigint;
+  highRate: bigint;
+  lowRate: bigint;
+  highRateValueRaw: bigint;
+  lowRateValueRaw: bigint;
+} | {
+  ok: false;
+  error: string;
+};
+
+interface PreparedOrderReview {
+  built: BuiltPlaceOrder;
+  walletAddress: string;
+  sideLabel: string;
+  amountLabel: string;
+  fixingLabel: string;
+  seriesId: Hex;
+  configVersion: bigint;
+  roundId: bigint;
+  referenceRateRaw: bigint;
 }
 
 export function MarketPage() {
   const auth = useAuth();
+  const book = useLiveOrderBook();
+  const portfolio = useMarketMakerPortfolio(auth.walletReady ? auth.walletAddress : undefined);
+  const transaction = useProtocolTransaction();
   const [side, setSide] = useState<Side>('USD_BUYER');
-  const [amount, setAmount] = useState('1000');
-  const [pricing, setPricing] = useState<PricingKind>('pegged');
+  const [amount, setAmount] = useState('');
+  const [pricing, setPricing] = useState<OrderPriceType>('pegged');
   const [offsetBps, setOffsetBps] = useState('0');
-  const [maturity, setMaturity] = useState(DEMO_MARKET.maturities[1]?.id ?? 'oct-17');
-  const [reviewOpen, setReviewOpen] = useState(false);
+  const [rateLimit, setRateLimit] = useState('');
+  const [review, setReview] = useState<PreparedOrderReview>();
+  const [reviewError, setReviewError] = useState<string>();
+  const [submitError, setSubmitError] = useState<string>();
 
-  const preview = useMemo(() => {
+  const data = book.data;
+  const config = data?.config;
+  const series = data?.selectedSeries;
+  const marketReady = Boolean(
+    data?.activeVersion
+      && config
+      && series
+      && data.roundId
+      && data.referenceRateRaw
+      && data.tradingOpen
+      && !data.matchingPaused,
+  );
+
+  const amountInput = amount || (config ? formatUsdc(config.lotNotionalRaw) : '');
+  const rateLimitInput = rateLimit || (data?.referenceRateRaw ? formatFixed(data.referenceRateRaw, 2, 6) : '');
+  const preview: TicketPreview | undefined = (() => {
+    if (!config || !data?.referenceRateRaw) return undefined;
     try {
-      const notionalRaw = parseUsdc(amount);
+      const notionalRaw = parseUsdc(amountInput);
       if (notionalRaw <= 0n) throw new Error('Enter a positive notional.');
-      if (notionalRaw % DEMO_MARKET.lotNotionalRaw !== 0n) {
-        throw new Error('Use $100 whole-lot increments.');
-      }
-      const lots = notionalRaw / DEMO_MARKET.lotNotionalRaw;
+      if (notionalRaw % config.lotNotionalRaw !== 0n) throw new Error('Use whole-lot increments.');
+      const lots = notionalRaw / config.lotNotionalRaw;
+      if (lots > BigInt(Number.MAX_SAFE_INTEGER)) throw new Error('The order size is too large.');
       const offset = pricing === 'pegged' ? BigInt(offsetBps || '0') : 0n;
-      const strikeRaw = pricing === 'pegged'
-        ? peggedStrikeRaw(DEMO_MARKET.referenceRateRaw, offset, DEMO_MARKET.tickRaw, side)
-        : DEMO_MARKET.referenceRateRaw;
+      const enteredLimit = parseFixed(rateLimitInput);
+      const effectiveStrikeRaw = pricing === 'pegged'
+        ? peggedStrikeRaw(data.referenceRateRaw, offset, config.tickSizeRaw, side)
+        : enteredLimit;
       const adversePerLot = pricing === 'pegged'
-        ? peggedAdverseEntryReservePerLotRaw(DEMO_MARKET.lotNotionalRaw, offset, side)
-        : 0n;
+        ? peggedAdverseEntryReservePerLotRaw(config.lotNotionalRaw, offset, side)
+        : fixedAdverseEntryReservePerLotRaw(config.lotNotionalRaw, enteredLimit, data.referenceRateRaw, side);
       const reserve = orderReserve({
-        notionalPerLotRaw: DEMO_MARKET.lotNotionalRaw,
+        notionalPerLotRaw: config.lotNotionalRaw,
         lots,
-        initialMarginBps: DEFAULT_INITIAL_MARGIN_BPS,
-        maintenanceMarginBps: DEFAULT_MAINTENANCE_MARGIN_BPS,
+        initialMarginBps: BigInt(config.initialMarginBps),
+        maintenanceMarginBps: BigInt(config.maintenanceMarginBps),
         adverseEntryReservePerLotRaw: adversePerLot,
       });
-      const buyerUp = buyerPayoffRaw(notionalRaw, strikeRaw, DEMO_MARKET.referenceRateRaw + 50_000_000n);
-      const buyerDown = buyerPayoffRaw(notionalRaw, strikeRaw, DEMO_MARKET.referenceRateRaw - 50_000_000n);
+      const feeRaw = cumulativeFeeRaw(notionalRaw, BigInt(config.effectiveTakerFeeBps));
+      const scenarioMove = data.referenceRateRaw * 300n / 10_000n;
+      const highRate = data.referenceRateRaw + scenarioMove;
+      const lowRate = data.referenceRateRaw > scenarioMove ? data.referenceRateRaw - scenarioMove : 1n;
+      const buyerHigh = buyerPayoffRaw(notionalRaw, effectiveStrikeRaw, highRate);
+      const buyerLow = buyerPayoffRaw(notionalRaw, effectiveStrikeRaw, lowRate);
       return {
-        error: undefined,
+        ok: true,
         notionalRaw,
-        lots,
-        offset,
-        strikeRaw,
+        lots: Number(lots),
+        effectiveStrikeRaw,
         initialRaw: reserve.initialMarginPerLotRaw * lots,
-        maintenanceRaw: reserve.maintenanceMarginPerLotRaw * lots,
         adverseRaw: reserve.adverseEntryReservePerLotRaw * lots,
-        totalReserveRaw: reserve.totalReserveRaw,
-        highRateValueRaw: side === 'USD_BUYER' ? buyerUp : -buyerUp,
-        lowRateValueRaw: side === 'USD_BUYER' ? buyerDown : -buyerDown,
+        feeRaw,
+        totalRequiredRaw: reserve.totalReserveRaw + feeRaw,
+        highRate,
+        lowRate,
+        highRateValueRaw: side === 'USD_BUYER' ? buyerHigh : -buyerHigh,
+        lowRateValueRaw: side === 'USD_BUYER' ? buyerLow : -buyerLow,
       };
     } catch (error) {
-      return {error: previewErrorMessage(error)};
+      return {ok: false, error: previewErrorMessage(error, config.lotNotionalRaw)};
     }
-  }, [amount, offsetBps, pricing, side]);
+  })();
 
-  const selectedMaturity = DEMO_MARKET.maturities.find((item) => item.id === maturity);
-  const activeSideLabel = side === 'USD_BUYER' ? 'Buying dollars later' : 'Selling dollars later';
+  const selectedDate = series ? new Date(Number(series.fixingAt) * 1_000) : undefined;
+  const transactionPending = transaction.status === 'awaiting_signature' || transaction.status === 'confirming';
+  const clearPreparedReview = () => {
+    setReview(undefined);
+    setReviewError(undefined);
+    setSubmitError(undefined);
+    transaction.reset();
+  };
+
+  const prepareReview = () => {
+    setReview(undefined);
+    setReviewError(undefined);
+    setSubmitError(undefined);
+    if (!marketReady || !data?.roundId || !data.referenceRateRaw || !config || !series || !preview?.ok) {
+      setReviewError('The market must have an active configuration, listed maturity, and fresh finalized oracle round.');
+      return;
+    }
+    try {
+      const maxLifetimeEnd = data.blockTimestamp + BigInt(config.maxOrderLifetime);
+      const validUntil = maxLifetimeEnd < series.fixingAt ? maxLifetimeEnd : series.fixingAt - 1n;
+      const submitByCandidate = data.blockTimestamp + 120n;
+      const submitBy = submitByCandidate < validUntil ? submitByCandidate : validUntil;
+      const built = buildPlaceOrder({
+        intentId: keccak256(stringToHex(globalThis.crypto.randomUUID())),
+        seriesId: series.seriesId,
+        side,
+        priceType: pricing,
+        timeInForce: 'rest',
+        lots: preview.lots,
+        minimumImmediateFillLots: 0,
+        validUntil,
+        submitBy,
+        limitStrikeRaw: parseFixed(rateLimitInput),
+        offsetBps: pricing === 'pegged' ? Number(offsetBps) : 0,
+        lastExecutableRoundId: pricing === 'pegged'
+          ? data.roundId + BigInt(Math.min(config.maxPegLifetimeRounds, 5))
+          : 0n,
+      }, {
+        blockNumber: data.blockNumber,
+        blockTimestamp: data.blockTimestamp,
+        configVersion: data.activeVersion,
+        roundId: data.roundId,
+        referenceRateRaw: data.referenceRateRaw,
+        tradingOpen: data.tradingOpen,
+        matchingPaused: data.matchingPaused,
+        series,
+        config,
+      });
+      setReview({
+        built,
+        walletAddress: auth.walletAddress?.toLowerCase() ?? '',
+        sideLabel: side === 'USD_BUYER' ? 'Buying dollars later' : 'Selling dollars later',
+        amountLabel: amountInput,
+        fixingLabel: selectedDate?.toLocaleString() ?? 'Unknown',
+        seriesId: series.seriesId,
+        configVersion: data.activeVersion,
+        roundId: data.roundId,
+        referenceRateRaw: data.referenceRateRaw,
+      });
+    } catch (error) {
+      setReviewError(previewErrorMessage(error, config.lotNotionalRaw));
+    }
+  };
+
+  const placeOrder = async () => {
+    if (!review || !portfolio.data) return;
+    setSubmitError(undefined);
+    const currentWallet = auth.walletAddress?.toLowerCase() ?? '';
+    if (
+      !data || !data.selectedSeries || !data.roundId || !data.referenceRateRaw
+        || review.walletAddress !== currentWallet
+        || review.seriesId !== data.selectedSeries.seriesId
+        || review.configVersion !== data.activeVersion
+        || review.roundId !== data.roundId
+        || review.referenceRateRaw !== data.referenceRateRaw
+        || !data.tradingOpen || data.matchingPaused
+        || data.blockTimestamp > BigInt(String(review.built.transaction.decodedIntent.submitBy))
+    ) {
+      setReview(undefined);
+      setSubmitError('The wallet or live market state changed. Review a fresh order before signing.');
+      return;
+    }
+    if (portfolio.data.walletBalanceRaw < review.built.preview.maxTokenPullRaw) {
+      setSubmitError(`Your wallet needs ${formatUsdc(review.built.preview.maxTokenPullRaw)} mUSDC for this order.`);
+      return;
+    }
+    try {
+      if (portfolio.data.vaultAllowanceRaw < review.built.preview.maxTokenPullRaw) {
+        await transaction.submit(buildSettlementTokenApproval(review.built.preview.maxTokenPullRaw));
+        await portfolio.refresh();
+        setReview(undefined);
+        setSubmitError('Approval confirmed. Review the order again so its short submission window uses fresh chain state.');
+        return;
+      }
+      await transaction.submit(review.built.transaction);
+      portfolio.refresh();
+      book.refresh();
+      setReview(undefined);
+    } catch {
+      // The transaction hook exposes a user-safe error and leaves the review intact for inspection.
+    }
+  };
 
   return (
     <div className="market-page page-shell">
       <header className="market-heading">
         <div>
-          <Badge variant="info">Try a demo · no sign-in needed</Badge>
+          <Badge variant={marketReady ? 'success' : 'warning'}>{marketReady ? 'Live Monad market' : 'Market setup required'}</Badge>
           <h1>Build your USD/NGN protection.</h1>
-          <p>Choose the amount and date you want to protect. See an example rate and the USDC needed before signing in.</p>
+          <p>Every rate, maturity, limit, balance, and order below comes from the deployed testnet contracts.</p>
         </div>
         <div className="rate-panel">
-          <div><span>Sample exchange rate</span><strong>₦1,650.00</strong><small>per USD</small></div>
-          <Badge variant="success">Demo rate confirmed</Badge>
-          <p>{DEMO_MARKET.observedAt} · {DEMO_MARKET.source}</p>
+          <div><span>Latest finalized oracle rate</span><strong>{data?.referenceRateRaw ? formatRate(data.referenceRateRaw) : '—'}</strong><small>per USD</small></div>
+          <Badge variant={data?.tradingOpen ? 'success' : 'warning'}>{data?.tradingOpen ? 'Trading open' : 'Trading closed'}</Badge>
+          <p>Round {data?.roundId?.toString() ?? '—'} · block {data?.blockNumber.toString() ?? '—'}</p>
         </div>
       </header>
 
+      {book.loading && <div className="live-book__state" role="status"><RefreshCw className="live-book__refresh-icon" aria-hidden="true" /><div><strong>Reading market configuration</strong><p>Loading the active version, oracle round, series, and limits.</p></div></div>}
+      {book.error && <div className="live-book__state live-book__state--error" role="alert"><TriangleAlert aria-hidden="true" /><div><strong>Market unavailable</strong><p>{book.error}</p></div></div>}
+      {data?.activeVersion === 0n && <div className="live-book__state live-book__state--warning" role="status"><TriangleAlert aria-hidden="true" /><div><strong>No active market configuration</strong><p>The deployment is real, but the operator has not configured economics, an oracle feed, or listed maturities. No placeholder values are substituted.</p></div></div>}
+
       <div className="market-layout">
-        <form className="ticket-panel" onSubmit={(event) => { event.preventDefault(); setReviewOpen(true); }}>
+        <form className="ticket-panel" onSubmit={(event) => { event.preventDefault(); prepareReview(); }}>
           <div className="ticket-panel__header">
-            <div><span className="eyebrow">Your order preview</span><h2>What are you protecting?</h2></div>
-            <Badge>Draft</Badge>
+            <div><span className="eyebrow">Canonical order</span><h2>What are you protecting?</h2></div>
+            <Badge>{marketReady ? 'Live draft' : 'Unavailable'}</Badge>
           </div>
 
-          <SegmentedControl
-            label="Choose your situation"
-            value={side}
-            onChange={setSide}
-            options={[
-              {value: 'USD_BUYER', label: 'Buying dollars later'},
-              {value: 'USD_SELLER', label: 'Selling dollars later'},
-            ]}
-          />
+          <SegmentedControl label="Choose your situation" value={side} onChange={(value) => { clearPreparedReview(); setSide(value); }} options={[{value: 'USD_BUYER', label: 'Buying dollars later'}, {value: 'USD_SELLER', label: 'Selling dollars later'}]} />
 
           <div className="ticket-grid">
-            <Field label="Amount to protect (USD)" hint="Enter multiples of $100, such as $100 or $1,000." error={preview.error}>
-              <Input inputMode="decimal" value={amount} onChange={(event) => setAmount(event.target.value)} />
+            <Field label="Amount to protect (USD)" hint={config ? `Whole lots of $${formatUsdc(config.lotNotionalRaw)}.` : 'Waiting for configured lot size.'} error={preview && !preview.ok ? preview.error : undefined}>
+              <Input inputMode="decimal" value={amountInput} onChange={(event) => { clearPreparedReview(); setAmount(event.target.value); }} disabled={!config} />
             </Field>
-            <Field label="Protection end date" hint={selectedMaturity?.fixing}>
-              <select className="hm-input" value={maturity} onChange={(event) => setMaturity(event.target.value)}>
-                {DEMO_MARKET.maturities.map((item) => <option key={item.id} value={item.id}>{item.label} · {item.tenor}</option>)}
+            <Field label="Protection end date" hint={selectedDate?.toLocaleString()}>
+              <select className="hm-input" value={series?.seriesId ?? ''} onChange={(event) => { clearPreparedReview(); book.setSelectedSeriesId(event.target.value as Hex); }} disabled={!data?.series.length}>
+                {!data?.series.length && <option value="">No listed maturities</option>}
+                {data?.series.map((item) => <option key={item.seriesId} value={item.seriesId}>{new Date(Number(item.fixingAt) * 1_000).toLocaleString()}</option>)}
               </select>
             </Field>
           </div>
 
-          <SegmentedControl
-            label="How should the rate be set?"
-            value={pricing}
-            onChange={setPricing}
-            options={[
-              {value: 'pegged', label: 'Follow the exchange rate'},
-              {value: 'fixed', label: 'Fixed rate limit'},
-            ]}
-          />
+          <SegmentedControl label="How should the rate be set?" value={pricing} onChange={(value) => { clearPreparedReview(); setPricing(value); }} options={[{value: 'pegged', label: 'Follow the oracle rate'}, {value: 'fixed', label: 'Fixed rate limit'}]} />
 
-          {pricing === 'pegged' ? (
-            <Field label="Rate adjustment (basis points)" hint="100 basis points = 1%. Enter a positive or negative whole number. This adjustment stays the same while any part of your order waits to match. Once matched, each position's agreed rate stays fixed.">
-              <Input inputMode="numeric" value={offsetBps} onChange={(event) => setOffsetBps(event.target.value)} />
-            </Field>
-          ) : (
-            <div className="inline-notice"><Info aria-hidden="true" /><span>This demo uses a fixed rate limit of ₦1,650.00 per USD. With a fixed-limit order, any unmatched amount becomes unavailable when a new reference rate is confirmed.</span></div>
-          )}
+          {pricing === 'pegged' && <Field label="Oracle-rate adjustment (basis points)" hint={config ? `Allowed range: ±${config.maxOffsetBps} bps.` : undefined}><Input inputMode="numeric" value={offsetBps} onChange={(event) => { clearPreparedReview(); setOffsetBps(event.target.value); }} disabled={!config} /></Field>}
+          <Field label={pricing === 'pegged' ? 'Worst acceptable rate (NGN/USD)' : 'Fixed rate limit (NGN/USD)'} hint={config ? `Tick size: ₦${formatFixed(config.tickSizeRaw, 2, 6)}.` : undefined}><Input inputMode="decimal" value={rateLimitInput} onChange={(event) => { clearPreparedReview(); setRateLimit(event.target.value); }} disabled={!config} /></Field>
+          {pricing === 'fixed' && <div className="inline-notice"><Info aria-hidden="true" /><span>A fixed order binds to the current finalized oracle round. An unmatched fixed order becomes invalid when a new round finalizes.</span></div>}
 
-          {!preview.error && preview.strikeRaw !== undefined && (
+          {preview?.ok && (
             <div className="ticket-summary" aria-live="polite">
-              <div className="ticket-summary__primary"><span>Current rate limit</span><strong>{formatRate(preview.strikeRaw)}</strong><small>Naira per dollar · rounded in your favor</small></div>
+              <div className="ticket-summary__primary"><span>Effective rate limit</span><strong>{formatRate(preview.effectiveStrikeRaw)}</strong><small>Derived from the current finalized oracle round</small></div>
               <dl>
-                <div><dt>Required starting balance</dt><dd>{formatUsdc(preview.initialRaw ?? 0n)} USDC</dd></div>
-                <div><dt>Extra collateral for rate adjustment</dt><dd>{formatUsdc(preview.adverseRaw ?? 0n)} USDC</dd></div>
-                <div><dt>Trading fee</dt><dd>No trading fee in this demo</dd></div>
-                <div className="ticket-summary__total"><dt>Total USDC required</dt><dd>{formatUsdc(preview.totalReserveRaw ?? 0n)} USDC</dd></div>
+                <div><dt>Initial margin</dt><dd>{formatUsdc(preview.initialRaw)} mUSDC</dd></div>
+                <div><dt>Adverse-entry reserve</dt><dd>{formatUsdc(preview.adverseRaw)} mUSDC</dd></div>
+                <div><dt>Trading fee escrow</dt><dd>{formatUsdc(preview.feeRaw)} mUSDC</dd></div>
+                <div className="ticket-summary__total"><dt>Maximum token pull</dt><dd>{formatUsdc(preview.totalRequiredRaw)} mUSDC</dd></div>
               </dl>
             </div>
           )}
 
-          <div className="ticket-disclosure">
-            <LockKeyhole aria-hidden="true" />
-            <p>Collateral is USDC set aside to cover losses. Once your order is matched, it and any gains stay locked until the position ends. An order may never be matched. HedgeMaker settles gains and losses in USDC; it does not exchange dollars or naira.</p>
-          </div>
-
-          <Button fullWidth size="lg" type="submit" disabled={Boolean(preview.error)}>
-            Review protection <ArrowRight size={17} aria-hidden="true" />
-          </Button>
+          <div className="ticket-disclosure"><LockKeyhole aria-hidden="true" /><p>The Vault pulls approved mUSDC only when the order is submitted. There is no general deposit balance. Filled collateral stays isolated until closure; released funds become claimable before withdrawal.</p></div>
+          {reviewError && <p className="hm-field__error" role="alert">{reviewError}</p>}
+          <Button fullWidth size="lg" type="submit" disabled={!marketReady || !preview?.ok}>Review live order <ArrowRight size={17} aria-hidden="true" /></Button>
         </form>
 
         <aside className="market-sidebar">
           <Card className="scenario-card">
-            <CardHeader><div><span className="eyebrow">Example rate changes</span><CardTitle>What if the rate moves?</CardTitle></div></CardHeader>
+            <CardHeader><div><span className="eyebrow">Live-rate scenarios</span><CardTitle>What if the rate moves by 3%?</CardTitle></div></CardHeader>
             <CardContent>
-              {!preview.error && (
-                <>
-                  <div className="scenario-row scenario-row--positive">
-                    <ArrowUpRight aria-hidden="true" />
-                    <div><span>USD/NGN rises to ₦1,700</span><strong>{formatSignedUsdc(preview.highRateValueRaw ?? 0n)}</strong><small>{side === 'USD_BUYER' ? 'Rate move in your favor' : 'Rate move against you'}</small></div>
-                  </div>
-                  <div className="scenario-row scenario-row--negative">
-                    <ArrowDownRight aria-hidden="true" />
-                    <div><span>USD/NGN falls to ₦1,600</span><strong>{formatSignedUsdc(preview.lowRateValueRaw ?? 0n)}</strong><small>{side === 'USD_SELLER' ? 'Rate move in your favor' : 'Rate move against you'}</small></div>
-                  </div>
-                </>
-              )}
-              <p className="scenario-card__note">These examples show the calculated gain or loss at each sample rate, before limits on available collateral. They do not predict when a position might close or how much you would receive.</p>
+              {preview?.ok ? <>
+                <div className="scenario-row scenario-row--positive"><ArrowUpRight aria-hidden="true" /><div><span>USD/NGN rises to {formatRate(preview.highRate)}</span><strong>{formatSignedUsdc(preview.highRateValueRaw)}</strong><small>{side === 'USD_BUYER' ? 'Rate move in your favor' : 'Rate move against you'}</small></div></div>
+                <div className="scenario-row scenario-row--negative"><ArrowDownRight aria-hidden="true" /><div><span>USD/NGN falls to {formatRate(preview.lowRate)}</span><strong>{formatSignedUsdc(preview.lowRateValueRaw)}</strong><small>{side === 'USD_SELLER' ? 'Rate move in your favor' : 'Rate move against you'}</small></div></div>
+              </> : <p className="scenario-card__note">A finalized oracle rate and active configuration are required before scenarios can be calculated.</p>}
+              <p className="scenario-card__note">These values are calculations from the current onchain rate, not predictions or balances.</p>
             </CardContent>
           </Card>
-
           <LiveOrderBook />
           <Card className="mm-market-callout"><CardContent><span className="eyebrow">For market makers</span><p>{marketMakerRelease.placements.market}</p><Link className="text-link" to="/market-makers">For market makers<ArrowRight size={15} aria-hidden="true" /></Link></CardContent></Card>
         </aside>
       </div>
 
-      {reviewOpen && !preview.error && (
+      {review && (
         <section className="review-panel" aria-live="polite">
-          <div className="review-panel__status"><CheckCircle2 aria-hidden="true" /><span>Preview ready</span></div>
-          <div><span className="eyebrow">Your plan</span><h2>{activeSideLabel} · {amount} USD</h2><p>Protection end date: {selectedMaturity?.label}. Current rate limit: {preview.strikeRaw !== undefined ? formatRate(preview.strikeRaw) : '—'} per USD.</p></div>
-          <div className="review-panel__facts">
-            <span><Clock3 aria-hidden="true" /> {selectedMaturity?.fixing}</span>
-            <span><LockKeyhole aria-hidden="true" /> {formatUsdc(preview.totalReserveRaw ?? 0n)} USDC required</span>
-          </div>
+          <div className="review-panel__status"><CheckCircle2 aria-hidden="true" /><span>Built from block {review.built.transaction.decodedIntent.snapshotBlock}</span></div>
+          <div><span className="eyebrow">Your live order</span><h2>{review.sideLabel} · {review.amountLabel} USD</h2><p>Fixing: {review.fixingLabel}. Effective rate: {formatRate(review.built.preview.effectiveStrikeRaw)} per USD.</p></div>
+          <div className="review-panel__facts"><span><Clock3 aria-hidden="true" /> Oracle round {review.built.transaction.decodedIntent.oracleRound}</span><span><LockKeyhole aria-hidden="true" /> Up to {formatUsdc(review.built.preview.maxTokenPullRaw)} mUSDC</span></div>
           <div className="review-panel__actions">
-            {auth.authenticated ? (
-              <Button disabled title="You can review an example here, but you cannot place an order.">Trading unavailable in demo</Button>
-            ) : (
-              <Button onClick={auth.login}>{auth.mode === 'privy' ? 'Sign in' : 'Enter demo'}</Button>
-            )}
+            {auth.authenticated ? <Button onClick={placeOrder} disabled={!portfolio.data || transactionPending}>{transactionPending ? 'Confirm in wallet…' : portfolio.data && portfolio.data.vaultAllowanceRaw < review.built.preview.maxTokenPullRaw ? 'Approve vault' : 'Place order'}</Button> : <Button onClick={auth.login}>{auth.mode === 'privy' ? 'Sign in, then review again' : 'Sign-in unavailable'}</Button>}
             <Link className="text-link" to="/terms">Read risks</Link>
           </div>
+          {(submitError || transaction.error) && <p className="hm-field__error" role="alert">{submitError ?? transaction.error}</p>}
         </section>
       )}
     </div>

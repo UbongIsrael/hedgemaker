@@ -1,0 +1,9 @@
+{
+  "HedgeMakerV2RecoveryFinal#CollateralVault": "0x73Fd808E194e49960fDEa1E1c0943394514428A5",
+  "HedgeMakerV2RecoveryFinal#HedgeMakerAccessManager": "0x66A8328EEFF320c47053C279cC31fff4d36A3e5a",
+  "HedgeMakerV2RecoveryFinal#MarketConfig": "0xafCb8274B0d9D78A2276cb68B78b2375F6111728",
+  "HedgeMakerV2RecoveryFinal#MockUSDC": "0x6Ad6053bA7bae4f335C140eB05025D6c5B6cBE52",
+  "HedgeMakerV2RecoveryFinal#RateOracleV2": "0x2e2e1F5E615c8D5ef3e8F548c9916bD9fa42eb49",
+  "HedgeMakerV2RecoveryFinal#PositionManager": "0x80499A64114E50FB2CAa1a3AC55FDbaF10f60227",
+  "HedgeMakerV2RecoveryFinal#OrderBook": "0x06384b809dF8EF50b0D657a5525B5B0139dfA886"
+}

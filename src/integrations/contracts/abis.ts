@@ -33,6 +33,7 @@ export const orderBookReadAbi = parseAbi([
 
 export const rateOracleReadAbi = parseAbi([
   'function latestFinalizedRound(uint64 configVersion) view returns ((uint64 roundId, uint64 observationTime, uint64 finalizedAt, uint128 rateRaw, bytes32 candidateId, bytes32 sourceHash) round)',
+  'function feedStatus(uint64 configVersion) view returns (uint8)',
   'function isTradingOpen(uint64 configVersion) view returns (bool)',
 ]);
 
@@ -54,4 +55,10 @@ export const erc20Abi = parseAbi([
   'function balanceOf(address owner) view returns (uint256)',
   'function allowance(address owner, address spender) view returns (uint256)',
   'function approve(address spender, uint256 amount) returns (bool)',
+]);
+
+export const mockUsdcAbi = parseAbi([
+  'function claimFaucet(uint256 amount)',
+  'function faucetMinted(address owner) view returns (uint256)',
+  'function FAUCET_CAP_PER_ADDRESS() view returns (uint256)',
 ]);

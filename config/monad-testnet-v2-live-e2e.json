@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "hedgemaker-monad-testnet-v2-1791900222881",
+  "status": "aborted-calendar-gap",
+  "abortReason": "Config 2 sample 18 missed its immutable finalization validity window after an RPC receipt timeout; no orders were placed and no collateral was pulled.",
+  "deploymentId": "hedgemaker-monad-testnet-v2",
+  "chainId": 10143,
+  "configVersion": "2",
+  "seriesId": "0xfa67759630d4e3fb01b16c965693853d5bb954734597affebfbe1e2c7e865c48",
+  "expiryRoundId": "5",
+  "participants": [
+    {
+      "role": "buyer",
+      "address": "0x5D1B9087DCd7d93F03410537f44F3081F6579EF2"
+    },
+    {
+      "role": "seller-200",
+      "address": "0x8F27705A9AB237eA892204b79b02e4F4085C1422"
+    },
+    {
+      "role": "seller-100",
+      "address": "0x6dAF76d1Ab19BdE0285Ccf35Bc8cb4bC1363398c"
+    },
+    {
+      "role": "seller-50",
+      "address": "0xe74B071854e30374914C6C4512a6E8371d94FA96"
+    },
+    {
+      "role": "seller-150",
+      "address": "0xf5ec9d3237810783BF1A2bD930Bf48954eA5F78c"
+    }
+  ],
+  "approvalTransactions": [
+    "0xdd78a7cbab9f35cc2c0055c7d644aa8fab5bcee126abcaaaf0c6818badb39401",
+    "0x2e1d699a0203af540bc647db872419e7c34496782b72e76afdb349accd701cb3",
+    "0x71c5210f8c24cec59d206c3d8b5ba9e42737d7e852ac1951f021addd3f0bc492",
+    "0x838c81900f56efbdb8fc24402989709cfd88345427e161d9e5169ccd74a71060",
+    "0xe7d7e843be6b9039fc2d8b7aa09c47a981f1c704b781dbbc4d671a5105850185"
+  ],
+  "updatedAt": "2026-10-13T14:03:51.844Z"
+}

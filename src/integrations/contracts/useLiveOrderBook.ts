@@ -56,6 +56,7 @@ export function useLiveOrderBook(): LiveOrderBookState {
           setData(next);
         }
       } catch (readError) {
+        if (import.meta.env.DEV) console.error('Live order-book read failed.', readError);
         if (!cancelled) setError(publicErrorMessage(readError));
       } finally {
         if (!cancelled) {

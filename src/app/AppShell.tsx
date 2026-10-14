@@ -27,6 +27,7 @@ export function AppShell() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const inApp = location.pathname.startsWith('/app');
+  const liveSurface = inApp || location.pathname === '/' || location.pathname === '/market' || location.pathname === '/market-makers/integration';
   const links = inApp ? appLinks : publicLinks;
 
   return (
@@ -35,10 +36,10 @@ export function AppShell() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="environment-strip" role="status">
         <span className="environment-strip__dot" aria-hidden="true" />
-        Demo mode
+        {liveSurface ? 'Monad testnet' : 'Public preview'}
         <span aria-hidden="true">•</span>
-        Sample exchange rates
-        <span className="environment-strip__detail">No real money or currency exchange</span>
+        {liveSurface ? 'Live onchain data' : 'Illustrative exchange rates'}
+        <span className="environment-strip__detail">Test tokens only · no currency exchange</span>
       </div>
       <header className="site-header">
         <Link className="brand" to="/" aria-label="HedgeMaker home">
@@ -81,15 +82,15 @@ export function AppShell() {
             </>
           ) : (
             <Button size="sm" onClick={auth.login} disabled={!auth.ready}>
-              {auth.mode === 'privy' ? 'Sign in' : 'Enter demo'}
+              {auth.mode === 'privy' ? 'Sign in' : 'Sign-in unavailable'}
             </Button>
           )}
         </div>
       </header>
 
-      {auth.mode === 'local_preview' && (
+      {auth.mode === 'unconfigured' && (
         <div className="preview-notice">
-          You're exploring a demo with sample data. Trading, deposits, and withdrawals are unavailable.
+          Privy sign-in is not configured. Public preview pages remain available; account routes require a real wallet.
         </div>
       )}
 
@@ -109,7 +110,7 @@ export function AppShell() {
           <Link to="/market-makers">Market makers</Link>
           <Link to="/terms">Risk disclosures</Link>
         </div>
-        <p className="site-footer__legal">Demo on Monad testnet. Sample rates and test tokens only.</p>
+        <p className="site-footer__legal">{liveSurface ? 'Live contract reads on Monad testnet. Test tokens only.' : 'Public preview on Monad testnet. Illustrative rates and test tokens only.'}</p>
       </footer>
     </div>
   );

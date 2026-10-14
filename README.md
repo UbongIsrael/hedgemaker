@@ -7,16 +7,18 @@ HedgeMaker is a testnet-first frontend prototype for collateral-limited USD/NGN 
 - Public landing, education, risk, and market-discovery screens
 - Market-maker recruitment page, nine-section guide, and application email handoff
 - Market-maker integration console with unsigned builders and isolated inventory reconciliation
-- Configured live Monad order-book snapshots, separate from the simulated order ticket
+- Configured live Monad order-book snapshots and exact order preparation
 - An interactive USD-buyer / USD-seller order preview with fixed-point `bigint` calculations
 - Pegged and fixed-limit order concepts, listed maturities, reserves, and payoff scenarios
-- A local, clearly labelled demo sign-in path and an authenticated account area
+- Privy sign-in with the connected embedded or linked wallet as the account identity
 - Four-balance wallet model: wallet, order reserves, locked position collateral, and claimable USDC
-- Dashboard, wallet, positions, and position-detail screens using simulated fixtures
+- Dashboard, wallet, positions, and position-detail screens using canonical contract reads
 - Privy authentication and embedded-wallet integration, enabled only when verified environment values are present
-- Protocol writes intentionally disabled until verified contract deployments and addresses exist
+- Wallet-signed mUSDC faucet, approval, order, cancellation, margin, settlement, and withdrawal actions
 
 The authoritative product documents are in [`docs/`](./docs). The current build follows the v3 build spec and the v0.3 frontend flow. The implemented contract suite and deployment sequence are documented in [`docs/contracts.md`](./docs/contracts.md), with the design rationale in [`docs/contract-architecture-research.md`](./docs/contract-architecture-research.md).
+
+The quorum oracle and full live rehearsal sequence are documented in [`docs/testnet-v2-runbook.md`](./docs/testnet-v2-runbook.md), with live deployment receipts in [`docs/testnet-v2-deployment-log.md`](./docs/testnet-v2-deployment-log.md). V2 uses a fresh protocol deployment because the vault/controller and protocol/oracle links are intentionally immutable.
 
 Market-maker copy and the release update checklist are in [`docs/market-maker-onboarding-copy.md`](./docs/market-maker-onboarding-copy.md). Shared availability wording lives in `src/content/marketMakers.ts`; update it alongside verified feature releases. Applications open an email to the verified contact address. `VITE_MARKET_MAKER_CONTACT_EMAIL` can override that address, or set `VITE_MARKET_MAKER_APPLICATION_URL` to a real HTTPS application service. The frontend does not store submissions or claim an email has been sent.
 
@@ -31,7 +33,7 @@ npm install
 npm run dev
 ```
 
-Without environment configuration the app starts in local preview mode. No real wallet is created, no transaction is submitted, and every market/account value is explicitly simulated.
+Without environment configuration the public education pages remain available, but account routes and protocol actions require a real Privy wallet and a complete verified chain configuration. The application does not substitute fixture balances for missing chain data.
 
 ## Enable Privy sign-in
 
@@ -66,7 +68,6 @@ scripts/                    executable spec-math verification
 test/                       contract integration tests
 src/app/                    routes, shell, authentication boundary
 src/components/ui/          accessible UI primitives
-src/demo/                   visibly simulated fixtures
 src/domain/                 exact arithmetic, margin, fees, units, and types
 src/integrations/privy/     environment-gated Privy integration
 src/pages/                  public and authenticated product screens
@@ -75,4 +76,4 @@ src/styles/                 design tokens and responsive application styles
 
 ## Safety boundary
 
-The current slice is for UX validation. It does not synthesize fills, fake transaction success, or expose enabled deposit/order/claim actions. Contract writes should be added only after chain IDs, RPC/explorer URLs, token metadata, protocol addresses, ABIs, and deployment provenance are verified and versioned.
+The application does not synthesize fills or fake transaction success. Every account balance and protocol state is read from the configured deployment, and each write requires the connected wallet's signature. The deployed contracts and mUSDC are testnet-only; their balances have no monetary value. A wallet also needs testnet MON to pay transaction fees.

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "deploymentId": "hedgemaker-monad-testnet-v2",
+  "chainId": 10143,
+  "deploymentBlock": "70660315",
+  "contracts": {
+    "accessManager": "0x66A8328EEFF320c47053C279cC31fff4d36A3e5a",
+    "settlementToken": "0x6Ad6053bA7bae4f335C140eB05025D6c5B6cBE52",
+    "vault": "0x73Fd808E194e49960fDEa1E1c0943394514428A5",
+    "marketConfig": "0xafCb8274B0d9D78A2276cb68B78b2375F6111728",
+    "rateOracle": "0x2e2e1F5E615c8D5ef3e8F548c9916bD9fa42eb49",
+    "positionManager": "0x80499A64114E50FB2CAa1a3AC55FDbaF10f60227",
+    "orderBook": "0x06384b809dF8EF50b0D657a5525B5B0139dfA886"
+  }
+}

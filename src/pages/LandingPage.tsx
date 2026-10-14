@@ -2,6 +2,8 @@ import {ArrowRight, CircleDollarSign, Clock3, LockKeyhole, ShieldAlert, Sparkles
 import {Link} from 'react-router-dom';
 import {Badge, Button, Card, CardContent} from '@/components/ui';
 import {marketMakerCopy, marketMakerRelease} from '@/content/marketMakers';
+import {formatFixed, formatUsdc} from '@/domain';
+import {useLiveOrderBook} from '@/integrations/contracts/useLiveOrderBook';
 
 const featureItems = [
   {
@@ -25,60 +27,66 @@ const featureItems = [
 ];
 
 export function LandingPage() {
+  const book = useLiveOrderBook();
+  const buyerLevels = book.data?.levels.filter((level) => level.buyerNotionalRaw > 0n) ?? [];
+  const sellerLevels = book.data?.levels.filter((level) => level.sellerNotionalRaw > 0n) ?? [];
+  const bestBuyer = buyerLevels[0];
+  const bestSeller = sellerLevels.at(-1);
+
   return (
     <div className="landing-page">
       <section className="hero page-shell">
         <div className="hero__copy">
-          <Badge variant="info"><Sparkles size={14} aria-hidden="true" /> Explore the testnet demo</Badge>
+          <Badge variant="info"><Sparkles size={14} aria-hidden="true" /> Live on Monad Testnet</Badge>
           <h1>Hedge the rate.<br /><em>Keep the plan.</em></h1>
           <p className="hero__lead">
             Plan ahead for changes in the dollar-to-naira rate. Choose a date and explore protection for future dollar purchases or sales.
           </p>
           <div className="hero__actions">
             <Link to="/market"><Button size="lg">Explore the market <ArrowRight size={17} aria-hidden="true" /></Button></Link>
-            <Link className="text-link" to="/learn">See an example</Link>
+            <Link className="text-link" to="/learn">How it works</Link>
           </div>
           <p className="hero__footnote">This does not exchange dollars or naira or guarantee a conversion rate. Protection is limited to the funds set aside to back the hedge.</p>
         </div>
 
-        <div className="hero-market" aria-label="Current demo market snapshot">
+        <div className="hero-market" aria-label="Current onchain market snapshot" aria-busy={book.loading}>
           <div className="hero-market__topline">
             <span>USD / NGN</span>
-            <Badge variant="success">Confirmed demo rate</Badge>
+            <Badge variant={book.data?.tradingOpen ? 'success' : 'warning'}>{book.loading ? 'Reading Monad' : book.data?.tradingOpen ? 'Trading open' : 'Trading closed'}</Badge>
           </div>
           <div className="hero-market__rate">
             <span className="hero-market__currency">₦</span>
-            <strong>1,650.00</strong>
+            <strong>{book.data?.referenceRateRaw === undefined ? '—' : formatFixed(book.data.referenceRateRaw, 2, 6)}</strong>
             <span>/ USD</span>
           </div>
           <div className="hero-market__change">
-            <span>+₦7.50</span>
-            <span>since the previous demo rate</span>
+            <span>Round {book.data?.roundId?.toString() ?? '—'}</span>
+            <span>finalized oracle rate · block {book.data?.blockNumber.toString() ?? '—'}</span>
           </div>
           <div className="hero-market__divider" />
           <div className="hero-market__quote-grid">
             <div>
               <span>Best buyer rate</span>
-              <strong>₦1,649.00</strong>
-              <small>$1,200 available</small>
+              <strong>{bestBuyer ? `₦${formatFixed(bestBuyer.strikeRaw, 2, 6)}` : '—'}</strong>
+              <small>{bestBuyer ? `$${formatUsdc(bestBuyer.buyerNotionalRaw)} resting` : 'No resting buyer orders'}</small>
             </div>
             <div>
               <span>Best seller rate</span>
-              <strong>₦1,651.00</strong>
-              <small>$900 available</small>
+              <strong>{bestSeller ? `₦${formatFixed(bestSeller.strikeRaw, 2, 6)}` : '—'}</strong>
+              <small>{bestSeller ? `$${formatUsdc(bestSeller.sellerNotionalRaw)} resting` : 'No resting seller orders'}</small>
             </div>
           </div>
           <Link className="hero-market__cta" to="/market">
             Build a hedge <ArrowRight size={16} aria-hidden="true" />
           </Link>
-          <span className="hero-market__stamp" aria-hidden="true">SIMULATED</span>
+          <span className="hero-market__stamp" aria-hidden="true">ONCHAIN</span>
         </div>
       </section>
 
       <section className="signal-bar" aria-label="Product facts">
-        <div><Clock3 aria-hidden="true" /><span><strong>Choose your end date</strong> 7, 14 or 30 days in the demo</span></div>
+        <div><Clock3 aria-hidden="true" /><span><strong>Choose your end date</strong> Select an operator-listed onchain maturity</span></div>
         <div><LockKeyhole aria-hidden="true" /><span><strong>Separate funds for each hedge</strong> Each hedge has its own balance</span></div>
-        <div><CircleDollarSign aria-hidden="true" /><span><strong>Test USDC</strong> Explore gains and losses in test USDC</span></div>
+        <div><CircleDollarSign aria-hidden="true" /><span><strong>Test USDC</strong> Wallet balances and protocol accounting come from Monad</span></div>
       </section>
 
       <section className="page-shell section-block">

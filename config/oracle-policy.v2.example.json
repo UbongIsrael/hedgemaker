@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "2.0.0-draft",
+  "status": "research-qualified",
+  "productionReady": false,
+  "instrument": {
+    "pair": "USD/NGN",
+    "quoteConvention": "NGN_PER_USD",
+    "decimals": 6,
+    "settlementBenchmark": "CBN_NFEM_DAILY_VWAP"
+  },
+  "sourceSet": {
+    "version": "REPLACE_WITH_APPROVED_VERSION",
+    "hash": "REPLACE_WITH_CANONICAL_SOURCE_SET_HASH",
+    "minIndependentSources": 3,
+    "sources": [
+      {
+        "sourceId": "REPLACE_WITH_SOURCE_ID",
+        "provider": "REPLACE_WITH_PROVIDER",
+        "product": "REPLACE_WITH_EXACT_PRODUCT",
+        "independenceGroupId": "REPLACE_WITH_VERIFIED_GROUP",
+        "marketSegment": "REPLACE_WITH_MARKET_SEGMENT",
+        "priceField": "REPLACE_WITH_EXACT_FIELD",
+        "timestampField": "REPLACE_WITH_SOURCE_TIMESTAMP_FIELD",
+        "timestampMeaning": "REPLACE_WITH_ECONOMIC_TIME_SEMANTICS",
+        "expectedCadenceSeconds": "REPLACE_AFTER_FEED_TRIAL",
+        "maxAgeSeconds": "REPLACE_AFTER_FEED_TRIAL",
+        "credentialEnvName": "REPLACE_WITH_NON_VITE_ENV_NAME",
+        "licensingStatus": "unverified",
+        "verificationStatus": "candidate",
+        "enabled": false
+      }
+    ]
+  },
+  "aggregation": {
+    "algorithm": "MEDIAN",
+    "evenCountRule": "FLOOR_MIDDLE_PAIR_MEAN",
+    "requiredSourcesPolicy": "COMMIT_ALL_RESPONSES_AND_REJECTIONS",
+    "maxSourceSkewSeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "maxSourceSpreadBps": "REPLACE_AFTER_CALIBRATION"
+  },
+  "twap": {
+    "windowSeconds": 3600,
+    "alignment": "TRAILING_TO_SCHEDULED_ROUND",
+    "samplingCadenceSeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "weighting": "PIECEWISE_CONSTANT_TIME_WEIGHTED",
+    "maxSampleGapSeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "maxHoldSeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "requiredCoverageBps": 10000,
+    "missingDataAction": "PAUSE_AND_FOLLOW_FAILURE_DEADLINE",
+    "rounding": "FLOOR"
+  },
+  "signers": {
+    "setVersion": "REPLACE_WITH_APPROVED_VERSION",
+    "setHash": "REPLACE_WITH_CANONICAL_SIGNER_SET_HASH",
+    "threshold": 3,
+    "members": [
+      "REPLACE_WITH_SIGNER_1",
+      "REPLACE_WITH_SIGNER_2",
+      "REPLACE_WITH_SIGNER_3",
+      "REPLACE_WITH_SIGNER_4",
+      "REPLACE_WITH_SIGNER_5"
+    ],
+    "signatureScheme": "EIP712_SORTED_UNIQUE_ECDSA"
+  },
+  "governance": {
+    "resolverAddress": "REPLACE_WITH_RESOLVER_MULTISIG_OR_TIMELOCK",
+    "deviationConfirmationRequiresRationale": true,
+    "confirmationCannotBypassSourceValidation": true
+  },
+  "liveness": {
+    "staleAfterSeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "maxSubmissionDelaySeconds": "REPLACE_AFTER_FEED_TRIAL",
+    "challengePeriodSeconds": "REPLACE_WITH_APPROVED_VALUE",
+    "maxFailureDelaySeconds": "REPLACE_WITH_APPROVED_VALUE",
+    "openingPausePolicy": "PAUSE_ON_STALE_DISPUTED_OR_INSUFFICIENT_SOURCES",
+    "settlementPausePolicy": "PAUSE_ONLY_AFFECTED_UNFINALIZED_ROUND",
+    "marginDuringPause": "ALLOW_DEPOSITS",
+    "cancellationDuringPause": "ALLOW",
+    "withdrawalDuringPause": "ALLOW"
+  },
+  "approval": {
+    "manifestHash": "REPLACE_AFTER_CANONICALIZATION",
+    "approved": false,
+    "approvalEvidence": "REPLACE_WITH_GOVERNANCE_RECORD"
+  }
+}

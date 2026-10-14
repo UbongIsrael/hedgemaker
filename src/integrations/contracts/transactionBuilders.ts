@@ -12,6 +12,7 @@ import {
 import {
   collateralVaultAbi,
   erc20Abi,
+  mockUsdcAbi,
   orderBookReadAbi,
   positionManagerAbi,
 } from './abis';
@@ -327,6 +328,19 @@ export function buildSettlementTokenApproval(amountRaw: bigint): UnsignedTransac
   });
   return baseTransaction(targets.settlementTokenAddress, data, 'approve', {
     spender: targets.vaultAddress,
+    amountRaw: amountRaw.toString(),
+  });
+}
+
+export function buildClaimTestUsdc(amountRaw: bigint): UnsignedTransaction {
+  assertPositiveUint256(amountRaw, 'Faucet amount');
+  const targets = deploymentTargets();
+  const data = encodeFunctionData({
+    abi: mockUsdcAbi,
+    functionName: 'claimFaucet',
+    args: [amountRaw],
+  });
+  return baseTransaction(targets.settlementTokenAddress, data, 'claimFaucet', {
     amountRaw: amountRaw.toString(),
   });
 }

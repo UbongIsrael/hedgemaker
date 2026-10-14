@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "2.0.0",
+  "mode": "SYNTHETIC_TESTNET_REHEARSAL",
+  "productionReady": false,
+  "warning": "Valueless testnet profile. The three inputs exercise source-validation mechanics but are not independent market providers and must never be presented as an authentic NFEM fixing.",
+  "chainId": 10143,
+  "deploymentManifest": "./config/deployments/monad-testnet-v2.json",
+  "configVersion": "3",
+  "instrument": {
+    "baseCurrency": "USD",
+    "quoteCurrency": "NGN",
+    "rateConvention": "NGN_PER_USD",
+    "rateDecimals": 6,
+    "settlementToken": "mUSDC",
+    "settlementTokenDecimals": 6
+  },
+  "economics": {
+    "lotNotionalRaw": "50000000",
+    "tickSizeRaw": "5000000",
+    "minRateRaw": "500000000",
+    "maxRateRaw": "5000000000",
+    "minStrikeRaw": "500000000",
+    "maxStrikeRaw": "5000000000",
+    "strikeBandBps": 1000,
+    "initialMarginBps": 1000,
+    "maintenanceMarginBps": 500,
+    "referenceTakerFeeBps": 5,
+    "effectiveTakerFeeBps": 0,
+    "circuitBreakerBps": 500,
+    "maxNotionalRaw": "1000000000",
+    "maxLotsPerOrder": 20,
+    "maxOrdersPerSeries": 32,
+    "maxOrdersPerWallet": 8,
+    "maxOrdersPerMarket": 64,
+    "maxMatchBatch": 4,
+    "maxScanBatch": 32,
+    "maxSyncBatch": 16,
+    "maxOrderLifetime": 3600,
+    "maxPegLifetimeRounds": 4,
+    "marginGracePeriodSeconds": 600,
+    "maxOffsetBps": 500,
+    "methodologyHash": "0xf3797135374307c46825fb4dec48d037cc571c9e45cdd17cf627e01a1e447817",
+    "feePolicyHash": "0xe4857fb5c55154f1766c93b67ab3e8070a9fa0c48159dfc6c488a832be3e27cf",
+    "sponsorshipPolicyHash": "0x4b3a53252277b3bbb24bf4d947c85e3c423dc1a31dd90884dc30609c9f01a56d"
+  },
+  "oracle": {
+    "sourceAggregation": "ONCHAIN_MEDIAN_ODD_SET",
+    "settlementAggregation": "FULL_WINDOW_TIME_WEIGHTED_AVERAGE",
+    "twapWindowSeconds": 3600,
+    "signerThreshold": 3,
+    "signerCount": 5,
+    "deviationAction": "QUARANTINE_UNTIL_RESOLVER_DECISION",
+    "sourceSetVersion": "1",
+    "signerSetVersion": "1",
+    "challengePeriod": 60,
+    "maxSubmissionDelay": 240,
+    "maxFailureDelay": 600,
+    "staleAfter": 1200,
+    "maxSourceSkew": 60,
+    "maxSampleGap": 240,
+    "maxHold": 240,
+    "maxSourceSpreadBps": 100,
+    "bootstrapRateRaw": "1500000000",
+    "resolver": "0xA0bd633034C5dd23aAE7B9CBF0F815AF486244A9",
+    "sources": [
+      {
+        "sourceId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "independenceGroupId": "0x00000000000000000000000000000000000000000000000000000000000000a1",
+        "maxAgeSeconds": 360,
+        "label": "SYNTHETIC_REHEARSAL_A"
+      },
+      {
+        "sourceId": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "independenceGroupId": "0x00000000000000000000000000000000000000000000000000000000000000a2",
+        "maxAgeSeconds": 360,
+        "label": "SYNTHETIC_REHEARSAL_B"
+      },
+      {
+        "sourceId": "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "independenceGroupId": "0x00000000000000000000000000000000000000000000000000000000000000a3",
+        "maxAgeSeconds": 360,
+        "label": "SYNTHETIC_REHEARSAL_C"
+      }
+    ],
+    "signers": [
+      "0x6A302b0CAa445d766e314dF6Fe0B487888294E73",
+      "0x7C75Dc2Fc7E78B141A0E5d39277fF86c27DBd2e0",
+      "0xb71B4219F4b7e0d27c00FDd55B1c2cB9b88DfF82",
+      "0xb76820045FaB357850634856cf85E81062F62085",
+      "0xE8aEcc62d3ad89f807BF21b093fb196b3f6Ad64f"
+    ]
+  },
+  "calendar": {
+    "id": "SYNTHETIC_TESTNET_24_7_UTC",
+    "hash": "0xc948dfccf92ebe2da0a19f412fe0dbaef3a0dfd202bd2d6b222dd7664c3e0668",
+    "twapWarmupSeconds": 3600,
+    "anchorLeadSeconds": 240,
+    "sampleCadenceSeconds": 180,
+    "roundCadenceSeconds": 900,
+    "roundCount": 10,
+    "seriesMaturitiesInRounds": [
+      2,
+      5,
+      9
+    ],
+    "sampleStart": "1791956160",
+    "firstRoundAt": "1791960000",
+    "rounds": [
+      {
+        "roundId": "1",
+        "observationTime": "1791960000",
+        "failureDeadline": "1791960600"
+      },
+      {
+        "roundId": "2",
+        "observationTime": "1791960900",
+        "failureDeadline": "1791961500"
+      },
+      {
+        "roundId": "3",
+        "observationTime": "1791961800",
+        "failureDeadline": "1791962400"
+      },
+      {
+        "roundId": "4",
+        "observationTime": "1791962700",
+        "failureDeadline": "1791963300"
+      },
+      {
+        "roundId": "5",
+        "observationTime": "1791963600",
+        "failureDeadline": "1791964200"
+      },
+      {
+        "roundId": "6",
+        "observationTime": "1791964500",
+        "failureDeadline": "1791965100"
+      },
+      {
+        "roundId": "7",
+        "observationTime": "1791965400",
+        "failureDeadline": "1791966000"
+      },
+      {
+        "roundId": "8",
+        "observationTime": "1791966300",
+        "failureDeadline": "1791966900"
+      },
+      {
+        "roundId": "9",
+        "observationTime": "1791967200",
+        "failureDeadline": "1791967800"
+      },
+      {
+        "roundId": "10",
+        "observationTime": "1791968100",
+        "failureDeadline": "1791968700"
+      }
+    ],
+    "series": [
+      {
+        "seriesId": "0xb63c5da9e6d8b2e60c8c7afc13982d33d24774eacfe85a44a238dc5d14e01a9e",
+        "marketId": "0x7c2fa3da7c77ece617ddcc5bb017a862112fa9cf2595641fde47b2d2c55486ff",
+        "fixingAt": "1791960900",
+        "expiryRoundId": "2",
+        "oracleFailureDeadline": "1791961500",
+        "strikeBandBps": 1000,
+        "calendarHash": "0xc948dfccf92ebe2da0a19f412fe0dbaef3a0dfd202bd2d6b222dd7664c3e0668"
+      },
+      {
+        "seriesId": "0x728ff6c9fcd5b226c016f4de883ee7ab51de88e990bb140ab804be793b782e40",
+        "marketId": "0x7c2fa3da7c77ece617ddcc5bb017a862112fa9cf2595641fde47b2d2c55486ff",
+        "fixingAt": "1791963600",
+        "expiryRoundId": "5",
+        "oracleFailureDeadline": "1791964200",
+        "strikeBandBps": 1000,
+        "calendarHash": "0xc948dfccf92ebe2da0a19f412fe0dbaef3a0dfd202bd2d6b222dd7664c3e0668"
+      },
+      {
+        "seriesId": "0x8d8dc8125e59b2747ee2a847ca6e9eb788e33b72e80bbd8028f84f5bcc5ed00b",
+        "marketId": "0x7c2fa3da7c77ece617ddcc5bb017a862112fa9cf2595641fde47b2d2c55486ff",
+        "fixingAt": "1791967200",
+        "expiryRoundId": "9",
+        "oracleFailureDeadline": "1791967800",
+        "strikeBandBps": 1000,
+        "calendarHash": "0xc948dfccf92ebe2da0a19f412fe0dbaef3a0dfd202bd2d6b222dd7664c3e0668"
+      }
+    ]
+  },
+  "secretEnvironment": {
+    "deployerAndAdmin": "MONAD_TESTNET_PRIVATE_KEY",
+    "oracleSignerKeysCsv": "HEDGEMAKER_ORACLE_SIGNER_KEYS",
+    "resolver": "HEDGEMAKER_RESOLVER_PRIVATE_KEY",
+    "keeperKeysCsv": "HEDGEMAKER_KEEPER_PRIVATE_KEYS"
+  },
+  "generatedAt": "2026-10-14T05:28:21.891Z"
+}

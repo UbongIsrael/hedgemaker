@@ -85,6 +85,7 @@ export interface LiveOrderBookSnapshot {
   tickSizeRaw?: bigint;
   roundId?: bigint;
   referenceRateRaw?: bigint;
+  oracleFeedStatus?: number;
   tradingOpen: boolean;
   matchingPaused: boolean;
   config?: LiveMarketConfig;
@@ -265,16 +266,15 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
     left.fixingAt < right.fixingAt ? -1 : left.fixingAt > right.fixingAt ? 1 : 0
   ));
   if (seriesSummaries.length === 0) return emptySnapshot();
-  const seriesRecords = await client.multicall({
-    allowFailure: false,
-    blockNumber,
-    contracts: seriesSummaries.map((item) => ({
+  const seriesRecords = await Promise.all(seriesSummaries.map((item) => (
+    client.readContract({
       address: marketConfigAddress,
       abi: marketConfigReadAbi,
       functionName: 'getSeries',
       args: [item.seriesId],
-    } as const)),
-  });
+      blockNumber,
+    })
+  )));
   const series = seriesSummaries.map((item, index) => {
     const record = seriesRecords[index];
     if (!record) return item;
@@ -288,7 +288,7 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
   const selectedSeries = series.find((item) => item.seriesId === selectedSeriesId) ?? series[0];
   if (!selectedSeries) return emptySnapshot(series);
 
-  const [config, round, orderIds, matchingPaused, tradingOpen] = await Promise.all([
+  const [config, round, orderIds, matchingPaused, oracleFeedStatus, tradingOpen] = await Promise.all([
     client.readContract({
       address: marketConfigAddress,
       abi: marketConfigReadAbi,
@@ -314,6 +314,13 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
       address: orderBookAddress,
       abi: orderBookReadAbi,
       functionName: 'newRiskPaused',
+      blockNumber,
+    }),
+    client.readContract({
+      address: rateOracleAddress,
+      abi: rateOracleReadAbi,
+      functionName: 'feedStatus',
+      args: [selectedSeries.configVersion],
       blockNumber,
     }),
     client.readContract({
@@ -351,6 +358,7 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
       tickSizeRaw: config.tickSizeRaw,
       roundId: round.roundId,
       referenceRateRaw: round.rateRaw,
+      oracleFeedStatus,
       tradingOpen,
       matchingPaused,
       config: marketConfig,
@@ -358,26 +366,24 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
   }
 
   const [orders, previews] = await Promise.all([
-    client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: orderIds.map((orderId) => ({
+    Promise.all(orderIds.map((orderId) => (
+      client.readContract({
         address: orderBookAddress,
         abi: orderBookReadAbi,
         functionName: 'getOrder',
         args: [orderId],
-      } as const)),
-    }),
-    client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: orderIds.map((orderId) => ({
+        blockNumber,
+      })
+    ))),
+    Promise.all(orderIds.map((orderId) => (
+      client.readContract({
         address: orderBookAddress,
         abi: orderBookReadAbi,
         functionName: 'previewEffectiveLimit',
         args: [orderId],
-      } as const)),
-    }),
+        blockNumber,
+      })
+    ))),
   ]);
 
   const entries: BookEntry[] = [];
@@ -412,6 +418,7 @@ export async function loadLiveOrderBook(selectedSeriesId?: Hex): Promise<LiveOrd
     tickSizeRaw: config.tickSizeRaw,
     roundId: round.roundId,
     referenceRateRaw: round.rateRaw,
+    oracleFeedStatus,
     tradingOpen,
     matchingPaused,
     config: marketConfig,

@@ -13,8 +13,9 @@ vi.mock('../config', () => ({
   },
 }));
 
-import {orderBookReadAbi} from '../abis';
+import {mockUsdcAbi, orderBookReadAbi} from '../abis';
 import {
+  buildClaimTestUsdc,
   buildPlaceOrder,
   buildSettlementTokenApproval,
   TransactionBuildError,
@@ -120,5 +121,13 @@ describe('market-maker unsigned transaction builders', () => {
     const approval = buildSettlementTokenApproval(1_000_000n);
     expect(approval.to).toBe('0x1104E65eDDC14Db1661667Ee3C3E9BA8717D6395');
     expect(approval.decodedIntent.spender).toBe('0xC42674265F553889B845641cee0F0E2E65Af5d0b');
+  });
+
+  it('builds a faucet claim only against the configured test token', () => {
+    const claim = buildClaimTestUsdc(parseUsdc('1000'));
+    expect(claim.to).toBe('0x1104E65eDDC14Db1661667Ee3C3E9BA8717D6395');
+    const decoded = decodeFunctionData({abi: mockUsdcAbi, data: claim.data});
+    expect(decoded.functionName).toBe('claimFaucet');
+    expect(claim.decodedIntent.amountRaw).toBe(parseUsdc('1000').toString());
   });
 });

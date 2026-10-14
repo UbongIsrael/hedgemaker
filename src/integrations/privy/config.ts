@@ -15,14 +15,16 @@ const chainId = chainIdText && /^\d+$/.test(chainIdText) ? Number(chainIdText) :
 export const privyConfig = {
   appId,
   clientId,
-  isConfigured: Boolean(appId && rpcUrl && explorerUrl && chainId),
-  chain: rpcUrl && explorerUrl && chainId
+  isConfigured: Boolean(appId && rpcUrl && chainId),
+  chain: rpcUrl && chainId
     ? defineChain({
         id: chainId,
         name: required(import.meta.env.VITE_MONAD_CHAIN_NAME) ?? 'Monad Testnet',
         nativeCurrency: {name: 'Monad', symbol: 'MON', decimals: 18},
         rpcUrls: {default: {http: [rpcUrl]}},
-        blockExplorers: {default: {name: 'Explorer', url: explorerUrl}},
+        blockExplorers: explorerUrl
+          ? {default: {name: 'Explorer', url: explorerUrl}}
+          : undefined,
         testnet: true,
       })
     : undefined,

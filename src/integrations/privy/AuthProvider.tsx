@@ -1,8 +1,8 @@
-import {PrivyProvider, usePrivy, useWallets} from '@privy-io/react-auth';
+import {PrivyProvider, usePrivy, useWallets, type ConnectedWallet} from '@privy-io/react-auth';
 import {createContext, useContext, useMemo, useState, type ReactNode} from 'react';
 import {privyConfig} from './config';
 
-type AuthMode = 'privy' | 'local_preview';
+type AuthMode = 'privy' | 'unconfigured';
 
 interface AuthContextValue {
   mode: AuthMode;
@@ -10,27 +10,34 @@ interface AuthContextValue {
   authenticated: boolean;
   walletReady: boolean;
   walletAddress?: string;
+  wallet?: ConnectedWallet;
   login: () => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-const DEMO_WALLET = '0x7A31…9D42';
-
-function LocalPreviewAuth({children}: {children: ReactNode}) {
-  const [authenticated, setAuthenticated] = useState(false);
+function UnconfiguredAuth({children}: {children: ReactNode}) {
+  const [noticeVisible, setNoticeVisible] = useState(false);
   const value = useMemo<AuthContextValue>(() => ({
-    mode: 'local_preview',
+    mode: 'unconfigured',
     ready: true,
-    authenticated,
-    walletReady: authenticated,
-    walletAddress: authenticated ? DEMO_WALLET : undefined,
-    login: () => setAuthenticated(true),
-    logout: () => setAuthenticated(false),
-  }), [authenticated]);
+    authenticated: false,
+    walletReady: false,
+    login: () => setNoticeVisible(true),
+    logout: () => undefined,
+  }), []);
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {noticeVisible && (
+        <div className="preview-notice" role="alert">
+          Privy sign-in is not configured. Add a Privy app ID, Monad RPC URL, and chain ID.
+        </div>
+      )}
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 function PrivyAuthBridge({children}: {children: ReactNode}) {
@@ -43,6 +50,7 @@ function PrivyAuthBridge({children}: {children: ReactNode}) {
     authenticated,
     walletReady: walletsReady && Boolean(wallet),
     walletAddress: wallet?.address,
+    wallet,
     login: () => { void login(); },
     logout: () => { void logout(); },
   }), [authenticated, login, logout, ready, wallet, walletsReady]);
@@ -53,7 +61,7 @@ function PrivyAuthBridge({children}: {children: ReactNode}) {
 export function AuthProvider({children}: {children: ReactNode}) {
   const {appId, clientId, chain, isConfigured} = privyConfig;
   if (!isConfigured || !appId || !chain) {
-    return <LocalPreviewAuth>{children}</LocalPreviewAuth>;
+    return <UnconfiguredAuth>{children}</UnconfiguredAuth>;
   }
 
   return (

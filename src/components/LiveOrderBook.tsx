@@ -22,10 +22,26 @@ function compactId(value: Hex): string {
 
 function formatFixing(series: LiveSeriesSummary): string {
   return new Intl.DateTimeFormat(undefined, {
-    dateStyle: 'medium',
-    timeStyle: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
     timeZoneName: 'short',
   }).format(new Date(Number(series.fixingAt) * 1_000));
+}
+
+const ORACLE_STATUS = [
+  'Unconfigured',
+  'Building 60-minute history',
+  'Challenge pending',
+  'Disputed',
+  'Stale',
+  'Healthy',
+] as const;
+
+function oracleStatusLabel(status: number | undefined): string {
+  return status === undefined ? 'Unavailable' : ORACLE_STATUS[status] ?? `Unknown (${status})`;
 }
 
 function formatBookSide(
@@ -169,13 +185,14 @@ export function LiveOrderBook({className = '', ...props}: LiveOrderBookProps) {
                   <div><dt>Reference rate</dt><dd>{data.referenceRateRaw ? formatRate(data.referenceRateRaw) : 'Awaiting rate'}</dd></div>
                   <div><dt>Lot size</dt><dd>{data.lotNotionalRaw ? formatNotional(data.lotNotionalRaw) : '—'}</dd></div>
                   <div><dt>Oracle round</dt><dd>{data.roundId?.toString() ?? '—'}</dd></div>
+                  <div><dt>Oracle status</dt><dd>{oracleStatusLabel(data.oracleFeedStatus)}</dd></div>
                   <div><dt>Snapshot block</dt><dd>{data.blockNumber.toString()}</dd></div>
                 </dl>
 
                 {!data.tradingOpen && (
                   <div className="live-book__state live-book__state--warning" role="status">
                     <TriangleAlert aria-hidden="true" />
-                    <div><strong>Oracle trading is unavailable</strong><p>Orders remain visible for reconciliation, but none are executable until the finalized feed reopens trading.</p></div>
+                    <div><strong>Oracle trading is unavailable</strong><p>Status: {oracleStatusLabel(data.oracleFeedStatus)}. Orders remain visible for reconciliation, but none are executable until the finalized feed reopens trading.</p></div>
                   </div>
                 )}
 

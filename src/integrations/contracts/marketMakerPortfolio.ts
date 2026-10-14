@@ -11,6 +11,7 @@ import {
   collateralVaultAbi,
   erc20Abi,
   marketConfigReadAbi,
+  mockUsdcAbi,
   orderBookReadAbi,
   orderPlacedEvent,
   positionCreatedEvent,
@@ -110,11 +111,19 @@ export interface MarketMakerPositionView {
   positionId: bigint;
   seriesId: `0x${string}`;
   configVersion: bigint;
+  buyer: Address;
+  seller: Address;
+  counterparty: Address;
   side: 'buyer' | 'seller';
   status: string;
   notionalRaw: bigint;
   strikeRaw: bigint;
+  latestReferenceRateRaw: bigint;
+  fixingAt: bigint;
+  expiryRoundId: bigint;
   equityRaw: bigint;
+  counterpartyEquityRaw: bigint;
+  lastValueRaw: bigint;
   initialMarginRaw: bigint;
   maintenanceMarginRaw: bigint;
   cureAmountRaw: bigint;
@@ -124,6 +133,7 @@ export interface MarketMakerPositionView {
   latestRoundId: bigint;
   retainedGainRaw: bigint;
   unpaidShortfall: bigint;
+  maxSyncBatch: number;
 }
 
 export interface MarketMakerPortfolioSnapshot {
@@ -132,9 +142,14 @@ export interface MarketMakerPortfolioSnapshot {
   blockHash: `0x${string}`;
   blockTimestamp: bigint;
   deploymentId: string;
+  nativeBalanceRaw: bigint;
   walletBalanceRaw: bigint;
+  faucetMintedRaw: bigint;
+  faucetCapRaw: bigint;
   vaultAllowanceRaw: bigint;
   claimableRaw: bigint;
+  reservedOrderCollateralRaw: bigint;
+  reservedFeeEscrowRaw: bigint;
   reservedOrdersRaw: bigint;
   lockedPositionsRaw: bigint;
   openOrderNotionalRaw: bigint;
@@ -275,12 +290,26 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
     ? await readOwnerHistory(client, owner, deploymentBlock, blockNumber)
     : {orderIds: [], positionIds: []};
 
-  const [walletBalanceRaw, vaultAllowanceRaw, claimableRaw, orders, orderLedgers, positionResults] = await Promise.all([
+  const [nativeBalanceRaw, walletBalanceRaw, faucetMintedRaw, faucetCapRaw, vaultAllowanceRaw, claimableRaw, orders, orderLedgers, positionResults] = await Promise.all([
+    client.getBalance({address: owner, blockNumber}),
     client.readContract({
       address: settlementTokenAddress,
       abi: erc20Abi,
       functionName: 'balanceOf',
       args: [owner],
+      blockNumber,
+    }),
+    client.readContract({
+      address: settlementTokenAddress,
+      abi: mockUsdcAbi,
+      functionName: 'faucetMinted',
+      args: [owner],
+      blockNumber,
+    }),
+    client.readContract({
+      address: settlementTokenAddress,
+      abi: mockUsdcAbi,
+      functionName: 'FAUCET_CAP_PER_ADDRESS',
       blockNumber,
     }),
     client.readContract({
@@ -297,68 +326,79 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
       args: [owner],
       blockNumber,
     }),
-    history.orderIds.length === 0 ? Promise.resolve([]) : client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: history.orderIds.map((orderId) => ({
+    Promise.all(history.orderIds.map((orderId) => (
+      client.readContract({
         address: orderBookAddress,
         abi: orderBookReadAbi,
         functionName: 'getOrder',
         args: [orderId],
-      } as const)),
-    }),
-    history.orderIds.length === 0 ? Promise.resolve([]) : client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: history.orderIds.map((orderId) => ({
+        blockNumber,
+      })
+    ))),
+    Promise.all(history.orderIds.map((orderId) => (
+      client.readContract({
         address: vaultAddress,
         abi: collateralVaultAbi,
         functionName: 'orderLedger',
         args: [orderId],
-      } as const)),
-    }),
-    history.positionIds.length === 0 ? Promise.resolve([]) : client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: history.positionIds.map((positionId) => ({
+        blockNumber,
+      })
+    ))),
+    Promise.all(history.positionIds.map((positionId) => (
+      client.readContract({
         address: positionManagerAddress,
         abi: positionManagerAbi,
         functionName: 'getPosition',
         args: [positionId],
-      } as const)),
-    }),
+        blockNumber,
+      })
+    ))),
   ]);
 
   const versions = new Set<bigint>();
+  const seriesIds = new Set<`0x${string}`>();
   for (const order of orders) versions.add((order as ChainOrder).configVersion);
-  for (const result of positionResults) versions.add((result[0] as ChainPosition).configVersion);
+  for (const result of positionResults) {
+    const position = result[0] as ChainPosition;
+    versions.add(position.configVersion);
+    seriesIds.add(position.seriesId);
+  }
   const versionList = [...versions];
-  const [configs, rounds] = await Promise.all([
-    versionList.length === 0 ? Promise.resolve([]) : client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: versionList.map((version) => ({
+  const seriesIdList = [...seriesIds];
+  const [configs, rounds, seriesResults] = await Promise.all([
+    Promise.all(versionList.map((version) => (
+      client.readContract({
         address: marketConfigAddress,
         abi: marketConfigReadAbi,
         functionName: 'getConfig',
         args: [version],
-      } as const)),
-    }),
-    versionList.length === 0 ? Promise.resolve([]) : client.multicall({
-      allowFailure: false,
-      blockNumber,
-      contracts: versionList.map((version) => ({
+        blockNumber,
+      })
+    ))),
+    Promise.all(versionList.map((version) => (
+      client.readContract({
         address: rateOracleAddress,
         abi: rateOracleReadAbi,
         functionName: 'latestFinalizedRound',
         args: [version],
-      } as const)),
-    }),
+        blockNumber,
+      })
+    ))),
+    Promise.all(seriesIdList.map((seriesId) => (
+      client.readContract({
+        address: marketConfigAddress,
+        abi: marketConfigReadAbi,
+        functionName: 'getSeries',
+        args: [seriesId],
+        blockNumber,
+      })
+    ))),
   ]);
   const versionData = new Map(versionList.map((version, index) => [version, {
     config: configs[index],
     round: rounds[index],
   }]));
+  const seriesData = new Map(seriesIdList.map((seriesId, index) => [seriesId, seriesResults[index]]));
 
   const orderViews = history.orderIds.map((orderId, index): MarketMakerOrderView => {
     const order = orders[index] as ChainOrder;
@@ -388,11 +428,14 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
     if (!data?.config || !data.round) throw new Error('Position configuration could not be reconciled.');
     const config = data.config;
     const round = data.round;
-    const buyerSide = positionValue.buyer === owner;
+    const series = seriesData.get(positionValue.seriesId);
+    if (!series?.exists) throw new Error('Position series could not be reconciled.');
+    const buyerSide = positionValue.buyer.toLowerCase() === owner.toLowerCase();
     const equityRaw = buyerSide ? ledgerValue.buyerCollateral : ledgerValue.sellerCollateral;
+    const counterpartyEquityRaw = buyerSide ? ledgerValue.sellerCollateral : ledgerValue.buyerCollateral;
     const lots = positionValue.notionalRaw / config.lotNotionalRaw;
-    const initialMarginRaw = ceilBps(positionValue.notionalRaw, BigInt(config.initialMarginBps));
-    const maintenanceMarginRaw = ceilBps(positionValue.notionalRaw, BigInt(config.maintenanceMarginBps));
+    const initialMarginRaw = ceilBps(config.lotNotionalRaw, BigInt(config.initialMarginBps)) * lots;
+    const maintenanceMarginRaw = ceilBps(config.lotNotionalRaw, BigInt(config.maintenanceMarginBps)) * lots;
     const status = POSITION_STATUS[positionValue.status] ?? 'unknown';
     const live = status === 'active' || status === 'awaiting_final_fixing';
     const marginCallDeadline = status === 'active'
@@ -402,11 +445,19 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
       positionId,
       seriesId: positionValue.seriesId,
       configVersion: positionValue.configVersion,
+      buyer: positionValue.buyer,
+      seller: positionValue.seller,
+      counterparty: buyerSide ? positionValue.seller : positionValue.buyer,
       side: buyerSide ? 'buyer' : 'seller',
       status,
       notionalRaw: config.lotNotionalRaw * lots,
       strikeRaw: positionValue.strikeRaw,
+      latestReferenceRateRaw: round.rateRaw,
+      fixingAt: series.fixingAt,
+      expiryRoundId: series.expiryRoundId,
       equityRaw,
+      counterpartyEquityRaw,
+      lastValueRaw: positionValue.lastValue,
       initialMarginRaw,
       maintenanceMarginRaw,
       cureAmountRaw: marginCallDeadline === 0n ? 0n : maxZero(initialMarginRaw - equityRaw),
@@ -416,13 +467,19 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
       latestRoundId: round.roundId,
       retainedGainRaw: maxZero(equityRaw - initialMarginRaw),
       unpaidShortfall: positionValue.unpaidShortfall,
+      maxSyncBatch: config.maxSyncBatch,
     };
   });
 
-  const reservedOrdersRaw = orderViews.reduce(
-    (total, order) => total + order.collateralReservedRaw + order.feeEscrowRaw,
+  const reservedOrderCollateralRaw = orderViews.reduce(
+    (total, order) => total + order.collateralReservedRaw,
     0n,
   );
+  const reservedFeeEscrowRaw = orderViews.reduce(
+    (total, order) => total + order.feeEscrowRaw,
+    0n,
+  );
+  const reservedOrdersRaw = reservedOrderCollateralRaw + reservedFeeEscrowRaw;
   const lockedPositionsRaw = positionViews.reduce((total, position) => total + position.equityRaw, 0n);
   const openOrderNotionalRaw = orderViews.reduce((total, order) => {
     if (order.status !== 'active') return total;
@@ -443,9 +500,14 @@ export async function loadMarketMakerPortfolio(ownerInput: string): Promise<Mark
     blockHash: block.hash,
     blockTimestamp: block.timestamp,
     deploymentId: protocolReadConfig.deploymentId,
+    nativeBalanceRaw,
     walletBalanceRaw,
+    faucetMintedRaw,
+    faucetCapRaw,
     vaultAllowanceRaw,
     claimableRaw,
+    reservedOrderCollateralRaw,
+    reservedFeeEscrowRaw,
     reservedOrdersRaw,
     lockedPositionsRaw,
     openOrderNotionalRaw,

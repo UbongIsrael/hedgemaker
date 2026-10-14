@@ -1,0 +1,69 @@
+{
+  "config": {
+    "expectedVersion": "1",
+    "lotNotionalRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_AMOUNT",
+    "tickSizeRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_RATE_TICK",
+    "minRateRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_RATE",
+    "maxRateRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_RATE",
+    "minStrikeRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_RATE",
+    "maxStrikeRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_RATE",
+    "strikeBandBps": "REPLACE_WITH_APPROVED_BPS",
+    "initialMarginBps": "REPLACE_WITH_APPROVED_BPS",
+    "maintenanceMarginBps": "REPLACE_WITH_APPROVED_BPS",
+    "referenceTakerFeeBps": "REPLACE_WITH_APPROVED_BPS",
+    "effectiveTakerFeeBps": "REPLACE_WITH_APPROVED_BPS",
+    "circuitBreakerBps": "REPLACE_WITH_APPROVED_BPS",
+    "maxNotionalRaw": "REPLACE_WITH_APPROVED_6_DECIMAL_AMOUNT",
+    "maxLotsPerOrder": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxOrdersPerSeries": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxOrdersPerWallet": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxOrdersPerMarket": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxMatchBatch": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxScanBatch": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxSyncBatch": "REPLACE_WITH_APPROVED_LIMIT",
+    "maxOrderLifetime": "REPLACE_WITH_APPROVED_SECONDS",
+    "maxPegLifetimeRounds": "REPLACE_WITH_APPROVED_LIMIT",
+    "marginGracePeriodSeconds": "REPLACE_WITH_APPROVED_SECONDS",
+    "maxOffsetBps": "REPLACE_WITH_APPROVED_BPS",
+    "oraclePolicyHash": "REPLACE_WITH_NON_ZERO_BYTES32",
+    "methodologyHash": "REPLACE_WITH_NON_ZERO_BYTES32",
+    "feePolicyHash": "REPLACE_WITH_NON_ZERO_BYTES32",
+    "sponsorshipPolicyHash": "REPLACE_WITH_NON_ZERO_BYTES32"
+  },
+  "oraclePolicy": {
+    "signer": "REPLACE_WITH_ORACLE_SIGNER_ADDRESS",
+    "resolver": "REPLACE_WITH_DISPUTE_RESOLVER_ADDRESS",
+    "methodologyHash": "REPLACE_WITH_SAME_METHODOLOGY_BYTES32",
+    "challengePeriod": "REPLACE_WITH_APPROVED_SECONDS",
+    "maxPublicationDelay": "REPLACE_WITH_APPROVED_SECONDS",
+    "maxFailureDelay": "REPLACE_WITH_APPROVED_SECONDS",
+    "staleAfter": "REPLACE_WITH_APPROVED_SECONDS",
+    "circuitBreakerBps": "REPLACE_WITH_SAME_CIRCUIT_BREAKER_BPS",
+    "minRateRaw": "REPLACE_WITH_POLICY_MIN_RATE",
+    "maxRateRaw": "REPLACE_WITH_POLICY_MAX_RATE"
+  },
+  "rounds": [
+    {
+      "roundId": "1",
+      "observationTime": "REPLACE_WITH_UNIX_TIMESTAMP",
+      "failureDeadline": "REPLACE_WITH_UNIX_TIMESTAMP"
+    },
+    {
+      "roundId": "2",
+      "observationTime": "REPLACE_WITH_LATER_UNIX_TIMESTAMP",
+      "failureDeadline": "REPLACE_WITH_LATER_UNIX_TIMESTAMP"
+    }
+  ],
+  "series": [
+    {
+      "seriesId": "REPLACE_WITH_NON_ZERO_BYTES32",
+      "marketId": "REPLACE_WITH_NON_ZERO_BYTES32",
+      "fixingAt": "REPLACE_WITH_ROUND_OBSERVATION_TIMESTAMP",
+      "expiryRoundId": "2",
+      "oracleFailureDeadline": "REPLACE_WITH_MATCHING_ROUND_FAILURE_DEADLINE",
+      "strikeBandBps": "REPLACE_WITH_APPROVED_BPS",
+      "calendarHash": "REPLACE_WITH_NON_ZERO_BYTES32",
+      "oraclePolicyHash": "REPLACE_WITH_SAME_ORACLE_POLICY_BYTES32"
+    }
+  ]
+}

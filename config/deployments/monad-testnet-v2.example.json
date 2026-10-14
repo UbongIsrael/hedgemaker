@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "deploymentId": "hedgemaker-monad-testnet-v2",
+  "chainId": 10143,
+  "deploymentBlock": "REPLACE_AFTER_DEPLOYMENT",
+  "contracts": {
+    "accessManager": "REPLACE_AFTER_DEPLOYMENT",
+    "settlementToken": "REPLACE_AFTER_DEPLOYMENT",
+    "vault": "REPLACE_AFTER_DEPLOYMENT",
+    "marketConfig": "REPLACE_AFTER_DEPLOYMENT",
+    "rateOracle": "REPLACE_AFTER_DEPLOYMENT",
+    "positionManager": "REPLACE_AFTER_DEPLOYMENT",
+    "orderBook": "REPLACE_AFTER_DEPLOYMENT"
+  }
+}

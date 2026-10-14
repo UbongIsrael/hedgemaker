@@ -21,6 +21,14 @@ export default defineConfig({
           evmVersion: "cancun",
         },
       },
+      deployment: {
+        version: "0.8.30",
+        settings: {
+          optimizer: { enabled: true, runs: 1 },
+          viaIR: true,
+          evmVersion: "cancun",
+        },
+      },
     },
   },
   verify: {
