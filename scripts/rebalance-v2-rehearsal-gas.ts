@@ -63,7 +63,7 @@ const [deployerBalance, resolverBalance] = await Promise.all([
   client.getBalance({address: deployer.address}),
   client.getBalance({address: resolver.address}),
 ]);
-const target = parseEther(process.env.HEDGEMAKER_SUBMITTER_MON_TARGET?.trim() || '1.7');
+const target = parseEther(process.env.HEDGEMAKER_SUBMITTER_MON_TARGET?.trim() || '5.0');
 const resolverReserve = parseEther(process.env.HEDGEMAKER_RESOLVER_MON_RESERVE?.trim() || '0.2');
 if (deployerBalance >= target) {
   console.log(`Submitter already has ${formatEther(deployerBalance)} MON; no transfer required.`);

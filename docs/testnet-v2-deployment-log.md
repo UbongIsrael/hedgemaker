@@ -1,6 +1,6 @@
 # HedgeMaker V2 Monad testnet deployment log
 
-Status: **seven-contract deployment complete; configuration 3 active and warming up**
+Status: **seven-contract deployment complete; configuration 3 active but retired after an incomplete rehearsal**
 Chain: Monad testnet (`10143`)
 Operator: `0xB90dAb356768fA59da074E1AbB5555c0B3F925Bb`
 
@@ -56,9 +56,11 @@ finalized samples 1–17, but an RPC receipt timeout delayed sample 18 past its
 immutable validity window. No config-2 order was placed and no collateral was
 pulled; its evidence record is `config/monad-testnet-v2-live-e2e.json`.
 
-Configuration 3 uses `config/testnet-rehearsal.v2.config-3.json`, is active,
-has ten scheduled rounds and three listed series, and begins its sample warm-up
-at `2026-10-14T05:36:00Z`. Its source age is 360 seconds, sample cadence is
-three minutes, and both `maxSampleGap` and `maxHold` are 240 seconds. The first
-60-minute TWAP round is scheduled for `2026-10-14T06:40:00Z`; the automated
-live E2E runner targets round 2 at `2026-10-14T06:55:00Z`.
+Configuration 3 uses `config/testnet-rehearsal.v2.config-3.json`, has ten
+scheduled rounds and three listed series, and began its sample warm-up at
+`2026-10-14T05:36:00Z`. Samples 1–13 finalized, but the submitter exhausted test
+MON while proposing sample 14. No config-3 order was placed and no collateral
+was pulled. Its immutable maximum-gap window elapsed, so the feed is retired
+and must not be resumed. The audit record is
+`config/monad-testnet-v2-config-3-live-e2e.json`. A new configuration calendar
+must be materialized only after funding the submitter for the full rehearsal.

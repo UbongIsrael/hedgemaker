@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "hedgemaker-monad-testnet-v2-1791955853229",
+  "status": "aborted-insufficient-gas",
+  "abortReason": "The oracle submitter exhausted test MON while proposing sample 14. Samples 1-13 finalized, no orders were placed, and no collateral was pulled. The immutable max-sample-gap window then elapsed, so this configuration must not be resumed.",
+  "deploymentId": "hedgemaker-monad-testnet-v2",
+  "chainId": 10143,
+  "configVersion": "3",
+  "seriesId": "0xb63c5da9e6d8b2e60c8c7afc13982d33d24774eacfe85a44a238dc5d14e01a9e",
+  "expiryRoundId": "2",
+  "participants": [
+    {
+      "role": "buyer",
+      "address": "0x5D1B9087DCd7d93F03410537f44F3081F6579EF2"
+    },
+    {
+      "role": "seller-200",
+      "address": "0x8F27705A9AB237eA892204b79b02e4F4085C1422"
+    },
+    {
+      "role": "seller-100",
+      "address": "0x6dAF76d1Ab19BdE0285Ccf35Bc8cb4bC1363398c"
+    },
+    {
+      "role": "seller-50",
+      "address": "0xe74B071854e30374914C6C4512a6E8371d94FA96"
+    },
+    {
+      "role": "seller-150",
+      "address": "0xf5ec9d3237810783BF1A2bD930Bf48954eA5F78c"
+    }
+  ],
+  "approvalTransactions": [],
+  "updatedAt": "2026-10-14T07:19:48.000Z",
+  "operations": []
+}

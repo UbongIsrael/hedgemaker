@@ -78,7 +78,8 @@ interface Manifest {
 interface Evidence {
   schemaVersion: string;
   runId: string;
-  status: 'initialized' | 'approved' | 'trading' | 'traded' | 'settling' | 'settled-and-withdrawn';
+  status: 'initialized' | 'approved' | 'trading' | 'traded' | 'settling' | 'settled-and-withdrawn'
+    | 'aborted-calendar-gap' | 'aborted-insufficient-gas';
   deploymentId: string;
   chainId: number;
   configVersion: string;
@@ -207,7 +208,12 @@ try {
     && existing.participants.every((participant, index) => sameAddress(participant.address, participants[index]?.address ?? '')),
     'Existing E2E evidence does not belong to this deployment, configuration, series, and participant set.',
   );
-  if (existing.status === 'trading' || existing.status === 'settling' || existing.status === 'traded') {
+  if (
+    existing.status === 'trading'
+    || existing.status === 'settling'
+    || existing.status === 'traded'
+    || existing.status.startsWith('aborted-')
+  ) {
     throw new Error(`Existing E2E evidence is already ${existing.status}; reconcile it before resuming money-moving actions.`);
   }
   if (existing.status === 'settled-and-withdrawn') {
